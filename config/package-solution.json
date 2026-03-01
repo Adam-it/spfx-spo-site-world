@@ -3,7 +3,7 @@
   "solution": {
     "name": "spfx-spo-site-world-client-side-solution",
     "id": "5e708d09-5bfb-46d1-ae25-ba734d347b18",
-    "version": "1.0.0.0",
+    "version": "0.2.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

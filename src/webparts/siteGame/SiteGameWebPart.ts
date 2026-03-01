@@ -3,23 +3,26 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle,
+  PropertyPaneSlider,
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'SiteGameWebPartStrings';
 import SiteGame from './components/SiteGame';
 import { ISiteGameProps } from './components/ISiteGameProps';
 
 export interface ISiteGameWebPartProps {
   description: string;
+  showEmptyLists: boolean;
+  maxBots: number;
+  enableEasterEggs: boolean;
 }
 
 export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebPartProps> {
 
   private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
 
   public render(): void {
     const element: React.ReactElement<ISiteGameProps> = React.createElement(
@@ -27,66 +30,29 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
       {
         description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        spHttpClient: this.context.spHttpClient,
+        siteAbsoluteUrl: this.context.pageContext.web.absoluteUrl,
+        userDisplayName: this.context.pageContext.user.displayName,
+        showEmptyLists: this.properties.showEmptyLists !== false,
+        maxBots: this.properties.maxBots || 20,
+        enableEasterEggs: this.properties.enableEasterEggs !== false,
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
-  }
-
-
-
-  private _getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
-      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
-        .then(context => {
-          let environmentMessage: string = '';
-          switch (context.app.host.name) {
-            case 'Office': // running in Office
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
-              break;
-            case 'Outlook': // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
-              break;
-            case 'Teams': // running in Teams
-            case 'TeamsModern':
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-              break;
-            default:
-              environmentMessage = strings.UnknownEnvironment;
-          }
-
-          return environmentMessage;
-        });
-    }
-
-    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
-  }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
-    if (!currentTheme) {
-      return;
-    }
-
+    if (!currentTheme) return;
     this._isDarkTheme = !!currentTheme.isInverted;
-    const {
-      semanticColors
-    } = currentTheme;
-
+    const { semanticColors } = currentTheme;
     if (semanticColors) {
       this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
       this.domElement.style.setProperty('--link', semanticColors.link || null);
       this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
     }
-
   }
 
   protected onDispose(): void {
@@ -101,21 +67,37 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
+          header: { description: 'Site World — Gamify your SharePoint site' },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: 'Town Settings',
               groupFields: [
                 PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
+                  label: 'Web Part Title',
+                }),
+                PropertyPaneToggle('showEmptyLists', {
+                  label: 'Include empty lists as buildings',
+                  onText: 'Yes',
+                  offText: 'No',
+                }),
+                PropertyPaneSlider('maxBots', {
+                  label: 'Max NPC bots (site users)',
+                  min: 1,
+                  max: 30,
+                  step: 1,
+                  showValue: true,
+                  value: 20,
+                }),
+                PropertyPaneToggle('enableEasterEggs', {
+                  label: 'Enable PnP Easter Eggs',
+                  onText: 'Yes',
+                  offText: 'No',
+                }),
+              ],
+            },
+          ],
+        },
+      ],
     };
   }
 }
