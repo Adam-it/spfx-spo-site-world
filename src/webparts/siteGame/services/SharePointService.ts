@@ -96,11 +96,25 @@ export class SharePointService {
 
   public async fetchListItems(
     listId: string,
-    top = 50
-  ): Promise<Array<{ Id: number; Title: string; Modified: string; Editor?: { Title: string } }>> {
-    const url =
+    top = 100,
+    folderServerRelativeUrl?: string
+  ): Promise<Array<{
+    Id: number;
+    Title: string;
+    FileLeafRef: string;
+    FSObjType: number;        // 0 = file, 1 = folder
+    FileDirRef: string;       // parent folder server-relative URL
+    Modified: string;
+    Editor?: { Title: string };
+    File?: { ServerRelativeUrl: string };
+  }>> {
+    let url =
       `${this.siteAbsoluteUrl}/_api/web/lists/getbyid('${listId}')/items` +
-      `?$select=Id,Title,Modified,Editor/Title&$expand=Editor&$top=${top}&$orderby=Modified desc`;
+      `?$select=Id,Title,FileLeafRef,FSObjType,FileDirRef,Modified,Editor/Title,File/ServerRelativeUrl` +
+      `&$expand=Editor,File&$top=${top}&$orderby=FSObjType desc,FileLeafRef asc`;
+    if (folderServerRelativeUrl) {
+      url += `&$filter=FileDirRef eq '${encodeURIComponent(folderServerRelativeUrl).replace(/%2F/g, '/')}'`;
+    }
     try {
       const response = await this.spHttpClient.get(url, SPHttpClient.configurations.v1);
       if (!response.ok) return [];

@@ -16,14 +16,47 @@ import { SharePointService } from '../../services/SharePointService';
 import { IBuilding } from '../../game/types/IBuilding';
 import { INPC } from '../../game/types/INPC';
 
+interface IFolderEntry { url: string; name: string; }
+
 interface IPanelState {
-  items: Array<{ Id: number; Title: string; Modified: string; Editor?: { Title: string } }>;
+  items: Array<{
+    Id: number;
+    Title: string;
+    FileLeafRef: string;
+    FSObjType: number;
+    FileDirRef: string;
+    Modified: string;
+    Editor?: { Title: string };
+    File?: { ServerRelativeUrl: string };
+  }>;
   loading: boolean;
+  /** Stack of visited folders; empty = library root */
+  folderStack: IFolderEntry[];
 }
 
 const styles = mergeStyleSets({
   header: { padding: '12px 16px', borderBottom: '1px solid #e1dfdd' },
   buildingType: { fontSize: 11, color: '#8a8886', textTransform: 'uppercase', letterSpacing: 1 },
+  breadcrumb: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+    padding: '6px 16px',
+    background: '#f8f8f8',
+    borderBottom: '1px solid #e1dfdd',
+    fontSize: 12,
+    flexWrap: 'wrap' as const,
+  },
+  breadcrumbSep: { color: '#bbb', margin: '0 2px' },
+  folderRow: {
+    padding: '7px 16px',
+    borderBottom: '1px solid #f3f2f1',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    cursor: 'pointer',
+    selectors: { ':hover': { background: '#f3f2f1' } },
+  },
   itemRow: {
     padding: '8px 16px',
     borderBottom: '1px solid #f3f2f1',
@@ -54,7 +87,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
 
   constructor(props: IInfoPanelProps) {
     super(props);
-    this.state = { items: [], loading: false };
+    this.state = { items: [], loading: false, folderStack: [] };
     this.spService = new SharePointService(props.spHttpClient, props.siteAbsoluteUrl);
   }
 
@@ -62,23 +95,49 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
     const { target } = this.props;
     if (target !== prevProps.target) {
       if (target?.kind === 'building') {
-        this.loadItems(target.data).catch(() => undefined);
+        this.setState({ folderStack: [] }, () => {
+          this.loadItems(target.data, undefined).catch(() => undefined);
+        });
       } else {
         // target just became null or switched to npc — reset list state
-        this.setState({ items: [], loading: false });
+        this.setState({ items: [], loading: false, folderStack: [] });
       }
     }
   }
 
-  private async loadItems(building: IBuilding): Promise<void> {
-    if (building.listId === 'podcast_tower') return;
+  private async loadItems(building: IBuilding, folderServerRelativeUrl: string | undefined): Promise<void> {
     this.setState({ loading: true, items: [] });
     try {
-      const items = await this.spService.fetchListItems(building.listId);
+      const items = await this.spService.fetchListItems(building.listId, 100, folderServerRelativeUrl);
       this.setState({ items, loading: false });
     } catch {
       this.setState({ loading: false });
     }
+  }
+
+  private navigateIntoFolder(building: IBuilding, folderUrl: string, folderName: string): void {
+    this.setState(
+      (prev) => ({ folderStack: [...prev.folderStack, { url: folderUrl, name: folderName }] }),
+      () => this.loadItems(building, folderUrl).catch(() => undefined)
+    );
+  }
+
+  private navigateToRoot(building: IBuilding): void {
+    this.setState(
+      { folderStack: [] },
+      () => this.loadItems(building, undefined).catch(() => undefined)
+    );
+  }
+
+  private navigateToBreadcrumb(building: IBuilding, idx: number): void {
+    this.setState(
+      (prev) => ({ folderStack: prev.folderStack.slice(0, idx + 1) }),
+      () => {
+        const { folderStack } = this.state;
+        const entry = folderStack[folderStack.length - 1];
+        this.loadItems(building, entry?.url).catch(() => undefined);
+      }
+    );
   }
 
   public render(): React.ReactElement {
@@ -115,7 +174,9 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
   }
 
   private renderBuilding(b: IBuilding): React.ReactElement {
-    const { items, loading } = this.state;
+    const { items, loading, folderStack } = this.state;
+    const siteOrigin = new URL(this.props.siteAbsoluteUrl).origin;
+    const inFolder = folderStack.length > 0;
 
     return (
       <Stack>
@@ -131,9 +192,30 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
           </Stack>
         </div>
 
+        {/* Breadcrumb bar — only shown inside a folder */}
+        {inFolder && (
+          <div className={styles.breadcrumb}>
+            <Link onClick={() => this.navigateToRoot(b)} style={{ fontSize: 12, cursor: 'pointer' }}>
+              🏠 Root
+            </Link>
+            {folderStack.map((entry, idx) => (
+              <React.Fragment key={entry.url}>
+                <span className={styles.breadcrumbSep}>›</span>
+                {idx < folderStack.length - 1 ? (
+                  <Link onClick={() => this.navigateToBreadcrumb(b, idx)} style={{ fontSize: 12, cursor: 'pointer' }}>
+                    {entry.name}
+                  </Link>
+                ) : (
+                  <Text style={{ fontSize: 12, fontWeight: 600 }}>{entry.name}</Text>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        )}
+
         {loading && (
           <Stack horizontalAlign="center" style={{ padding: 24 }}>
-            <Spinner size={SpinnerSize.medium} label="Loading items..." />
+            <Spinner size={SpinnerSize.medium} label="Loading..." />
           </Stack>
         )}
 
@@ -149,24 +231,50 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
           </Text>
         )}
 
-        {!loading &&
-          items.map((item) => (
-            <div key={item.Id} className={styles.itemRow}>
-              <Link
-                href={`${b.url}&ID=${item.Id}`}
-                target="_blank"
-                styles={{ root: { textDecoration: 'none' } }}
+        {!loading && items.map((item) => {
+          const isFolder = item.FSObjType === 1;
+
+          if (isFolder) {
+            const folderName = item.FileLeafRef || item.Title || '(Folder)';
+            // Build the folder's server-relative URL from its parent + its own name
+            const folderUrl = item.FileDirRef
+              ? `${item.FileDirRef}/${folderName}`
+              : undefined;
+            return (
+              <div
+                key={item.Id}
+                className={styles.folderRow}
+                onClick={() => folderUrl && this.navigateIntoFolder(b, folderUrl, folderName)}
+                role="button"
+                aria-label={`Open folder ${folderName}`}
               >
-                <Text className={styles.itemTitle}>{item.Title || '(No title)'}</Text>
+                <Icon iconName="FolderHorizontal" style={{ fontSize: 16, color: '#c8a000' }} />
+                <Text className={styles.itemTitle} style={{ color: '#106ebe' }}>{folderName}</Text>
+              </div>
+            );
+          }
+
+          // File or list item
+          const isFile = !!item.File?.ServerRelativeUrl;
+          const displayName = isFile
+            ? (item.FileLeafRef || item.Title || '(Unnamed file)')
+            : (item.Title || item.FileLeafRef || '(No title)');
+          const itemUrl = isFile
+            ? siteOrigin + item.File!.ServerRelativeUrl
+            : b.url.replace(/\/[^/]*\.aspx.*/i, `/DispForm.aspx?ID=${item.Id}`);
+
+          return (
+            <div key={item.Id} className={styles.itemRow}>
+              <Link href={itemUrl} target="_blank" styles={{ root: { textDecoration: 'none' } }}>
+                <Text className={styles.itemTitle}>{displayName}</Text>
               </Link>
               <Text className={styles.itemMeta}>
-                {item.Modified
-                  ? new Date(item.Modified).toLocaleDateString()
-                  : ''}{' '}
+                {item.Modified ? new Date(item.Modified).toLocaleDateString() : ''}{' '}
                 {item.Editor?.Title ? `· ${item.Editor.Title}` : ''}
               </Text>
             </div>
-          ))}
+          );
+        })}
       </Stack>
     );
   }

@@ -6,6 +6,12 @@ import { INPC, NPCFacing } from './types/INPC';
 import { IPlayer } from './types/IPlayer';
 import { TileType, TILE_WALKABLE } from './constants/TileTypes';
 import { BuildingType, SP_BASE_TEMPLATE_MAP, DOC_LIB_VARIANTS } from './constants/BuildingTypes';
+
+// Well-known SharePoint library names that get a dedicated building type
+const NAMED_LIBRARY_MAP: Array<{ pattern: RegExp; type: BuildingType }> = [
+  { pattern: /^(shared )?documents$/i,    type: BuildingType.DOCUMENTS_LIBRARY },
+  { pattern: /^style library$/i,          type: BuildingType.STYLE_LIBRARY },
+];
 import { GameConfig } from './constants/GameConfig';
 import { EASTER_EGG_DEFINITIONS } from './constants/EasterEggs';
 
@@ -150,6 +156,12 @@ export class MapGenerator {
       // Special: SiteAssets
       if (list.RootFolder?.ServerRelativeUrl?.toLowerCase().includes('siteassets')) {
         buildingType = BuildingType.CRAFT_WORKSHOP;
+      }
+
+      // Special: well-known library names override random DOC_LIB_RANDOM assignment
+      const namedMatch = NAMED_LIBRARY_MAP.find(m => m.pattern.test(list.Title));
+      if (namedMatch) {
+        buildingType = namedMatch.type;
       }
 
       const building: IBuilding = {
