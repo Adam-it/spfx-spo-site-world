@@ -32,6 +32,8 @@ interface IPanelState {
   loading: boolean;
   /** Stack of visited folders; empty = library root */
   folderStack: IFolderEntry[];
+  /** Randomly chosen bio for the current NPC target */
+  activeBio?: string;
 }
 
 const styles = mergeStyleSets({
@@ -95,16 +97,21 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
     const { target } = this.props;
     if (target !== prevProps.target) {
       if (target?.kind === 'building') {
-        this.setState({ folderStack: [] }, () => {
+        this.setState({ folderStack: [], activeBio: undefined }, () => {
           this.loadItems(target.data, undefined).catch(() => undefined);
         });
+      } else if (target?.kind === 'npc') {
+        const npc = target.data;
+        const pool = npc.bios && npc.bios.length > 0 ? npc.bios : undefined;
+        const activeBio = pool
+          ? pool[Math.floor(Math.random() * pool.length)]
+          : undefined;
+        this.setState({ activeBio });
       } else {
-        // target just became null or switched to npc — reset list state
-        this.setState({ items: [], loading: false, folderStack: [] });
+        this.setState({ activeBio: undefined });
       }
     }
   }
-
   private async loadItems(building: IBuilding, folderServerRelativeUrl: string | undefined): Promise<void> {
     this.setState({ loading: true, items: [] });
     try {
@@ -148,7 +155,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       target?.kind === 'building'
         ? `🏛 ${target.data.name}`
         : target?.kind === 'npc' && target.data.kind === 'easteregg'
-        ? `🥚 ${target.data.name}`
+        ? target.data.name
         : target?.kind === 'npc'
         ? `👤 ${target.data.name}`
         : '';
@@ -337,12 +344,11 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
     const emojiMap: Record<string, string> = {
       pnp_rabbit: '🐇',
       vesa_npc: '🧑‍💻',
-      m365_chilli: '🌶️',
       warrior_horse: '🐴',
-      cli_robot: '🤖',
-      podcast_host: '🎙️',
       campfire: '🔥',
     };
+
+    const bioText = this.state.activeBio ?? npc.bio;
 
     return (
       <Stack>
@@ -354,7 +360,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
           {npc.title}
         </Text>
         <div className={styles.eggBio}>
-          <Text>{npc.bio}</Text>
+          {this.renderBioWithLinks(bioText)}
         </div>
         {npc.profileUrl && (
           <Stack style={{ padding: '0 16px 16px' }}>
@@ -365,5 +371,35 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
         )}
       </Stack>
     );
+  }
+
+  /** Renders bio text as JSX, turning bare URLs and well-known domains into clickable links. */
+  private renderBioWithLinks(text: string): React.ReactNode {
+    const URL_RE = /(https?:\/\/[^\s]+|(?:pnp\.github\.io|aka\.ms|github\.com|adoption\.microsoft\.com)[\w./%-]*)/g;
+    const lines = text.split('\n');
+    return lines.map((line, li) => {
+      const parts: React.ReactNode[] = [];
+      let last = 0;
+      let m: RegExpExecArray | null;
+      URL_RE.lastIndex = 0;
+      while ((m = URL_RE.exec(line)) !== null) {
+        if (m.index > last) parts.push(line.slice(last, m.index));
+        const raw = m[1];
+        const href = /^https?:\/\//.test(raw) ? raw : `https://${raw}`;
+        parts.push(
+          <Link key={`${li}-${m.index}`} href={href} target="_blank" style={{ color: '#0078d4' }}>
+            {raw}
+          </Link>
+        );
+        last = m.index + raw.length;
+      }
+      if (last < line.length) parts.push(line.slice(last));
+      return (
+        <React.Fragment key={li}>
+          {parts}
+          {li < lines.length - 1 && <br />}
+        </React.Fragment>
+      );
+    });
   }
 }

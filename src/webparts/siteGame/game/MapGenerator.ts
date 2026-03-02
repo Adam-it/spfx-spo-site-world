@@ -274,6 +274,7 @@ export class MapGenerator {
           facing: (idx % 2 === 0 ? 'right' : 'left') as NPCFacing,
           title: def.title,
           bio: def.bio,
+          bios: def.bios,
           email: def.email,
           profileUrl: def.profileUrl,
           groupColor: '#ffd700',

@@ -15,6 +15,8 @@ export interface INPC {
   facing: NPCFacing;
   title: string;
   bio: string;
+  /** Optional pool of bios — one is picked at random each time the panel opens. */
+  bios?: string[];
   email?: string;
   profileUrl?: string;
   groupColor?: string;
