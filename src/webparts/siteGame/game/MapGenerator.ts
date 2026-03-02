@@ -189,33 +189,6 @@ export class MapGenerator {
       }
     }
 
-    // Podcast Tower easter egg building — placed outside building-quadrant area to avoid overlap
-    const podcastSlot = { startRow: 2, startCol: midCol - 1 }; // top-centre, clear of quadrant grids
-    if (tileMap[podcastSlot.startRow]?.[podcastSlot.startCol]) {
-      for (let r = podcastSlot.startRow; r < podcastSlot.startRow + bh; r++) {
-        for (let c = podcastSlot.startCol; c < podcastSlot.startCol + bw; c++) {
-          if (tileMap[r]?.[c]) tileMap[r][c] = makeTile(TileType.BUILDING_FLOOR, r, c);
-        }
-      }
-      buildings.push({
-        id: 'podcast_tower',
-        name: 'PnP Weekly',
-        buildingType: BuildingType.PODCAST_TOWER,
-        col: podcastSlot.startCol,
-        row: podcastSlot.startRow,
-        widthTiles: bw,
-        heightTiles: bh,
-        x: podcastSlot.startCol * ts,
-        y: podcastSlot.startRow * ts,
-        width: bw * ts,
-        height: bh * ts,
-        description: 'Easter Egg — Microsoft 365 PnP Weekly Podcast',
-        itemCount: 0,
-        url: 'https://pnpweekly.podbean.com',
-        listId: 'podcast_tower',
-      });
-    }
-
     // ── 8. User NPCs ─────────────────────────────────────────────────────────
     const npcs: INPC[] = [];
     const groupColorMap: Record<string, string> = {
@@ -263,14 +236,14 @@ export class MapGenerator {
     // ── 9. Easter egg NPCs ───────────────────────────────────────────────────
     if (options.enableEasterEggs) {
       const eggSpawns: Array<{ row: number; col: number }> = [
-        { row: midRow - 4, col: midCol - 5 },   // pnp_rabbit
-        { row: midRow + 4, col: midCol - 4 },   // vesa_npc
-        { row: midRow - 3, col: midCol + 8 },   // m365_chilli
-        { row: midRow + 5, col: midCol + 2 },   // warrior_horse_1
-        { row: midRow + 5, col: midCol + 5 },   // warrior_horse_2
-        { row: midRow - 5, col: midCol - 2 },   // cli_robot
-        { row: midRow + 2, col: midCol - 7 },   // podcast_host
-        { row: midRow + 1, col: midCol - 1 },   // campfire
+        { row: midRow - 4, col: midCol - 5 },    // pnp_rabbit
+        { row: midRow + 4, col: midCol - 4 },    // vesa_npc
+        { row: midRow - 5, col: midCol - 9 },    // warrior_horse_1
+        { row: midRow + 6, col: midCol + 8 },    // warrior_horse_2
+        { row: midRow - 7, col: midCol + 9 },    // warrior_horse_3
+        { row: midRow + 7, col: midCol - 10 },   // warrior_horse_4
+        { row: midRow + 4, col: midCol + 12 },   // warrior_horse_5
+        { row: midRow + 1, col: midCol - 1 },    // campfire
       ];
 
       EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
@@ -281,12 +254,12 @@ export class MapGenerator {
           kind: 'easteregg',
           x: spawn.col * ts + ts / 2,
           y: spawn.row * ts + ts / 2,
-          vx: 0,
+          vx: idx % 2 === 0 ? GameConfig.NPC_SPEED * 0.6 : -(GameConfig.NPC_SPEED * 0.6),
           vy: 0,
           spriteKey: def.spriteKey,
-          walkTimer: 1500,
+          walkTimer: 1800 + idx * 300,
           pauseTimer: 0,
-          facing: 'down' as NPCFacing,
+          facing: (idx % 2 === 0 ? 'right' : 'left') as NPCFacing,
           title: def.title,
           bio: def.bio,
           email: def.email,

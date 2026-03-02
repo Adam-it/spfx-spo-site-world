@@ -123,14 +123,9 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
           <Text className={styles.buildingType}>{b.buildingType.replace(/_/g, ' ')}</Text>
           <Stack horizontal tokens={{ childrenGap: 16 }} style={{ marginTop: 6 }}>
             <Text variant="small">{b.itemCount} items</Text>
-            {b.url && b.listId !== 'podcast_tower' && (
+            {b.url && (
               <Link href={b.url} target="_blank">
                 Open in SharePoint →
-              </Link>
-            )}
-            {b.listId === 'podcast_tower' && (
-              <Link href="https://pnpweekly.podbean.com" target="_blank">
-                Listen to PnP Weekly →
               </Link>
             )}
           </Stack>

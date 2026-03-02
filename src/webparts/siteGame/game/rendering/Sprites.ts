@@ -111,99 +111,57 @@ export const VESA_NPC: DrawCommand[] = [
   { op: 'fillRect', color: '#334466', x: 17, y: 26, w: 6, h: 6 },
 ];
 
-// ---- M365 Chilli ----
-export const M365_CHILLI: DrawCommand[] = [
-  // Green stalk
-  { op: 'fillRect', color: '#2a8a3a', x: 14, y: 0, w: 4, h: 8 },
-  // Glow
-  { op: 'circle', color: 'rgba(255,100,0,0.18)', cx: 16, cy: 20, r: 14 },
-  // Body
-  { op: 'circle', color: '#cc2200', cx: 16, cy: 18, r: 11 },
-  { op: 'fillRect', color: '#cc2200', x: 12, y: 22, w: 8, h: 6 },
-  { op: 'circle', color: '#aa1800', cx: 16, cy: 28, r: 4 },
-  // Face
-  { op: 'circle', color: '#fff', cx: 12, cy: 16, r: 3 },
-  { op: 'circle', color: '#fff', cx: 20, cy: 16, r: 3 },
-  { op: 'circle', color: '#222', cx: 12, cy: 16, r: 1.5 },
-  { op: 'circle', color: '#222', cx: 20, cy: 16, r: 1.5 },
-  { op: 'arc', color: '#444', cx: 16, cy: 21, r: 3, start: 0.1, end: Math.PI - 0.1 },
-  // M365 text
-  { op: 'text', color: '#fff', text: 'M365', x: 8, y: 21, size: 6 },
-];
-
-// ---- Warrior Horse ----
+// ---- Horse (natural bay, no armour) ----
 export const WARRIOR_HORSE: DrawCommand[] = [
-  // Body
-  { op: 'fillRect', color: '#8b5e3c', x: 4, y: 14, w: 22, h: 12 },
-  // Head
-  { op: 'fillRect', color: '#8b5e3c', x: 2, y: 8, w: 10, h: 10 },
-  // Eye
-  { op: 'circle', color: '#222', cx: 5, cy: 11, r: 1.5 },
-  // Mane
-  { op: 'fillRect', color: '#5a2e0a', x: 4, y: 8, w: 4, h: 14 },
-  // Tail
-  { op: 'fillRect', color: '#5a2e0a', x: 24, y: 10, w: 4, h: 12 },
-  // Legs
-  { op: 'fillRect', color: '#6b4a2e', x: 6, y: 26, w: 4, h: 6 },
-  { op: 'fillRect', color: '#6b4a2e', x: 12, y: 26, w: 4, h: 6 },
-  { op: 'fillRect', color: '#6b4a2e', x: 18, y: 26, w: 4, h: 6 },
+  // ── Tail (flowing black) ──
+  { op: 'fillRect', color: '#1c0e04', x: 25, y: 11, w: 4, h: 17 },
+  { op: 'fillRect', color: '#2c1808', x: 26, y: 13, w: 3, h: 13 },
+  { op: 'fillRect', color: '#3c2810', x: 27, y: 17, w: 2, h: 7 },
+  // ── Body (chestnut bay) ──
+  { op: 'circle', color: '#a05020', cx: 20, cy: 18, r: 7 },
+  { op: 'circle', color: '#9a4c1c', cx: 10, cy: 19, r: 6 },
+  { op: 'fillRect', color: '#a05020', x: 10, y: 11, w: 11, h: 13 },
+  // Belly shading
+  { op: 'fillRect', color: '#7a3c14', x: 11, y: 21, w: 10, h: 3 },
+  // ── Neck ──
+  { op: 'fillRect', color: '#9a4c1c', x: 6, y: 8, w: 6, h: 12 },
+  { op: 'circle', color: '#9a4c1c', cx: 9, cy: 10, r: 4 },
+  // ── Head ──
+  { op: 'fillRect', color: '#9a4c1c', x: 1, y: 5, w: 10, h: 9 },
+  // Muzzle
+  { op: 'fillRect', color: '#7a3c14', x: 0, y: 9, w: 6, h: 7 },
+  // Nostril
+  { op: 'circle', color: '#2a1408', cx: 2, cy: 14, r: 1.2 },
+  // Mouth line
+  { op: 'fillRect', color: '#5a2c0a', x: 1, y: 15, w: 4, h: 1 },
+  // Eye with glint
+  { op: 'circle', color: '#151510', cx: 8, cy: 7, r: 2.5 },
+  { op: 'circle', color: '#fff', cx: 9, cy: 6, r: 0.9 },
+  // Ear
+  { op: 'fillRect', color: '#9a4c1c', x: 9, y: 2, w: 2, h: 5 },
+  { op: 'fillRect', color: '#d09090', x: 10, y: 3, w: 1, h: 3 },
+  // White star on forehead
+  { op: 'circle', color: '#e8e0d8', cx: 5, cy: 7, r: 1.5 },
+  // ── Mane (black, flowing) ──
+  { op: 'fillRect', color: '#1c0e04', x: 6, y: 4, w: 3, h: 15 },
+  { op: 'fillRect', color: '#2c1808', x: 7, y: 6, w: 2, h: 10 },
+  // ── Legs ──
+  // Front pair
+  { op: 'fillRect', color: '#8a3c14', x: 8,  y: 24, w: 4, h: 8 },
+  { op: 'fillRect', color: '#8a3c14', x: 13, y: 24, w: 4, h: 8 },
+  // Back pair
+  { op: 'fillRect', color: '#7a3010', x: 19, y: 24, w: 4, h: 7 },
+  { op: 'fillRect', color: '#7a3010', x: 23, y: 24, w: 3, h: 6 },
+  // Cannon-bone darkening
+  { op: 'fillRect', color: '#2c1408', x: 8,  y: 27, w: 4, h: 5 },
+  { op: 'fillRect', color: '#2c1408', x: 13, y: 27, w: 4, h: 5 },
+  { op: 'fillRect', color: '#2c1408', x: 19, y: 27, w: 4, h: 4 },
+  { op: 'fillRect', color: '#2c1408', x: 23, y: 27, w: 3, h: 3 },
   // Hooves
-  { op: 'fillRect', color: '#222', x: 6, y: 30, w: 4, h: 2 },
-  { op: 'fillRect', color: '#222', x: 12, y: 30, w: 4, h: 2 },
-  { op: 'fillRect', color: '#222', x: 18, y: 30, w: 4, h: 2 },
-  // Armour
-  { op: 'fillRect', color: '#aaa', x: 6, y: 14, w: 20, h: 8 },
-  // Lance
-  { op: 'fillRect', color: '#c8a040', x: 0, y: 10, w: 3, h: 20 },
-  // Lance tip
-  { op: 'fillRect', color: '#ddd', x: 0, y: 8, w: 3, h: 3 },
-];
-
-// ---- CLI Robot ----
-export const CLI_ROBOT: DrawCommand[] = [
-  // Head
-  { op: 'fillRect', color: '#4a8a8a', x: 8, y: 2, w: 16, h: 14 },
-  // Antenna
-  { op: 'fillRect', color: '#6ababa', x: 15, y: 0, w: 3, h: 3 },
-  { op: 'circle', color: '#66ffee', cx: 16, cy: 0, r: 2 },
-  // Eyes (screen)
-  { op: 'fillRect', color: '#001a1a', x: 10, y: 5, w: 5, h: 4 },
-  { op: 'fillRect', color: '#001a1a', x: 17, y: 5, w: 5, h: 4 },
-  { op: 'fillRect', color: '#00ffcc', x: 11, y: 6, w: 3, h: 2 },
-  { op: 'fillRect', color: '#00ffcc', x: 18, y: 6, w: 3, h: 2 },
-  // Mouth (>_ terminal)
-  { op: 'fillRect', color: '#001a1a', x: 10, y: 11, w: 12, h: 4 },
-  { op: 'text', color: '#00ffcc', text: '>_', x: 11, y: 14, size: 5 },
-  // Body
-  { op: 'fillRect', color: '#3a7a7a', x: 7, y: 16, w: 18, h: 10 },
-  // CLI text on chest
-  { op: 'text', color: '#fff', text: 'CLI', x: 10, y: 24, size: 7 },
-  // Arms
-  { op: 'fillRect', color: '#3a7a7a', x: 2, y: 16, w: 5, h: 7 },
-  { op: 'fillRect', color: '#3a7a7a', x: 25, y: 16, w: 5, h: 7 },
-  // Hands
-  { op: 'fillRect', color: '#4a8a8a', x: 2, y: 22, w: 5, h: 3 },
-  { op: 'fillRect', color: '#4a8a8a', x: 25, y: 22, w: 5, h: 3 },
-  // Legs
-  { op: 'fillRect', color: '#2a5a5a', x: 9, y: 26, w: 5, h: 6 },
-  { op: 'fillRect', color: '#2a5a5a', x: 18, y: 26, w: 5, h: 6 },
-];
-
-// ---- Podcast Host ----
-export const PODCAST_HOST: DrawCommand[] = [
-  // Microphone stand
-  { op: 'fillRect', color: '#888', x: 14, y: 20, w: 4, h: 8 },
-  { op: 'fillRect', color: '#888', x: 10, y: 28, w: 12, h: 2 },
-  // Mic head
-  { op: 'circle', color: '#555', cx: 16, cy: 14, r: 8 },
-  { op: 'circle', color: '#333', cx: 16, cy: 14, r: 6 },
-  // Headphones
-  { op: 'arc', color: '#222', cx: 16, cy: 14, r: 10, start: Math.PI, end: 0 },
-  { op: 'circle', color: '#333', cx: 6, cy: 14, r: 3 },
-  { op: 'circle', color: '#333', cx: 26, cy: 14, r: 3 },
-  // Sound waves
-  { op: 'arc', color: 'rgba(255,100,0,0.5)', cx: 16, cy: 14, r: 13, start: -0.5, end: 0.5 },
-  { op: 'arc', color: 'rgba(255,100,0,0.3)', cx: 16, cy: 14, r: 16, start: -0.7, end: 0.7 },
+  { op: 'fillRect', color: '#0c0804', x: 8,  y: 30, w: 4, h: 2 },
+  { op: 'fillRect', color: '#0c0804', x: 13, y: 30, w: 4, h: 2 },
+  { op: 'fillRect', color: '#0c0804', x: 19, y: 30, w: 4, h: 2 },
+  { op: 'fillRect', color: '#0c0804', x: 23, y: 29, w: 3, h: 2 },
 ];
 
 // ---- Campfire ----
@@ -230,10 +188,7 @@ export type SpriteKey =
   | 'user_npc_visitor'
   | 'pnp_rabbit'
   | 'vesa_npc'
-  | 'm365_chilli'
   | 'warrior_horse'
-  | 'cli_robot'
-  | 'podcast_host'
   | 'campfire';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -244,10 +199,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   user_npc_visitor: USER_NPC_VISITOR,
   pnp_rabbit: PNP_RABBIT,
   vesa_npc: VESA_NPC,
-  m365_chilli: M365_CHILLI,
   warrior_horse: WARRIOR_HORSE,
-  cli_robot: CLI_ROBOT,
-  podcast_host: PODCAST_HOST,
   campfire: CAMPFIRE,
 };
 

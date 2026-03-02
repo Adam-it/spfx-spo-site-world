@@ -10,7 +10,6 @@ export enum BuildingType {
   GENERAL_STORE = 'GENERAL_STORE',
   NEWSPAPER_OFFICE = 'NEWSPAPER_OFFICE',
   CRAFT_WORKSHOP = 'CRAFT_WORKSHOP',
-  PODCAST_TOWER = 'PODCAST_TOWER',
 }
 
 // SharePoint BaseTemplate IDs
@@ -126,13 +125,5 @@ export const BUILDING_CONFIG: Record<BuildingType, {
     roofColor: '#5c4e42',
     doorColor: '#3c2e22',
     description: 'Site Assets',
-  },
-  [BuildingType.PODCAST_TOWER]: {
-    label: 'PnP Weekly Tower',
-    icon: '📻',
-    baseColor: '#3a6b8b',
-    roofColor: '#1e4e6b',
-    doorColor: '#0e2e4b',
-    description: 'PnP Weekly Podcast',
   },
 };

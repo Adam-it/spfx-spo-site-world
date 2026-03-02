@@ -155,7 +155,7 @@ export class GameEngine {
 
     // ── NPC movement ─────────────────────────────────────────────────────────
     for (const npc of this.state.npcs) {
-      if (npc.spriteKey === 'campfire' || npc.spriteKey === 'podcast_host') continue; // static
+      if (npc.spriteKey === 'campfire') continue; // static
 
       const rng = this.npcRngs.get(npc.id)!;
       const distToPlayer = this.collision.distance(npc.x, npc.y, p.x, p.y);
@@ -171,48 +171,62 @@ export class GameEngine {
         npc.vx = 0;
         npc.vy = 0;
       } else {
+        const npcSpeed = GameConfig.NPC_SPEED * npc.speedMultiplier;
+        const isEasterEgg = npc.kind === 'easteregg';
+
         if (npc.pauseTimer > 0) {
+          // ── Pausing: stay still, count down ──────────────────────────────
           npc.pauseTimer -= delta;
           npc.vx = 0;
           npc.vy = 0;
-        } else {
-          npc.walkTimer -= delta;
-          const npcSpeed = GameConfig.NPC_SPEED * npc.speedMultiplier;
-
-          if (npc.walkTimer <= 0) {
-            // Pick new direction
-            const dir = Math.floor(rng() * 4);
-            const dirs: Array<[number, number, NPCFacing]> = [
-              [0, -npcSpeed, 'up'],
-              [0, npcSpeed, 'down'],
-              [-npcSpeed, 0, 'left'],
-              [npcSpeed, 0, 'right'],
-            ];
-            const [newVx, newVy, newFacing] = dirs[dir];
+          if (npc.pauseTimer <= 0) {
+            // Pause just ended — pick direction and start walking immediately
+            const dirs: Array<[number, number, NPCFacing]> = isEasterEgg
+              ? [
+                  [-npcSpeed, 0, 'left'],
+                  [npcSpeed, 0, 'right'],
+                ]
+              : [
+                  [0, -npcSpeed, 'up'],
+                  [0, npcSpeed, 'down'],
+                  [-npcSpeed, 0, 'left'],
+                  [npcSpeed, 0, 'right'],
+                ];
+            const [newVx, newVy, newFacing] = dirs[Math.floor(rng() * dirs.length)];
             npc.vx = newVx;
             npc.vy = newVy;
             npc.facing = newFacing;
             npc.walkTimer = randomBetween(rng, GameConfig.WALK_DURATION_MIN_MS, GameConfig.WALK_DURATION_MAX_MS);
-            npc.pauseTimer = randomBetween(rng, GameConfig.PAUSE_DURATION_MIN_MS, GameConfig.PAUSE_DURATION_MAX_MS);
           }
-
-          // Move NPC
-          const maxW = (this.state.mapCols - 1) * GameConfig.TILE_SIZE;
-          const maxH = (this.state.mapRows - 1) * GameConfig.TILE_SIZE;
-          const npcHitbox: IAABB = { x: npc.x + npc.vx * (delta / 1000) - 10, y: npc.y - 10, w: 20, h: 20 };
-          if (!this.collision.collidesWithMap(npcHitbox)) {
-            npc.x = clamp(npc.x + npc.vx * (delta / 1000), ts, maxW);
-          } else {
+        } else {
+          // ── Walking: count down, then enter pause ─────────────────────────
+          npc.walkTimer -= delta;
+          if (npc.walkTimer <= 0) {
             npc.vx = 0;
-            npc.walkTimer = 0; // force direction change
-          }
-          const npcHitboxY: IAABB = { x: npc.x - 10, y: npc.y + npc.vy * (delta / 1000) - 10, w: 20, h: 20 };
-          if (!this.collision.collidesWithMap(npcHitboxY)) {
-            npc.y = clamp(npc.y + npc.vy * (delta / 1000), ts, maxH);
-          } else {
             npc.vy = 0;
             npc.walkTimer = 0;
+            npc.pauseTimer = randomBetween(rng, GameConfig.PAUSE_DURATION_MIN_MS, GameConfig.PAUSE_DURATION_MAX_MS);
           }
+        }
+
+        // Apply velocity (zero while pausing, set while walking)
+        const maxW = (this.state.mapCols - 1) * GameConfig.TILE_SIZE;
+        const maxH = (this.state.mapRows - 1) * GameConfig.TILE_SIZE;
+        const npcHitbox: IAABB = { x: npc.x + npc.vx * (delta / 1000) - 10, y: npc.y - 10, w: 20, h: 20 };
+        if (!this.collision.collidesWithMap(npcHitbox)) {
+          npc.x = clamp(npc.x + npc.vx * (delta / 1000), ts, maxW);
+        } else {
+          npc.vx = 0;
+          npc.walkTimer = 0;
+          npc.pauseTimer = randomBetween(rng, GameConfig.PAUSE_DURATION_MIN_MS, GameConfig.PAUSE_DURATION_MAX_MS);
+        }
+        const npcHitboxY: IAABB = { x: npc.x - 10, y: npc.y + npc.vy * (delta / 1000) - 10, w: 20, h: 20 };
+        if (!this.collision.collidesWithMap(npcHitboxY)) {
+          npc.y = clamp(npc.y + npc.vy * (delta / 1000), ts, maxH);
+        } else {
+          npc.vy = 0;
+          npc.walkTimer = 0;
+          npc.pauseTimer = randomBetween(rng, GameConfig.PAUSE_DURATION_MIN_MS, GameConfig.PAUSE_DURATION_MAX_MS);
         }
       }
     }

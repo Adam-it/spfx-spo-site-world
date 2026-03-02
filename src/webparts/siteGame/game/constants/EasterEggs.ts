@@ -30,18 +30,6 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       'Follow: @vesajuvonen  |  Microsoft 365 & Power Platform Community',
   },
   {
-    id: 'm365_chilli',
-    name: 'M365 Chilli',
-    kind: 'easteregg',
-    spriteKey: 'm365_chilli',
-    title: '🌶️ Microsoft 365 Extensibility — Hot Stuff!',
-    bio:
-      'The Microsoft 365 platform is on 🔥! ' +
-      'SPFx → Teams → Viva → Power Platform → Copilot extensions.\n\n' +
-      'Everything connects. Everything extends. ' +
-      'Start at aka.ms/m365dev and join the revolution.',
-  },
-  {
     id: 'warrior_horse_1',
     name: 'Shadowmane',
     kind: 'easteregg',
@@ -67,30 +55,40 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       'Join PnP: aka.ms/m365pnp-community',
   },
   {
-    id: 'cli_robot',
-    name: 'CLI-Bot',
+    id: 'warrior_horse_3',
+    name: 'Cloudmist',
     kind: 'easteregg',
-    spriteKey: 'cli_robot',
-    title: 'CLI for Microsoft 365 🤖',
+    spriteKey: 'warrior_horse',
+    title: '⚔️ PnP Community Warriors',
     bio:
-      'Manage your Microsoft 365 tenant from the command line!\n\n' +
-      'CLI for M365 is a cross-platform, open-source tool to manage ' +
-      'SharePoint, Teams, Power Platform, and more — using simple shell commands.\n\n' +
-      'Try: m365 login  |  m365 spo site list\n' +
-      'pnp.github.io/cli-microsoft365',
+      'Cloudmist gallops wherever SPFx samples need defending.\n\n' +
+      'Hundreds of open-source web part samples live at ' +
+      'github.com/pnp/sp-dev-fx-webparts — free to use and contribute to. ' +
+      'Join the herd: aka.ms/m365pnp',
   },
   {
-    id: 'podcast_host',
-    name: 'PnP Weekly',
+    id: 'warrior_horse_4',
+    name: 'Ferndale',
     kind: 'easteregg',
-    spriteKey: 'podcast_host',
-    title: 'Microsoft 365 PnP Weekly Podcast 🎙️',
+    spriteKey: 'warrior_horse',
+    title: '⚔️ PnP Community Warriors',
     bio:
-      'Hosted by Vesa Juvonen & Waldek Mastykarz.\n\n' +
-      'Every Monday, the latest Microsoft 365 dev news, ' +
-      'community highlights, and interviews with MVPs and Microsoft engineers. ' +
-      'Over 220+ episodes strong!\n\n' +
-      'pnpweekly.podbean.com  |  YouTube: Microsoft 365 & Power Platform Community',
+      '"Modern pages or nothing!" — Ferndale\n\n' +
+      'Ferndale patrols the northern fields, ensuring every site collection ' +
+      'has proper content types and a sensible information architecture. ' +
+      'aka.ms/m365pnp-community',
+  },
+  {
+    id: 'warrior_horse_5',
+    name: 'Copperbell',
+    kind: 'easteregg',
+    spriteKey: 'warrior_horse',
+    title: '⚔️ PnP Community Warriors',
+    bio:
+      'Copperbell rings whenever a new PnP community call goes live.\n\n' +
+      'Bi-weekly community calls cover SPFx, Microsoft Teams dev, ' +
+      'Power Platform and more. All recordings on YouTube. ' +
+      'aka.ms/spdev-call',
   },
   {
     id: 'campfire_dev',
