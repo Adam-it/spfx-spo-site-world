@@ -255,6 +255,7 @@ export class MapGenerator {
         { row: midRow - 7, col: midCol + 9 },    // warrior_horse_3
         { row: midRow + 7, col: midCol - 10 },   // warrior_horse_4
         { row: midRow + 4, col: midCol + 12 },   // warrior_horse_5
+        { row: midRow - 3, col: midCol + 7 },    // cli_m365
         { row: midRow + 1, col: midCol - 1 },    // campfire
       ];
 

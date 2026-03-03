@@ -346,13 +346,15 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       vesa_npc: '🧑‍💻',
       warrior_horse: '🐴',
       campfire: '🔥',
+      m365_chilli: '🌶️',
     };
 
     const bioText = this.state.activeBio ?? npc.bio;
+    const icon = emojiMap[npc.spriteKey] ?? '🥚';
 
     return (
       <Stack>
-        <div className={styles.eggIcon}>{emojiMap[npc.spriteKey] || '🥚'}</div>
+        {icon && <div className={styles.eggIcon}>{icon}</div>}
         <Text
           variant="mediumPlus"
           style={{ paddingLeft: 16, paddingRight: 16, color: '#8b00c8', fontWeight: 600 }}

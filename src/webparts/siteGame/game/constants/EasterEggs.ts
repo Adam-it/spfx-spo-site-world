@@ -283,6 +283,67 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     ],
   },
   {
+    id: 'cli_m365',
+    name: 'CLI M365',
+    kind: 'easteregg',
+    spriteKey: 'm365_chilli',
+    title: '> CLI for Microsoft 365 — Manage M365 from any shell',
+    bio: 'pnp.github.io/cli-microsoft365',
+    bios: [
+      // Tip 1 — What it is & how to install
+      '> CLI for Microsoft 365\n\n' +
+      'A free, open-source, cross-platform CLI built on Node.js that lets you ' +
+      'manage your whole Microsoft 365 tenant from any terminal — ' +
+      'bash, zsh, fish, PowerShell or CMD.\n\n' +
+      'Install once, use everywhere:\n' +
+      '  npm i -g @pnp/cli-microsoft365\n\n' +
+      'Sign in (interactive browser pop-up):\n' +
+      '  m365 login\n\n' +
+      'Or certificate / secret auth for automation:\n' +
+      '  m365 login --authType certificate --certificateFile cert.pem\n\n' +
+      'Works on Windows, macOS & Linux. Zero extra tooling required.\n\n' +
+      '\u2139\ufe0f  Install guide  \u2192 pnp.github.io/cli-microsoft365/user-guide/installing-cli\n' +
+      '\ud83c\udf10 Full docs      \u2192 pnp.github.io/cli-microsoft365',
+
+      // Tip 2 — Key commands across workloads
+      '> m365 --help  (a few favourites)\n\n' +
+      'SharePoint Online:\n' +
+      '  m365 spo site list\n' +
+      '  m365 spo site add --alias dev --title "Dev Portal"\n' +
+      '  m365 spo list add --title "Projects" --baseTemplate GenericList \\\n' +
+      '        --webUrl https://tenant.sharepoint.com/sites/dev\n' +
+      '  m365 spo file get --webUrl <url> --url /Shared%20Documents/spec.pdf\n\n' +
+      'Microsoft Teams:\n' +
+      '  m365 teams team list\n' +
+      '  m365 teams channel add --teamId <id> --name "Dev Chat"\n\n' +
+      'Entra ID (Azure AD):\n' +
+      '  m365 entra app list\n' +
+      '  m365 entra app set --appId <id> --uris https://myapp.com\n\n' +
+      'Pipe JSON to jq for scripting:\n' +
+      '  m365 spo site list --output json | jq \'.[].Url\'\n\n' +
+      '\u2699\ufe0f  Command reference \u2192 pnp.github.io/cli-microsoft365/cmd/spo/site/site-list',
+
+      // Tip 3 — MCP server
+      '> CLI for Microsoft 365 MCP Server\n\n' +
+      'The CLI for Microsoft 365 MCP Server is a standalone Model Context\n' +
+      'Protocol server that exposes the full power of the CLI to AI assistants\n' +
+      'like GitHub Copilot, Claude and Cursor.\n\n' +
+      'Configure it in VS Code (.vscode/mcp.json or settings.json):\n' +
+      '  {\n' +
+      '    "servers": {\n' +
+      '      "cli-m365": {\n' +
+      '        "type": "stdio",\n' +
+      '        "command": "npx",\n' +
+      '        "args": ["-y", "@pnp/cli-microsoft365-mcp"]\n' +
+      '      }\n' +
+      '    }\n' +
+      '  }\n\n' +
+      'Once connected, your AI can list SPO sites, create Teams channels,\n' +
+      'manage Entra apps and much more \u2014 all through natural language prompts.\n\n' +
+      '\ud83e\udd16 Full guide \u2192 pnp.github.io/cli-microsoft365/user-guide/using-cli-mcp-server',
+    ],
+  },
+  {
     id: 'campfire_dev',
     name: 'Community Campfire',
     kind: 'easteregg',

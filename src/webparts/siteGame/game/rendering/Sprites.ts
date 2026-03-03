@@ -164,6 +164,38 @@ export const WARRIOR_HORSE: DrawCommand[] = [
   { op: 'fillRect', color: '#0c0804', x: 23, y: 29, w: 3, h: 2 },
 ];
 
+// ---- CLI for Microsoft 365 — walking "CLI" pixel-art letters ----
+export const CLI_M365: DrawCommand[] = [
+  // ── Stem (dark green) ──
+  { op: 'fillRect', color: '#14532d', x: 15, y: 0,  w: 3, h: 6 },
+
+  // ── Calyx — three rounded green lobes (not a simple flat cap) ──
+  { op: 'circle', color: '#16a34a', cx: 12, cy: 7,  r: 3.5 },
+  { op: 'circle', color: '#16a34a', cx: 16, cy: 6,  r: 3.5 },
+  { op: 'circle', color: '#16a34a', cx: 20, cy: 7,  r: 3.5 },
+  { op: 'fillRect', color: '#16a34a', x: 10, y: 5,  w: 12, h: 5 }, // fill between lobes
+
+  // ── Body — large round top (key: chili ≠ carrot triangle) ──
+  { op: 'circle',   color: '#dc2626', cx: 16, cy: 13, r: 7 },
+  { op: 'fillRect', color: '#dc2626', x: 9,  y: 8,   w: 14, h: 10 },
+
+  // ── Mid — curves 1 px rightward ──
+  { op: 'circle',   color: '#dc2626', cx: 17, cy: 20, r: 5 },
+  { op: 'fillRect', color: '#dc2626', x: 12, y: 16,  w: 10, h: 7 },
+
+  // ── Lower taper — continues curving right ──
+  { op: 'fillRect', color: '#b91c1c', x: 14, y: 22,  w: 7,  h: 4 },
+  { op: 'fillRect', color: '#991b1b', x: 15, y: 25,  w: 5,  h: 3 },
+  { op: 'fillRect', color: '#7f1d1d', x: 16, y: 27,  w: 4,  h: 2 },
+
+  // ── Curved tip ──
+  { op: 'fillRect', color: '#7f1d1d', x: 17, y: 29,  w: 3,  h: 2 },
+  { op: 'fillRect', color: '#6b1212', x: 18, y: 30,  w: 2,  h: 1 },
+
+  // ── Sheen highlight (upper-left, gives 3-D pepper look) ──
+  { op: 'circle', color: 'rgba(255,180,160,0.55)', cx: 13, cy: 12, r: 4 },
+];
+
 // ---- Campfire ----
 export const CAMPFIRE: DrawCommand[] = [
   // Logs
@@ -189,6 +221,7 @@ export type SpriteKey =
   | 'pnp_rabbit'
   | 'vesa_npc'
   | 'warrior_horse'
+  | 'm365_chilli'
   | 'campfire';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -200,6 +233,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   pnp_rabbit: PNP_RABBIT,
   vesa_npc: VESA_NPC,
   warrior_horse: WARRIOR_HORSE,
+  m365_chilli: CLI_M365,
   campfire: CAMPFIRE,
 };
 
