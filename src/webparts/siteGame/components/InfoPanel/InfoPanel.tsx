@@ -16,6 +16,13 @@ import { SharePointService } from '../../services/SharePointService';
 import { IBuilding } from '../../game/types/IBuilding';
 import { INPC } from '../../game/types/INPC';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const logoPnpjs: string        = require('../../../../../assets/logos/pnpjs-library.png');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const logoCli: string          = require('../../../../../assets/logos/pnp-microsoft-365-cli.png');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const logoSpfxToolkit: string  = require('../../../../../assets/logos/pnp-spfx-toolkit.png');
+
 interface IFolderEntry { url: string; name: string; }
 
 interface IPanelState {
@@ -68,6 +75,12 @@ const styles = mergeStyleSets({
   itemMeta: { fontSize: 11, color: '#8a8886' },
   eggBio: { padding: '16px', fontSize: 13, lineHeight: '1.6', whiteSpace: 'pre-wrap' },
   eggIcon: { fontSize: 40, textAlign: 'center', padding: '16px 0' },
+  eggLogo: {
+    display: 'block',
+    maxWidth: 180,
+    height: 'auto',
+    margin: '16px auto 8px',
+  },
   userBio: { padding: '16px', fontSize: 13 },
   userGroup: {
     display: 'inline-block',
@@ -350,12 +363,22 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       spfx_toolkit: '🧩',
     };
 
+    const logoMap: Record<string, string> = {
+      pnp_rabbit:   logoPnpjs,
+      m365_chilli:  logoCli,
+      spfx_toolkit: logoSpfxToolkit,
+    };
+
     const bioText = this.state.activeBio ?? npc.bio;
+    const logo = logoMap[npc.spriteKey];
     const icon = emojiMap[npc.spriteKey] ?? '🥚';
 
     return (
       <Stack>
-        {icon && <div className={styles.eggIcon}>{icon}</div>}
+        {logo
+          ? <img src={logo} alt={npc.name} className={styles.eggLogo} />
+          : icon && <div className={styles.eggIcon}>{icon}</div>
+        }
         <Text
           variant="mediumPlus"
           style={{ paddingLeft: 16, paddingRight: 16, color: '#8b00c8', fontWeight: 600 }}
