@@ -367,6 +367,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       spfx_toolkit:   '🧩',
       pnp_powershell: '🖥️',
       power_automate: '⚡',
+      luise: '👑',
     };
 
     const logoMap: Record<string, string> = {

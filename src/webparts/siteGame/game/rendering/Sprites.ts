@@ -350,6 +350,44 @@ export const CAMPFIRE: DrawCommand[] = [
   { op: 'circle', color: '#ff4400', cx: 14, cy: 8, r: 1 },
 ];
 
+// ---- Luise — M365 Princess ----
+export const LUISE: DrawCommand[] = [
+  // Crown (golden)
+  { op: 'fillRect', color: '#ffd700', x: 11, y: 1, w: 10, h: 2 },
+  { op: 'fillRect', color: '#ffd700', x: 11, y: 1, w: 2, h: 4 },
+  { op: 'fillRect', color: '#ffd700', x: 15, y: 1, w: 2, h: 4 },
+  { op: 'fillRect', color: '#ffd700', x: 19, y: 1, w: 2, h: 4 },
+  { op: 'circle', color: '#ff69b4', cx: 12, cy: 1, r: 1 },
+  { op: 'circle', color: '#ff69b4', cx: 16, cy: 1, r: 1 },
+  { op: 'circle', color: '#ff69b4', cx: 20, cy: 1, r: 1 },
+  // Hair (flowing)
+  { op: 'fillRect', color: '#8b4513', x: 10, y: 4, w: 12, h: 6 },
+  { op: 'fillRect', color: '#a0522d', x: 10, y: 10, w: 3, h: 8 },
+  { op: 'fillRect', color: '#a0522d', x: 19, y: 10, w: 3, h: 8 },
+  // Head
+  { op: 'circle', color: '#f5c29a', cx: 16, cy: 10, r: 6 },
+  // Eyes
+  { op: 'circle', color: '#222', cx: 14, cy: 9, r: 1.5 },
+  { op: 'circle', color: '#222', cx: 18, cy: 9, r: 1.5 },
+  // Smile
+  { op: 'arc', color: '#ff69b4', cx: 16, cy: 12, r: 2.5, start: 0.1, end: Math.PI - 0.1 },
+  // Body (pink dress #ff69b4)
+  { op: 'fillRect', color: '#ff69b4', x: 10, y: 17, w: 12, h: 9 },
+  // Dress highlight
+  { op: 'fillRect', color: '#ffb6d9', x: 11, y: 18, w: 10, h: 2 },
+  // Arms (pink)
+  { op: 'fillRect', color: '#ff69b4', x: 6, y: 18, w: 4, h: 5 },
+  { op: 'fillRect', color: '#ff69b4', x: 22, y: 18, w: 4, h: 5 },
+  // Hands
+  { op: 'circle', color: '#f5c29a', cx: 8, cy: 24, r: 2.5 },
+  { op: 'circle', color: '#f5c29a', cx: 24, cy: 24, r: 2.5 },
+  // Heart badge on chest
+  { op: 'text', color: '#fff', text: '♥', x: 13, y: 24, size: 7 },
+  // Dress bottom (flowing)
+  { op: 'fillRect', color: '#ff1493', x: 9, y: 26, w: 14, h: 4 },
+  { op: 'fillRect', color: '#ff69b4', x: 10, y: 27, w: 12, h: 3 },
+];
+
 export type SpriteKey =
   | 'player'
   | 'player_walk1'
@@ -358,6 +396,7 @@ export type SpriteKey =
   | 'user_npc_visitor'
   | 'pnp_rabbit'
   | 'vesa_npc'
+  | 'luise'
   | 'warrior_horse'
   | 'm365_chilli'
   | 'spfx_toolkit'
@@ -373,6 +412,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   user_npc_visitor: USER_NPC_VISITOR,
   pnp_rabbit: PNP_RABBIT,
   vesa_npc: VESA_NPC,
+  luise: LUISE,
   warrior_horse: WARRIOR_HORSE,
   m365_chilli: CLI_M365,
   spfx_toolkit: SPFX_TOOLKIT,

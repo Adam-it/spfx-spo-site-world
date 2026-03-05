@@ -261,6 +261,7 @@ export class MapGenerator {
         { row: midRow + 1, col: midCol - 1 },    // campfire
         { row: midRow + 5, col: midCol - 7 },    // spfx_toolkit
         { row: midRow + 8, col: midCol - 4 },    // pnp_powershell
+        { row: midRow - 2, col: midCol + 5 },    // luise
       ];
 
       EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
