@@ -1,4 +1,4 @@
-export type NPCKind = 'user' | 'easteregg';
+export type NPCKind = 'user' | 'easteregg' | 'm365egg';
 export type NPCFacing = 'up' | 'down' | 'left' | 'right';
 
 export interface INPC {

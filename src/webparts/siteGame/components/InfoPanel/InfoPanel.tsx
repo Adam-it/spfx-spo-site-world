@@ -24,6 +24,8 @@ const logoCli: string          = require('../../../../../assets/logos/pnp-micros
 const logoSpfxToolkit: string  = require('../../../../../assets/logos/pnp-spfx-toolkit.png');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const logoPowershell: string   = require('../../../../../assets/logos/pnp-powershell.png');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const logoPowerAutomate: string = require('../../../../../assets/logos/power-automate.png');
 
 interface IFolderEntry { url: string; name: string; }
 
@@ -169,7 +171,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
     const headerText =
       target?.kind === 'building'
         ? `🏛 ${target.data.name}`
-        : target?.kind === 'npc' && target.data.kind === 'easteregg'
+        : target?.kind === 'npc' && (target.data.kind === 'easteregg' || target.data.kind === 'm365egg')
         ? target.data.name
         : target?.kind === 'npc'
         ? `👤 ${target.data.name}`
@@ -190,7 +192,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       >
         {target?.kind === 'building' && this.renderBuilding(target.data)}
         {target?.kind === 'npc' && target.data.kind === 'user' && this.renderUser(target.data)}
-        {target?.kind === 'npc' && target.data.kind === 'easteregg' && this.renderEgg(target.data)}
+        {target?.kind === 'npc' && (target.data.kind === 'easteregg' || target.data.kind === 'm365egg') && this.renderEgg(target.data)}
       </Panel>
     );
   }
@@ -361,16 +363,18 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       vesa_npc: '🧑‍💻',
       warrior_horse: '🐴',
       campfire: '🔥',
-      m365_chilli: '🌶️',
-      spfx_toolkit: '🧩',
+      m365_chilli:    '🌶️',
+      spfx_toolkit:   '🧩',
       pnp_powershell: '🖥️',
+      power_automate: '⚡',
     };
 
     const logoMap: Record<string, string> = {
-      pnp_rabbit:    logoPnpjs,
-      m365_chilli:   logoCli,
-      spfx_toolkit:  logoSpfxToolkit,
+      pnp_rabbit:     logoPnpjs,
+      m365_chilli:    logoCli,
+      spfx_toolkit:   logoSpfxToolkit,
       pnp_powershell: logoPowershell,
+      power_automate: logoPowerAutomate,
     };
 
     const bioText = this.state.activeBio ?? npc.bio;

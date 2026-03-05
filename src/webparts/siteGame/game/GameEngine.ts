@@ -46,9 +46,11 @@ export class GameEngine {
   private discoveredEggs = new Set<string>();
   private discoveredBuildings = new Set<string>();
   private discoveredUsers = new Set<string>();
+  private discoveredM365Eggs = new Set<string>();
   private totalEggs = 0;
   private totalBuildings = 0;
   private totalUsers = 0;
+  private totalM365Eggs = 0;
   private npcRngs: Map<string, () => number> = new Map();
 
   constructor(
@@ -70,6 +72,7 @@ export class GameEngine {
 
     // Cache totals for score display
     this.totalEggs = state.npcs.filter(n => n.kind === 'easteregg').length;
+    this.totalM365Eggs = state.npcs.filter(n => n.kind === 'm365egg').length;
     this.totalBuildings = state.buildings.length;
     this.totalUsers = state.npcs.filter(n => n.kind === 'user').length;
   }
@@ -302,6 +305,10 @@ export class GameEngine {
           this.discoveredEggs.add(npc.id);
           this.onEggDiscovered(npc.id, npc.name);
         }
+        if (npc.kind === 'm365egg' && !this.discoveredM365Eggs.has(npc.id)) {
+          this.discoveredM365Eggs.add(npc.id);
+          this.onEggDiscovered(npc.id, npc.name);
+        }
         // Record user NPC conversation for Site score
         if (npc.kind === 'user') {
           this.discoveredUsers.add(npc.id);
@@ -345,9 +352,11 @@ export class GameEngine {
       this.discoveredEggs,
       this.discoveredBuildings,
       this.discoveredUsers,
+      this.discoveredM365Eggs,
       this.totalEggs,
       this.totalBuildings,
       this.totalUsers,
+      this.totalM365Eggs,
       gameTimeMs < GameConfig.HUD_FADE_TIME_MS,
       mapRows,
       mapCols,

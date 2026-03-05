@@ -204,6 +204,63 @@ export const SPFX_TOOLKIT: DrawCommand[] = [
   { op: 'fillRect', color: '#7c3314', x: 18, y: 28, w: 7,  h: 3 },
 ];
 
+// ---- Power Automate — 3-tone blue chevron logo with legs ----
+// Mirrors the PA logo: dark navy / medium blue / light blue diagonal bands
+// forming a right-pointing chevron, 11 rows per arm (h=2 each) + apex
+export const POWER_AUTOMATE: DrawCommand[] = [
+  // Upper arm rows (widen toward apex)
+  // w=4
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 0,  w: 1,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 3,  y: 0,  w: 2,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 5,  y: 0,  w: 1,  h: 2 },
+  // w=8
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 2,  w: 3,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 5,  y: 2,  w: 3,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 8,  y: 2,  w: 2,  h: 2 },
+  // w=12
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 4,  w: 4,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 6,  y: 4,  w: 4,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 10, y: 4,  w: 4,  h: 2 },
+  // w=16
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 6,  w: 6,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 8,  y: 6,  w: 5,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 13, y: 6,  w: 5,  h: 2 },
+  // w=20
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 8,  w: 7,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 9,  y: 8,  w: 7,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 16, y: 8,  w: 6,  h: 2 },
+  // apex w=26
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 10, w: 9,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 11, y: 10, w: 9,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 20, y: 10, w: 8,  h: 2 },
+  // Lower arm rows (narrow back down — mirror of upper)
+  // w=20
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 12, w: 7,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 9,  y: 12, w: 7,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 16, y: 12, w: 6,  h: 2 },
+  // w=16
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 14, w: 6,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 8,  y: 14, w: 5,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 13, y: 14, w: 5,  h: 2 },
+  // w=12
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 16, w: 4,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 6,  y: 16, w: 4,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 10, y: 16, w: 4,  h: 2 },
+  // w=8
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 18, w: 3,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 5,  y: 18, w: 3,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 8,  y: 18, w: 2,  h: 2 },
+  // w=4
+  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 20, w: 1,  h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 3,  y: 20, w: 2,  h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 5,  y: 20, w: 1,  h: 2 },
+  // ── Legs ──
+  { op: 'fillRect', color: '#0F2D7F', x: 6,  y: 22, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#0F2D7F', x: 14, y: 22, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#2272EB', x: 5,  y: 26, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#2272EB', x: 13, y: 26, w: 7,  h: 3 },
+];
+
 // ---- PnP PowerShell — pixel-art PowerShell terminal window ----
 export const PNP_POWERSHELL: DrawCommand[] = [
   // ── Window outer shell ──
@@ -305,6 +362,7 @@ export type SpriteKey =
   | 'm365_chilli'
   | 'spfx_toolkit'
   | 'pnp_powershell'
+  | 'power_automate'
   | 'campfire';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -319,6 +377,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   m365_chilli: CLI_M365,
   spfx_toolkit: SPFX_TOOLKIT,
   pnp_powershell: PNP_POWERSHELL,
+  power_automate: POWER_AUTOMATE,
   campfire: CAMPFIRE,
 };
 

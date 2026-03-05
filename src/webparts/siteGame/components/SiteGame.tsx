@@ -59,6 +59,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       const state = generator.buildWorld(data, width, GAME_HEIGHT, {
         maxBots: this.props.maxBots,
         enableEasterEggs: this.props.enableEasterEggs,
+        enableM365EasterEggs: this.props.enableM365EasterEggs,
         showEmptyLists: this.props.showEmptyLists,
       });
       this.gameState = state;
@@ -162,6 +163,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       const state = generator.buildWorld(data, width, GAME_HEIGHT, {
         maxBots: this.props.maxBots,
         enableEasterEggs: this.props.enableEasterEggs,
+        enableM365EasterEggs: this.props.enableM365EasterEggs,
         showEmptyLists: this.props.showEmptyLists,
       });
       this.gameState = state;

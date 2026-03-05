@@ -10,4 +10,5 @@ export interface ISiteGameProps {
   showEmptyLists: boolean;
   maxBots: number;
   enableEasterEggs: boolean;
+  enableM365EasterEggs: boolean;
 }

@@ -18,6 +18,7 @@ export interface ISiteGameWebPartProps {
   showEmptyLists: boolean;
   maxBots: number;
   enableEasterEggs: boolean;
+  enableM365EasterEggs: boolean;
 }
 
 export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebPartProps> {
@@ -37,6 +38,7 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
         showEmptyLists: this.properties.showEmptyLists !== false,
         maxBots: this.properties.maxBots || 20,
         enableEasterEggs: this.properties.enableEasterEggs !== false,
+        enableM365EasterEggs: this.properties.enableM365EasterEggs !== false,
       }
     );
 
@@ -90,6 +92,11 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
                 }),
                 PropertyPaneToggle('enableEasterEggs', {
                   label: 'Enable PnP Easter Eggs',
+                  onText: 'Yes',
+                  offText: 'No',
+                }),
+                PropertyPaneToggle('enableM365EasterEggs', {
+                  label: 'Enable Microsoft 365 Easter Eggs',
                   onText: 'Yes',
                   offText: 'No',
                 }),

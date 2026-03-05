@@ -14,6 +14,7 @@ const NAMED_LIBRARY_MAP: Array<{ pattern: RegExp; type: BuildingType }> = [
 ];
 import { GameConfig } from './constants/GameConfig';
 import { EASTER_EGG_DEFINITIONS } from './constants/EasterEggs';
+import { M365_EASTER_EGG_DEFINITIONS } from './constants/M365EasterEggs';
 
 function seededRandom(seed: number): () => number {
   let s = seed;
@@ -38,6 +39,7 @@ function makeTile(tileType: TileType, row: number, col: number): IMapTile {
 export interface IBuildWorldOptions {
   maxBots: number;
   enableEasterEggs: boolean;
+  enableM365EasterEggs: boolean;
   showEmptyLists: boolean;
 }
 
@@ -46,7 +48,7 @@ export class MapGenerator {
     data: ISPData,
     viewportW: number,
     viewportH: number,
-    options: IBuildWorldOptions = { maxBots: 20, enableEasterEggs: true, showEmptyLists: true }
+    options: IBuildWorldOptions = { maxBots: 20, enableEasterEggs: true, enableM365EasterEggs: true, showEmptyLists: true }
   ): IGameState {
     const ts = GameConfig.TILE_SIZE;
     const cols = GameConfig.MAP_COLS;
@@ -284,6 +286,36 @@ export class MapGenerator {
           animFrame: 0,
           animTimer: 0,
           speedMultiplier: 0.6,
+        });
+      });
+    }
+
+    // ── 10. Microsoft 365 Easter egg NPCs ────────────────────────────────────
+    if (options.enableM365EasterEggs) {
+      const m365Spawns: Array<{ row: number; col: number }> = [
+        { row: midRow - 2, col: midCol + 10 },   // power_automate (0)
+      ];
+
+      M365_EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
+        const spawn = m365Spawns[idx] || { row: midRow + 10, col: midCol + idx * 2 };
+        npcs.push({
+          id: def.id,
+          name: def.name,
+          kind: 'm365egg',
+          x: spawn.col * ts + ts / 2,
+          y: spawn.row * ts + ts / 2,
+          vx: idx % 2 === 0 ? GameConfig.NPC_SPEED * 0.5 : -(GameConfig.NPC_SPEED * 0.5),
+          vy: 0,
+          spriteKey: def.spriteKey,
+          walkTimer: 2000 + idx * 400,
+          pauseTimer: 0,
+          facing: 'down' as NPCFacing,
+          animFrame: 0,
+          animTimer: 0,
+          speedMultiplier: 1,
+          title: def.title,
+          bio: def.bio,
+          bios: def.bios,
         });
       });
     }

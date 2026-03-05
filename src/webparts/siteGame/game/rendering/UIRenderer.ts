@@ -16,19 +16,22 @@ export class UIRenderer {
     discoveredEggs: Set<string>,
     discoveredBuildings: Set<string>,
     discoveredUsers: Set<string>,
+    discoveredM365Eggs: Set<string>,
     totalEggs: number,
     totalBuildings: number,
     totalUsers: number,
+    totalM365Eggs: number,
     showHints: boolean,
     mapRows: number,
     mapCols: number,
     tileMap: { walkable: boolean }[][]
   ): void {
-    this.renderMinimap(ctx, camera, player, npcs, buildings, discoveredEggs, mapRows, mapCols, tileMap);
+    this.renderMinimap(ctx, camera, player, npcs, buildings, discoveredEggs, discoveredM365Eggs, mapRows, mapCols, tileMap);
     this.renderScoreHUD(
       ctx, gameTimeMs,
       discoveredEggs.size, totalEggs,
-      discoveredBuildings.size + discoveredUsers.size, totalBuildings + totalUsers
+      discoveredBuildings.size + discoveredUsers.size, totalBuildings + totalUsers,
+      discoveredM365Eggs.size, totalM365Eggs
     );
     if (proximityTarget !== undefined) {
       this.renderProximityHint(ctx, camera, proximityTarget, gameTimeMs);
@@ -45,6 +48,7 @@ export class UIRenderer {
     npcs: INPC[],
     buildings: IBuilding[],
     discoveredEggs: Set<string>,
+    discoveredM365Eggs: Set<string>,
     mapRows: number,
     mapCols: number,
     tileMap: { walkable: boolean }[][]
@@ -92,7 +96,9 @@ export class UIRenderer {
           ? discoveredEggs.has(npc.id)
             ? '#ffd700'
             : '#888'
-          : npc.groupColor || '#44aaff';
+          : npc.kind === 'm365egg'
+            ? discoveredM365Eggs.has(npc.id) ? '#00ccff' : '#556'
+            : npc.groupColor || '#44aaff';
       ctx.fillStyle = dotColor;
       ctx.beginPath();
       ctx.arc(
@@ -166,12 +172,14 @@ export class UIRenderer {
     pnpCount: number,
     pnpTotal: number,
     siteCount: number,
-    siteTotal: number
+    siteTotal: number,
+    m365Count: number,
+    m365Total: number
   ): void {
     const panelX = 10;
     const panelY = 10;
     const panelW = 120;
-    const panelH = 60;
+    const panelH = m365Total > 0 ? 90 : 60;
     const barX = panelX + 8;
     const barW = panelW - 16;
     const barH = 5;
@@ -252,6 +260,39 @@ export class UIRenderer {
       ctx.roundRect(barX, siteBarY, siteFillW, barH, 2);
       ctx.fill();
       ctx.globalAlpha = 1;
+    }
+
+    // ── M365 row (only rendered when M365 eggs are present) ─────────────────
+    if (m365Total > 0) {
+      const m365Frac = m365Total > 0 ? m365Count / m365Total : 0;
+      const m365Complete = m365Frac >= 1;
+      const m365Glow = m365Complete ? (0.55 + 0.45 * Math.sin(gameTimeMs / 310 + 2.4)) : 1;
+
+      const m365LabelY = panelY + 74;
+      ctx.globalAlpha = m365Glow;
+      ctx.font = 'bold 10px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = m365Complete ? '#80dcff' : '#00b4d8';
+      ctx.fillText('\u26a1 M365', barX, m365LabelY);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = m365Complete ? '#80dcff' : '#0096c7';
+      ctx.fillText(`${m365Count}\u2009/\u2009${m365Total}`, panelX + panelW - 8, m365LabelY);
+      ctx.globalAlpha = 1;
+
+      const m365BarY = m365LabelY + 4;
+      ctx.fillStyle = 'rgba(0,180,216,0.22)';
+      ctx.beginPath();
+      ctx.roundRect(barX, m365BarY, barW, barH, 2);
+      ctx.fill();
+      const m365FillW = Math.round(barW * m365Frac);
+      if (m365FillW > 0) {
+        ctx.globalAlpha = m365Glow;
+        ctx.fillStyle = m365Complete ? '#80dcff' : '#00b4d8';
+        ctx.beginPath();
+        ctx.roundRect(barX, m365BarY, m365FillW, barH, 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
     }
 
     ctx.textAlign = 'left';
