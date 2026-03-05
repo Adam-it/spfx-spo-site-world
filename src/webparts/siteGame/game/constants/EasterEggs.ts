@@ -512,7 +512,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     name: 'PnP SPFx Samples',
     kind: 'easteregg',
     spriteKey: 'pnp_spfx_samples',
-    title: '📚 PnP SPFx Samples - Real-world SharePoint Framework examples',
+    title: '📚 PnP SPFx Samples — Real-world SharePoint Framework examples',
     bio: 'pnp.github.io/sp-dev-fx-webparts',
     bios: [
 
