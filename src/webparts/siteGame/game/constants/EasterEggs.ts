@@ -451,5 +451,60 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '     SharePointFrameworkProjectUpgrade \u2014 upgrade your SPFx solution\n\n' +
       '\ud83e\udd16 LM tools guide \u2192 pnp.github.io/vscode-viva/features/github-copilot-capabilities/#agent-mode---language-model-tools',
     ],
-  },
-];
+  },  {
+    id: 'pnp_powershell',
+    name: 'PnP PowerShell',
+    kind: 'easteregg',
+    spriteKey: 'pnp_powershell',
+    title: 'PnP PowerShell — Manage Microsoft 365 from any shell',
+    bio: 'pnp.github.io/powershell',
+    bios: [
+      // Tip 1 — What it is & install
+      'PS> # PnP PowerShell\n\n' +
+      'PnP PowerShell is a cross-platform PowerShell module with 500+\n' +
+      'cmdlets for managing SharePoint Online, Teams, Planner,\n' +
+      'Power Platform, Entra ID and much more.\n\n' +
+      'Install from the PowerShell Gallery:\n' +
+      '  Install-Module PnP.PowerShell\n\n' +
+      'Sign in (interactive, browser pop-up):\n' +
+      '  Connect-PnPOnline -Url https://tenant.sharepoint.com \\\n' +
+      '    -Interactive\n\n' +
+      'ℹ️  Install guide  → pnp.github.io/powershell/getting-started\n' +
+      '🌐 Full docs      → pnp.github.io/powershell',
+
+      // Tip 2 — Key cmdlets
+      'PS> Get-Command -Module PnP.PowerShell | Measure-Object\n\n' +
+      'Common daily-driver cmdlets:\n\n' +
+      'SharePoint Online:\n' +
+      '  Get-PnPList                 — list all lists in a site\n' +
+      '  Get-PnPListItem -List Tasks  — get items from a list\n' +
+      '  Add-PnPListItem -List Tasks  — add a new item\n' +
+      '  Set-PnPListItem              — update an item\n' +
+      '  Add-PnPField                 — add a column to a list\n\n' +
+      'Sites & Pages:\n' +
+      '  New-PnPSite                  — create a new SPO site\n' +
+      '  Get-PnPContext               — inspect current connection\n' +
+      '  Add-PnPPage                  — create a modern page\n\n' +
+      'Microsoft Teams:\n' +
+      '  Get-PnPTeamsTeam             — list all Teams\n' +
+      '  New-PnPTeamsTeam             — create a Team\n\n' +
+      '📖 Cmdlet reference → pnp.github.io/powershell/cmdlets',
+
+      // Tip 3 — Authentication methods
+      'PS> Connect-PnPOnline # pick your auth method\n\n' +
+      'First: register your own Entra ID app and grant it the right\n' +
+      'permissions. All auth methods require -ClientId.\n\n' +
+      '\ud83d\udc64 Interactive \u2014 browser pop-up, supports MFA:\n' +
+      '  Connect-PnPOnline <url> -Interactive -ClientId <id>\n\n' +
+      '\ud83d\udcbb Device Login \u2014 authenticate on a different device:\n' +
+      '  Connect-PnPOnline <url> -DeviceLogin -ClientId <id>\n' +
+      '  (visit microsoft.com/devicelogin and enter the shown code)\n\n' +
+      '\ud83e\udd9a WAM / OS Login \u2014 Windows Hello, FIDO, SSO (Windows only):\n' +
+      '  Connect-PnPOnline <url> -OSLogin -ClientId <id>\n\n' +
+      '\ud83e\udd16 Certificate \u2014 unattended / CI\u2013CD, no user needed:\n' +
+      '  Connect-PnPOnline <url> -ClientId <id> \\\n' +
+      '    -Tenant <tenant>.onmicrosoft.com \\\n' +
+      '    -CertificatePath path\\to\\cert.pfx\n\n' +
+      '\u2699\ufe0f  Full auth guide \u2192 pnp.github.io/powershell/articles/authentication',
+    ],
+  },];

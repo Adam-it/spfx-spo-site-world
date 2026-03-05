@@ -204,6 +204,47 @@ export const SPFX_TOOLKIT: DrawCommand[] = [
   { op: 'fillRect', color: '#7c3314', x: 18, y: 28, w: 7,  h: 3 },
 ];
 
+// ---- PnP PowerShell — pixel-art PowerShell terminal window ----
+export const PNP_POWERSHELL: DrawCommand[] = [
+  // ── Window outer shell ──
+  { op: 'fillRect', color: '#1a1a2e', x: 1,  y: 0,  w: 30, h: 22 },
+
+  // ── Title bar (dark charcoal strip) ──
+  { op: 'fillRect', color: '#2d2d44', x: 2,  y: 1,  w: 28, h: 4 },
+  // macOS-style traffic light dots
+  { op: 'fillRect', color: '#ff5f57', x: 4,  y: 2,  w: 3,  h: 2 }, // red close
+  { op: 'fillRect', color: '#febc2e', x: 9,  y: 2,  w: 3,  h: 2 }, // yellow min
+  { op: 'fillRect', color: '#28c840', x: 14, y: 2,  w: 3,  h: 2 }, // green max
+
+  // ── Blue accent line below title ──
+  { op: 'fillRect', color: '#4472c4', x: 2,  y: 5,  w: 28, h: 1 },
+
+  // ── Terminal body (iconic PS dark blue) ──
+  { op: 'fillRect', color: '#012456', x: 2,  y: 6,  w: 28, h: 15 },
+
+  // ── Prompt line — yellow "PS>" block + white command block ──
+  // PS> represented as a yellow filled strip
+  { op: 'fillRect', color: '#ffff00', x: 3,  y: 8,  w: 8,  h: 2 },
+  // command text block (white)
+  { op: 'fillRect', color: '#e0e0e0', x: 12, y: 8,  w: 16, h: 2 },
+
+  // ── Output line 1 (light steel blue, full width) ──
+  { op: 'fillRect', color: '#6ba3d6', x: 3,  y: 12, w: 24, h: 2 },
+
+  // ── Output line 2 (shorter, dim) ──
+  { op: 'fillRect', color: '#4a7fb5', x: 3,  y: 15, w: 18, h: 2 },
+
+  // ── Cursor block (bright white rect at bottom of body) ──
+  { op: 'fillRect', color: '#ffffff', x: 3,  y: 19, w: 3,  h: 2 },
+
+  // ── Legs (deep PS blue) ──
+  { op: 'fillRect', color: '#012456', x: 8,  y: 23, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#012456', x: 19, y: 23, w: 5,  h: 5 },
+  // Boots (bright blue accent)
+  { op: 'fillRect', color: '#0050a0', x: 7,  y: 27, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#0050a0', x: 18, y: 27, w: 7,  h: 3 },
+];
+
 // ---- CLI for Microsoft 365 — walking "CLI" pixel-art letters ----
 export const CLI_M365: DrawCommand[] = [
   // ── Stem (dark green) ──
@@ -263,6 +304,7 @@ export type SpriteKey =
   | 'warrior_horse'
   | 'm365_chilli'
   | 'spfx_toolkit'
+  | 'pnp_powershell'
   | 'campfire';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -276,6 +318,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   warrior_horse: WARRIOR_HORSE,
   m365_chilli: CLI_M365,
   spfx_toolkit: SPFX_TOOLKIT,
+  pnp_powershell: PNP_POWERSHELL,
   campfire: CAMPFIRE,
 };
 

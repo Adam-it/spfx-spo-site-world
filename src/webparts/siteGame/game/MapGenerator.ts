@@ -258,6 +258,7 @@ export class MapGenerator {
         { row: midRow - 3, col: midCol + 7 },    // cli_m365
         { row: midRow + 1, col: midCol - 1 },    // campfire
         { row: midRow + 5, col: midCol - 7 },    // spfx_toolkit
+        { row: midRow + 8, col: midCol - 4 },    // pnp_powershell
       ];
 
       EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
