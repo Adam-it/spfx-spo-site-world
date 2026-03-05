@@ -164,35 +164,44 @@ export const WARRIOR_HORSE: DrawCommand[] = [
   { op: 'fillRect', color: '#0c0804', x: 23, y: 29, w: 3, h: 2 },
 ];
 
-// ---- SPFx Toolkit VS Code extension ----
-// Body = VS Code icon: dark border, blue fill, white ">" chevron + I-beam, legs
+// ---- SPFx Toolkit — pixel-art toolbox with wrench + hammer ----
 export const SPFX_TOOLKIT: DrawCommand[] = [
-  // ── Dark navy outer body ──
-  { op: 'fillRect', color: '#003a7a', x: 4,  y: 1,  w: 24, h: 20 },
-  // ── VS Code blue fill ──
-  { op: 'fillRect', color: '#0078d4', x: 6,  y: 3,  w: 20, h: 16 },
+  // ── Wrench (left, sticking up) — C-jaw + handle ──
+  { op: 'fillRect', color: '#c0c0c0', x: 2,  y: 0,  w: 6,  h: 2 }, // top jaw
+  { op: 'fillRect', color: '#c0c0c0', x: 2,  y: 3,  w: 6,  h: 2 }, // bottom jaw
+  { op: 'fillRect', color: '#c0c0c0', x: 7,  y: 0,  w: 2,  h: 5 }, // jaw back
+  { op: 'fillRect', color: '#a0a0a0', x: 7,  y: 5,  w: 2,  h: 5 }, // handle
 
-  // ── White I-beam / left vertical bar (classic VS Code left-edge) ──
-  { op: 'fillRect', color: '#ffffff', x: 7,  y: 4,  w: 2,  h: 13 },
+  // ── Hammer (right, sticking up) — flat head + wooden handle ──
+  { op: 'fillRect', color: '#606060', x: 20, y: 1,  w: 10, h: 4 }, // head dark
+  { op: 'fillRect', color: '#909090', x: 20, y: 1,  w: 10, h: 1 }, // head highlight
+  { op: 'fillRect', color: '#a0522d', x: 23, y: 5,  w: 3,  h: 5 }, // wooden handle
 
-  // ── White ">" upper arm: steps from top-left → right-center ──
-  { op: 'fillRect', color: '#ffffff', x: 9,  y: 4,  w: 3,  h: 2  },
-  { op: 'fillRect', color: '#ffffff', x: 11, y: 6,  w: 3,  h: 2  },
-  { op: 'fillRect', color: '#ffffff', x: 13, y: 8,  w: 3,  h: 2  },
-  { op: 'fillRect', color: '#ffffff', x: 15, y: 10, w: 3,  h: 2  },
-  { op: 'fillRect', color: '#ffffff', x: 17, y: 12, w: 3,  h: 2  }, // apex
+  // ── Carry handle (bar across top of box) ──
+  { op: 'fillRect', color: '#333333', x: 11, y: 7,  w: 2,  h: 4 }, // left post
+  { op: 'fillRect', color: '#333333', x: 19, y: 7,  w: 2,  h: 4 }, // right post
+  { op: 'fillRect', color: '#999999', x: 12, y: 7,  w: 8,  h: 2 }, // bar
 
-  // ── White ">" lower arm: steps from right-center → bottom-left ──
-  { op: 'fillRect', color: '#ffffff', x: 15, y: 14, w: 3,  h: 2  },
-  { op: 'fillRect', color: '#ffffff', x: 13, y: 16, w: 3,  h: 2  },
-  { op: 'fillRect', color: '#ffffff', x: 11, y: 17, w: 3,  h: 2  },
+  // ── Toolbox outer shell ──
+  { op: 'fillRect', color: '#1a1a1a', x: 2,  y: 11, w: 28, h: 13 },
 
-  // ── Legs (dark navy) ──
-  { op: 'fillRect', color: '#003a7a', x: 9,  y: 21, w: 5,  h: 8  },
-  { op: 'fillRect', color: '#003a7a', x: 18, y: 21, w: 5,  h: 8  },
-  // Boots (VS Code blue)
-  { op: 'fillRect', color: '#0078d4', x: 8,  y: 27, w: 6,  h: 3  },
-  { op: 'fillRect', color: '#0078d4', x: 17, y: 27, w: 6,  h: 3  },
+  // ── Lid (top portion, brighter red) ──
+  { op: 'fillRect', color: '#ef4444', x: 3,  y: 12, w: 26, h: 5 },
+
+  // ── Body (lower portion, darker red + slight sheen line) ──
+  { op: 'fillRect', color: '#b91c1c', x: 3,  y: 17, w: 26, h: 6 },
+  { op: 'fillRect', color: '#dc2626', x: 3,  y: 17, w: 26, h: 1 }, // sheen at seam
+
+  // ── Gold latch (centered on lid-body seam) ──
+  { op: 'fillRect', color: '#fbbf24', x: 13, y: 15, w: 6,  h: 4 },
+  { op: 'fillRect', color: '#f59e0b', x: 14, y: 16, w: 4,  h: 2 }, // latch detail
+
+  // ── Legs ──
+  { op: 'fillRect', color: '#555555', x: 8,  y: 24, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#555555', x: 19, y: 24, w: 5,  h: 5 },
+  // Boots
+  { op: 'fillRect', color: '#7c3314', x: 7,  y: 28, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#7c3314', x: 18, y: 28, w: 7,  h: 3 },
 ];
 
 // ---- CLI for Microsoft 365 — walking "CLI" pixel-art letters ----

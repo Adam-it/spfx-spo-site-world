@@ -33,7 +33,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '    .select("Title", "Id", "Modified")\n' +
       '    .orderBy("Modified", false)\n' +
       '    .top(50)();\n\n' +
-      'PnPjs v3 also supports request batching and in-memory caching ' +
+      'PnPjs also supports request batching and in-memory caching ' +
       'via Behaviors — dramatically reducing round-trips to SharePoint.\n\n' +
       '⚡ Performance tips → pnp.github.io/pnpjs/concepts/batching',
 
@@ -46,7 +46,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '✅ Works in SPFx, Node.js, Azure Functions & browser apps\n' +
       '✅ Tree-shakable — only bundle what you use\n' +
       '✅ TypeScript-first with full typings\n' +
-      '✅ 100% open-source (MIT) — 1,500+ community contributors\n\n' +
+      '✅ 100% open-source (MIT)\n\n' +
       '🌐 Full docs → pnp.github.io/pnpjs',
     ],
   },
@@ -55,11 +55,9 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     name: 'Vesa',
     kind: 'easteregg',
     spriteKey: 'vesa_npc',
-    title: 'Vesa Juvonen — Principal PM, Microsoft',
+    title: 'Vesa — Principal PM, Microsoft',
     bio:
-      '"This is SharePoint unless I am totally mistaken." — Vesa Juvonen\n\n' +
-      'Vesa leads the SharePoint developer platform & the PnP community initiative. ' +
-      'Organizer of PnP weekly calls, SPFx samples, and hundreds of community calls. '
+      '"This is SharePoint unless I am completely mistaken."'
   },
   {
     id: 'warrior_horse_1',
@@ -70,29 +68,28 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'aka.ms/m365pnp',
     bios: [
       // What the PnP community is
-      '🐴 "I am Shadowmane, guardian of the community!" \n\nThe Microsoft 365 & Power Platform Community (PnP) is a worldwide,\n' +
-      'open-source effort coordinated by Microsoft engineers and volunteer\n' +
-      'MVPs & community members.\n\n' +
+      '🐴 "I am Shadowmane, guardian of the community!" \n\n' + 
+      'The Microsoft 365 & Power Platform Community (PnP) is a worldwide,\n' +
+      'open-source effort coordinated by volunteers\n' +
+      'which are MVPs & Microsoft employees & community members.\n\n' +
       '"PnP" = Patterns and Practices — real-world reusable solutions,\n' +
       'not just documentation.\n\n' +
       '📦 What the community ships:\n' +
       '  · SPFx web part & extension samples\n' +
       '  · Script samples (PowerShell, CLI, Graph)\n' +
-      '  · Adaptive Card templates\n' +
+      '  · Adaptive Card samples\n' +
       '  · Power Platform solutions\n' +
       '  · List & column formatting samples\n\n' +
-      '🌐 Home base → pnp.github.io\n' +
-      '⭐ Quick link → aka.ms/m365pnp',
+      '🌐 Home base → aka.ms/m365pnp\n',
 
       // PnP community calls
-      '🐴 "Did you know PnP runs FREE weekly calls?" \n\n Every week the community runs open, recorded video calls:\n\n' +
-      '  📅 Microsoft 365 Platform call — Tuesdays\n' +
-      '  📅 SharePoint Framework (SPFx) call — bi-weekly Thursdays\n' +
-      '  📅 Power Platform call — bi-weekly Wednesdays\n' +
-      '  📅 Microsoft Teams call — monthly\n\n' +
+      '🐴 "Did you know PnP runs FREE weekly calls?" \n\n' +
+      'Every week the community runs open, recorded video calls:\n\n' +
+      '  📅 Microsoft 365 & Power Platform call Presented by Microsoft — weekly Tuesdays\n' +
+      '  📅 Microsoft 365 & Power Platform call Presented by Community — weekly Thursdays\n' +
+      '  📅 Power Platform call — monthly\n\n' +
       'Each call features live demos, open Q&A and community news.\n' +
       'All recordings are free on YouTube — no registration needed.\n\n' +
-      '▶️ Recordings & schedule → aka.ms/m365pnp-calls\n' +
       '🌐 Community hub → pnp.github.io',
 
       // How to get involved
@@ -101,7 +98,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '  2️⃣ Fork the repo on GitHub\n' +
       '  3️⃣ Add your sample / fix a bug\n' +
       '  4️⃣ Submit a Pull Request\n' +
-      '  5️⃣ Get recognized in the weekly call! 🎉\n\n' +
+      '  5️⃣ Get recognized in the weekly call and get a badge! 🎉\n\n' +
       'No contribution is too small — docs, bug fixes and translations count.\n\n' +
       '🤝 Start here → pnp.github.io\n' +
       '💻 All repos → github.com/pnp',
@@ -116,7 +113,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'pnp.github.io/List-Formatting',
     bios: [
       // What List Formatting is
-      '🐴 "Ironhoof guards the beauty of your lists!" \n\n List Formatting lets you transform the look of SharePoint list\n' +
+      '🐴 "Ironhoof guards the beauty of your lists!" \n\n' +
+      'List Formatting lets you transform the look of SharePoint list\n' +
       'columns, rows and views using pure JSON — no code, no SPFx needed.\n\n' +
       'There are two types:\n' +
       '  🔹 Column Formatting — style individual cells\n' +
@@ -124,10 +122,11 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       'You write JSON in the column/view settings and SharePoint renders\n' +
       'icons, colors, progress bars, buttons, pills — anything you imagine.\n\n' +
       '📖 Official docs → learn.microsoft.com/sharepoint/dev/declarative-customization/column-formatting\n' +
-      '🎨 400+ samples → pnp.github.io/List-Formatting',
+      '🎨 Community samples → pnp.github.io/List-Formatting',
 
       // Column formatting basics
-      '🐴 "A quick column formatting tip from Ironhoof!" \n\n The simplest column format adds a color based on a value:\n\n' +
+      '🐴 "A quick column formatting tip from Ironhoof!" \n\n' + 
+      ' The simplest column format adds a color based on a value:\n\n' +
       '  {\n' +
       '    "$schema": ".../column-formatting.schema.json",\n' +
       '    "elmType": "div",\n' +
@@ -141,7 +140,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🎨 Sample library → pnp.github.io/List-Formatting',
 
       // Useful sample: data bars
-      '🐴 "Ever seen a progress bar inside a SharePoint list cell?" \n\n The Data Bar column format renders a visual fill based on a number:\n\n' +
+      '🐴 "Ever seen a progress bar inside a SharePoint list cell?" \n\n' + 
+      ' The Data Bar column format renders a visual fill based on a number:\n\n' +
       '  · Great for % complete, scores, budgets\n' +
       '  · Completely JSON-driven — no custom code\n' +
       '  · Color shifts green→amber→red automatically\n\n' +
@@ -161,7 +161,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'pnp.github.io/List-Formatting',
     bios: [
       // Conditional icon formatting
-      '🐴 "Cloudmist loves a colourful status column!" \n\n Replace dull text values with coloured icons using column formatting:\n\n' +
+      '🐴 "Cloudmist loves a colourful status column!" \n\n' + 
+      ' Replace dull text values with coloured icons using column formatting:\n\n' +
       '  "iconName": "=if([$Priority]==\'High\',\'ErrorBadge\',\n' +
       '              if([$Priority]==\'Medium\',\'Warning\',\'CheckMark\'))"\n\n' +
       'Fluent UI icon names work directly in iconName.\n' +
@@ -171,7 +172,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🎨 Status/icon samples → pnp.github.io/List-Formatting',
 
       // Person column formatting
-      '🐴 "Did you know you can format Person columns too?"\n\n Person column formatting lets you show profile photos, presence,\n' +
+      '🐴 "Did you know you can format Person columns too?"\n\n' + 
+      ' Person column formatting lets you show profile photos, presence,\n' +
       'hyperlinked names and even department — all from JSON.\n\n' +
       'Key properties available on a Person field:\n' +
       '  [$AssignedTo.title]     — display name\n' +
@@ -182,7 +184,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '👤 Person field samples → pnp.github.io/List-Formatting',
 
       // Hover card / action buttons
-      '🐴 "Add action buttons right inside your list rows!"\n\n Column formatting supports customRowAction to add clickable buttons\n' +
+      '🐴 "Add action buttons right inside your list rows!"\n\n' + 
+      ' Column formatting supports customRowAction to add clickable buttons\n' +
       'that trigger Power Automate flows, open URLs, or send emails — \n' +
       'without leaving the list view.\n\n' +
       'Example use-cases:\n' +
@@ -202,7 +205,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'pnp.github.io/List-Formatting',
     bios: [
       // View formatting intro
-      '🐴 "Ferndale patrols the view formatting frontier!"\n\n View Formatting styles entire rows — not just individual cells.\n\n' +
+      '🐴 "Ferndale patrols the view formatting frontier!"\n\n' + 
+      ' View Formatting styles entire rows — not just individual cells.\n\n' +
       'Use it to:\n' +
       '  🟥 Highlight overdue rows red\n' +
       '  🟩 Stripe alternate rows for readability\n' +
@@ -213,7 +217,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '📐 View formatting samples → pnp.github.io/List-Formatting',
 
       // Group header formatting
-      '🐴 "Group headers can look amazing too!"\n\n When you group a SharePoint view, you can format the group header\n' +
+      '🐴 "Group headers can look amazing too!"\n\n' + 
+      ' When you group a SharePoint view, you can format the group header\n' +
       'row separately with groupProps in your view format JSON.\n\n' +
       'Ideas:\n' +
       '  · Show item count as a coloured pill\n' +
@@ -224,7 +229,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🗂️ Group header samples → pnp.github.io/List-Formatting',
 
       // Row formatting conditional highlight
-      '🐴 "Highlight what matters — colour your whole row!"\n\n Conditional row formatting makes critical items impossible to miss:\n\n' +
+      '🐴 "Highlight what matters — colour your whole row!"\n\n' + 
+      ' Conditional row formatting makes critical items impossible to miss:\n\n' +
       '  {\n' +
       '    "$schema": ".../view-formatting.schema.json",\n' +
       '    "additionalRowClass":\n' +
@@ -244,33 +250,33 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'aka.ms/m365pnp',
     bios: [
       // PnP PowerShell
-      '🐴 "Copperbell rings for PnP PowerShell!" \n\n PnP PowerShell is a cross-platform PowerShell module with 500+\n' +
+      '🐴 "Copperbell rings for PnP PowerShell!" \n\n' + 
+      ' PnP PowerShell is a cross-platform PowerShell module with 500+\n' +
       'cmdlets covering SharePoint, Teams, Planner, Power Platform and more.\n\n' +
       'Quick examples:\n' +
       '  Connect-PnPOnline -Url https://tenant.sharepoint.com -Interactive\n' +
       '  Get-PnPList\n' +
       '  Add-PnPField -List "Tasks" -DisplayName "Risk" -Type Choice\n' +
-      '  Apply-PnPProvisioningTemplate -Path template.xml\n\n' +
-      'Works on Windows, macOS and Linux.\n' +
       'Install: Install-Module PnP.PowerShell\n\n' +
       '📘 Full docs → pnp.github.io/powershell\n' +
       '🌐 Community → aka.ms/m365pnp',
 
       // CLI for Microsoft 365
-      '🐴 "CLI for Microsoft 365 — manage M365 from any shell!" \n\n The CLI for Microsoft 365 is a cross-platform command-line tool\n' +
+      '🐴 "CLI for Microsoft 365 — manage M365 from any shell!" \n\n' + 
+      ' The CLI for Microsoft 365 is a cross-platform command-line tool\n' +
       'that lets you manage Microsoft 365 from bash, zsh, PowerShell\n' +
       'or even Azure DevOps pipelines.\n\n' +
       'Quick examples:\n' +
       '  m365 login\n' +
       '  m365 spo site list\n' +
       '  m365 spo list add --title "Projects" --baseTemplate GenericList\n' +
-      '  m365 flow list --environmentName Default\n\n' +
       'Great for automation, CI/CD and scripted provisioning.\n\n' +
       '⚙️ Docs & install → pnp.github.io/cli-microsoft365\n' +
       '🌐 Community → aka.ms/m365pnp',
 
       // Sample Solution Gallery
-      '🐴 "The PnP Sample Solution Gallery — your cheat code!"\n\n Before writing any code, check the PnP Sample Solution Gallery.\n' +
+      '🐴 "The PnP Sample Solution Gallery — your cheat code!"\n\n' + 
+      ' Before writing any code, check the PnP Sample Solution Gallery.\n' +
       'It contains thousands of ready-to-use samples:\n\n' +
       '  🔷 SPFx web parts & extensions\n' +
       '  🔷 List & column formatting JSON\n' +
@@ -306,7 +312,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '\ud83c\udf10 Full docs      \u2192 pnp.github.io/cli-microsoft365',
 
       // Tip 2 — Key commands across workloads
-      '> m365 --help  (a few favourites)\n\n' +
+      '> m365 --help  (a few favorites)\n\n' +
       'SharePoint Online:\n' +
       '  m365 spo site list\n' +
       '  m365 spo site add --alias dev --title "Dev Portal"\n' +
@@ -356,9 +362,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '"PnP" stands for Patterns and Practices — sharing real-world, reusable solutions.\n\n' +
       '🛠 Open-source tools: PnPjs · CLI for Microsoft 365 · PnP PowerShell · ' +
       'PnP Core SDK · PnP Modern Search · PnP Provisioning Engine\n\n' +
-      '📦 1,500+ contributors · thousands of code samples · ' +
       'SPFx web parts, script samples, Adaptive Cards, Power Platform solutions\n\n' +
-      '📞 Free community calls every week — SPFx, Teams dev, Power Platform, ' +
+      '📞 Free community calls every week ' +
       'Microsoft 365 Platform and more. All recordings free on YouTube.\n\n' +
       '🌐 pnp.github.io\n' +
       '⭐ aka.ms/m365pnp\n' +
@@ -369,53 +374,82 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     name: 'SPFx Toolkit',
     kind: 'easteregg',
     spriteKey: 'spfx_toolkit',
-    title: '🧩 SPFx Toolkit — VS Code extension for SharePoint Framework',
+    title: 'SPFx Toolkit — VS Code extension for SharePoint Framework',
     bio: 'pnp.github.io/vscode-viva',
     bios: [
       // Tip 1 — What it is & install
-      '\ud83e\udde9 "Hello, I am the SPFx Toolkit!"\n\n' +
+      '"Hello, I am the SPFx Toolkit!"\n\n' +
       'SPFx Toolkit is a free, open-source VS Code extension built by the PnP ' +
       'community that turbocharges SharePoint Framework development.\n\n' +
-      'Install from the VS Code Marketplace:\n' +
-      '  Search \'SPFx Toolkit\' or install the extension ID:\n' +
-      '  m365pnp.vscode-viva\n\n' +
+      'Install from the VS Code Marketplace\n' +
       'What you get out of the box:\n' +
       '  \u2705 Project scaffolding wizard (web parts, extensions, ACEs)\n' +
-      '  \u2705 One-click build, serve, bundle & deploy actions\n' +
+      '  \u2705 One-click build, start, deploy actions\n' +
       '  \u2705 Sign in to your Microsoft 365 tenant\n' +
-      '  \u2705 Browse & install PnP samples directly in VS Code\n\n' +
+      '  \u2705 Browse & use PnP samples directly in VS Code\n\n' +
       '\ud83d\udce6 Install \u2192 marketplace.visualstudio.com (search SPFx Toolkit)\n' +
-      '\ud83c\udf10 Docs    \u2192 pnp.github.io/vscode-viva',
+      '\ud83c\udf10 Docs    \u2192 aka.ms/spfx/toolkit',
 
-      // Tip 2 — Scaffolding & actions
-      '\ud83e\udde9 "Scaffold and manage SPFx projects without leaving VS Code!"\n\n' +
-      'The extension adds a dedicated SPFx activity bar panel with:\n\n' +
-      '  \ud83c\udfd7  Create new project \u2014 guided wizard covering:\n' +
-      '       \u00b7 Web part \u00b7 Extension \u00b7 Library component\n' +
-      '       \u00b7 Adaptive Card Extension (ACE)\n' +
-      '       \u00b7 Choice of React, No JS, or other frameworks\n\n' +
-      '  \u26a1 Task actions panel:\n' +
-      '       \u00b7 gulp build  / bundle / package-solution\n' +
-      '       \u00b7 gulp serve  with auto-open workbench URL\n' +
-      '       \u00b7 Deploy to App Catalog in one click\n\n' +
-      '  \ud83d\udd0d Environment details \u2014 shows SPFx, Node & tenant info\n\n' +
-      '\ud83d\udcd6 Scaffolding guide \u2192 pnp.github.io/vscode-viva/guides/create-project',
-
-      // Tip 3 — CI/CD pipelines & upgrade
-      '\ud83e\udde9 "From project to production pipeline in minutes!"\n\n' +
+      // Tip 2 — CI/CD pipelines & upgrade
+      '"From project to production pipeline in minutes!"\n\n' +
       'SPFx Toolkit goes beyond scaffolding:\n\n' +
       '  \ud83d\udd04 Upgrade SPFx projects \u2014 analyses your solution and\n' +
       '     generates step-by-step upgrade instructions to the\n' +
       '     latest SPFx version using CLI for Microsoft 365\n\n' +
       '  \ud83d\ude80 CI/CD pipeline generator \u2014 creates ready-to-use\n' +
       '     GitHub Actions or Azure DevOps YAML pipelines\n' +
-      '     for build, bundle, package and deploy\n\n' +
+      '     for build, package and deploy\n\n' +
       '  \ud83d\udccb Validate solutions \u2014 checks your project for\n' +
       '     common issues before deployment\n\n' +
       '  \ud83d\uddc2  Sample gallery \u2014 browse 500+ PnP samples and\n' +
       '     open them directly into your workspace\n\n' +
       '\u2699\ufe0f Pipeline guide \u2192 pnp.github.io/vscode-viva/guides/ci-cd-pipeline\n' +
       '\ud83c\udf10 Full docs       \u2192 pnp.github.io/vscode-viva',
+
+      // Tip 3 — Actions panel
+      '"Every SPFx task — one click away!"\n\n' +
+      'The SPFx Toolkit Actions panel puts the full development\n' +
+      'lifecycle right inside VS Code. No terminal needed:\n\n' +
+      '  \ud83d\udee0\ufe0f  Build solution         \u2014 compile & type-check\n' +
+      '  \u2601\ufe0f   Deploy to App Catalog   \u2014 tenant or site-scoped\n' +
+      '  \ud83d\udccb  Grant API permissions   \u2014 approve pending scope requests\n' +
+      '  \ud83d\udd04  Upgrade project         \u2014 guided upgrade to latest SPFx\n' +
+      '  \u2705   Validate                \u2014 pre-flight checks before deploy\n' +
+      '  \u270f\ufe0f   Rename project          \u2014 update solution name & IDs\n\n' +
+      'All actions use CLI for Microsoft 365 under the hood and\n' +
+      'respect your active tenant sign-in.\n\n' +
+      '\ud83d\udcd6 Actions docs \u2192 pnp.github.io/vscode-viva/features/actions',
+
+      // Tip 4 — Copilot agent mode: Language Model Tools for SPO management
+      '"Let GitHub Copilot agent manage SharePoint for you!"\n\n' +
+      'SPFx Toolkit registers Language Model Tools for GitHub Copilot\n' +
+      'agent mode. Just describe what you want — Copilot picks the\n' +
+      'right tool automatically. Or # hashtag a tool to be explicit.\n\n' +
+      'You need to be signed in to your tenant in SPFx Toolkit first.\n\n' +
+      'SharePoint Online management tools available:\n\n' +
+      '  \ud83d\udce6 Apps\n' +
+      '     SharePointAppList          \u2014 list tenant app catalog\n' +
+      '     SharePointAppInstall       \u2014 install app into a site\n' +
+      '     SharePointAppUninstall     \u2014 remove app from a site\n' +
+      '     SharePointAppUpgrade       \u2014 upgrade app to latest version\n' +
+      '     SharePointAppInstanceList  \u2014 list apps installed in a site\n\n' +
+      '  \ud83d\udcca Lists\n' +
+      '     SharePointListAdd          \u2014 create a list in a site\n' +
+      '     SharePointListGet          \u2014 get list details\n' +
+      '     SharePointListRemove       \u2014 delete a list\n\n' +
+      '  \ud83d\udcc4 Pages\n' +
+      '     SharePointPageAdd          \u2014 create a page\n' +
+      '     SharePointPageGet          \u2014 get page details\n' +
+      '     SharePointPageList         \u2014 list all pages in a site\n' +
+      '     SharePointPageCopy         \u2014 copy page across sites\n' +
+      '     SharePointPageRemove       \u2014 delete a page\n\n' +
+      '  \ud83c\udf10 Sites\n' +
+      '     SharePointSiteAdd          \u2014 create a new SPO site\n' +
+      '     SharePointSiteGet          \u2014 get site details\n' +
+      '     SharePointSiteRemove       \u2014 delete a site\n\n' +
+      '  \ud83d\udd04 Projects\n' +
+      '     SharePointFrameworkProjectUpgrade \u2014 upgrade your SPFx solution\n\n' +
+      '\ud83e\udd16 LM tools guide \u2192 pnp.github.io/vscode-viva/features/github-copilot-capabilities/#agent-mode---language-model-tools',
     ],
   },
 ];
