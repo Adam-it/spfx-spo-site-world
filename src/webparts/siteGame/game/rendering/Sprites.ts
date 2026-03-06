@@ -334,6 +334,36 @@ export const CLI_M365: DrawCommand[] = [
   { op: 'circle', color: 'rgba(255,180,160,0.55)', cx: 13, cy: 12, r: 4 },
 ];
 
+// ---- Julie — Microsoft MVP & PnP Core Team ----
+export const JULIE: DrawCommand[] = [
+  // Hair (professional style)
+  { op: 'fillRect', color: '#5d4037', x: 10, y: 3, w: 12, h: 7 },
+  { op: 'fillRect', color: '#6d4c41', x: 9, y: 10, w: 3, h: 8 },
+  { op: 'fillRect', color: '#6d4c41', x: 20, y: 10, w: 3, h: 8 },
+  // Head
+  { op: 'circle', color: '#f5c29a', cx: 16, cy: 10, r: 6 },
+  // Eyes
+  { op: 'circle', color: '#222', cx: 14, cy: 9, r: 1.5 },
+  { op: 'circle', color: '#222', cx: 18, cy: 9, r: 1.5 },
+  // Smile
+  { op: 'arc', color: '#d84315', cx: 16, cy: 12, r: 2.5, start: 0.1, end: Math.PI - 0.1 },
+  // Body (professional blue)
+  { op: 'fillRect', color: '#1976d2', x: 10, y: 17, w: 12, h: 9 },
+  // Blazer/jacket highlight
+  { op: 'fillRect', color: '#2196f3', x: 11, y: 18, w: 5, h: 7 },
+  { op: 'fillRect', color: '#2196f3', x: 16, y: 18, w: 5, h: 7 },
+  // Arms (blue)
+  { op: 'fillRect', color: '#1976d2', x: 6, y: 18, w: 4, h: 5 },
+  { op: 'fillRect', color: '#1976d2', x: 22, y: 18, w: 4, h: 5 },
+  // Hands
+  { op: 'circle', color: '#f5c29a', cx: 8, cy: 24, r: 2.5 },
+  { op: 'circle', color: '#f5c29a', cx: 24, cy: 24, r: 2.5 },
+  // Microphone badge on chest (podcast host)
+  { op: 'text', color: '#fff', text: '🎙', x: 13, y: 24, size: 7 },
+  // Skirt/pants (dark professional)
+  { op: 'fillRect', color: '#0d47a1', x: 10, y: 26, w: 12, h: 4 },
+];
+
 // ---- Campfire ----
 export const CAMPFIRE: DrawCommand[] = [
   // Logs
@@ -363,6 +393,7 @@ export type SpriteKey =
   | 'spfx_toolkit'
   | 'pnp_powershell'
   | 'power_automate'
+  | 'julie'
   | 'campfire';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -378,6 +409,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   spfx_toolkit: SPFX_TOOLKIT,
   pnp_powershell: PNP_POWERSHELL,
   power_automate: POWER_AUTOMATE,
+  julie: JULIE,
   campfire: CAMPFIRE,
 };
 
