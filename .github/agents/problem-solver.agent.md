@@ -3,7 +3,7 @@ name: Problem Solver
 description: 'Understand the codebase, identify problems, and suggest fixes or improvements.'
 user-invocable: false
 tools: ['search/codebase', 'search/usages', 'read/problems', 'search/changes', 'execute/testFailure', 'read/terminalSelection', 'read/terminalLastCommand', 'vscode/openIntegratedBrowser', 'web/fetch', 'search/searchResults', 'web/githubRepo', 'edit/editFiles', 'search', 'execute/getTerminalOutput', 'execute/runInTerminal', 'read/terminalLastCommand', 'read/terminalSelection', 'execute/createAndRunTask']
-model: GPT-5.3-Codex (copilot)
+model: Claude Sonnet 4.6 (copilot)
 ---
 You are the **Engineer (Issue Solver)** for this application.
 

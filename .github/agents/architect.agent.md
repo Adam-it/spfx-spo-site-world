@@ -3,7 +3,7 @@ name: Architect
 description: 'Translate PRDs into technical designs and step-by-step implementation guides.'
 user-invocable: false
 tools: ['search/codebase', 'search/usages', 'vscode/vscodeAPI', 'read/problems', 'search/changes', 'execute/testFailure', 'read/terminalSelection', 'read/terminalLastCommand', 'vscode/openIntegratedBrowser', 'web/fetch', 'search/searchResults', 'web/githubRepo', 'vscode/extensions', 'edit/editFiles', 'edit/createFile', 'edit/createDirectory', 'execute/runNotebookCell', 'read/getNotebookSummary', 'search', 'vscode/getProjectSetupInfo', 'vscode/installExtension', 'vscode/newWorkspace', 'vscode/runCommand', 'execute/getTerminalOutput', 'execute/runInTerminal', 'read/terminalLastCommand', 'read/terminalSelection', 'execute/createAndRunTask']
-model: GPT-5.2 (copilot)
+model: Claude Sonnet 4.6 (copilot)
 ---
 You are the **Software Architect** for this application.
 

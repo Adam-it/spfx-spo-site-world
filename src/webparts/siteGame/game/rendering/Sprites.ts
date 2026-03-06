@@ -147,18 +147,18 @@ export const WARRIOR_HORSE: DrawCommand[] = [
   { op: 'fillRect', color: '#2c1808', x: 7, y: 6, w: 2, h: 10 },
   // ── Legs ──
   // Front pair
-  { op: 'fillRect', color: '#8a3c14', x: 8,  y: 24, w: 4, h: 8 },
+  { op: 'fillRect', color: '#8a3c14', x: 8, y: 24, w: 4, h: 8 },
   { op: 'fillRect', color: '#8a3c14', x: 13, y: 24, w: 4, h: 8 },
   // Back pair
   { op: 'fillRect', color: '#7a3010', x: 19, y: 24, w: 4, h: 7 },
   { op: 'fillRect', color: '#7a3010', x: 23, y: 24, w: 3, h: 6 },
   // Cannon-bone darkening
-  { op: 'fillRect', color: '#2c1408', x: 8,  y: 27, w: 4, h: 5 },
+  { op: 'fillRect', color: '#2c1408', x: 8, y: 27, w: 4, h: 5 },
   { op: 'fillRect', color: '#2c1408', x: 13, y: 27, w: 4, h: 5 },
   { op: 'fillRect', color: '#2c1408', x: 19, y: 27, w: 4, h: 4 },
   { op: 'fillRect', color: '#2c1408', x: 23, y: 27, w: 3, h: 3 },
   // Hooves
-  { op: 'fillRect', color: '#0c0804', x: 8,  y: 30, w: 4, h: 2 },
+  { op: 'fillRect', color: '#0c0804', x: 8, y: 30, w: 4, h: 2 },
   { op: 'fillRect', color: '#0c0804', x: 13, y: 30, w: 4, h: 2 },
   { op: 'fillRect', color: '#0c0804', x: 19, y: 30, w: 4, h: 2 },
   { op: 'fillRect', color: '#0c0804', x: 23, y: 29, w: 3, h: 2 },
@@ -305,30 +305,30 @@ export const PNP_POWERSHELL: DrawCommand[] = [
 // ---- CLI for Microsoft 365 — walking "CLI" pixel-art letters ----
 export const CLI_M365: DrawCommand[] = [
   // ── Stem (dark green) ──
-  { op: 'fillRect', color: '#14532d', x: 15, y: 0,  w: 3, h: 6 },
+  { op: 'fillRect', color: '#14532d', x: 15, y: 0, w: 3, h: 6 },
 
   // ── Calyx — three rounded green lobes (not a simple flat cap) ──
-  { op: 'circle', color: '#16a34a', cx: 12, cy: 7,  r: 3.5 },
-  { op: 'circle', color: '#16a34a', cx: 16, cy: 6,  r: 3.5 },
-  { op: 'circle', color: '#16a34a', cx: 20, cy: 7,  r: 3.5 },
-  { op: 'fillRect', color: '#16a34a', x: 10, y: 5,  w: 12, h: 5 }, // fill between lobes
+  { op: 'circle', color: '#16a34a', cx: 12, cy: 7, r: 3.5 },
+  { op: 'circle', color: '#16a34a', cx: 16, cy: 6, r: 3.5 },
+  { op: 'circle', color: '#16a34a', cx: 20, cy: 7, r: 3.5 },
+  { op: 'fillRect', color: '#16a34a', x: 10, y: 5, w: 12, h: 5 }, // fill between lobes
 
   // ── Body — large round top (key: chili ≠ carrot triangle) ──
-  { op: 'circle',   color: '#dc2626', cx: 16, cy: 13, r: 7 },
-  { op: 'fillRect', color: '#dc2626', x: 9,  y: 8,   w: 14, h: 10 },
+  { op: 'circle', color: '#dc2626', cx: 16, cy: 13, r: 7 },
+  { op: 'fillRect', color: '#dc2626', x: 9, y: 8, w: 14, h: 10 },
 
   // ── Mid — curves 1 px rightward ──
-  { op: 'circle',   color: '#dc2626', cx: 17, cy: 20, r: 5 },
-  { op: 'fillRect', color: '#dc2626', x: 12, y: 16,  w: 10, h: 7 },
+  { op: 'circle', color: '#dc2626', cx: 17, cy: 20, r: 5 },
+  { op: 'fillRect', color: '#dc2626', x: 12, y: 16, w: 10, h: 7 },
 
   // ── Lower taper — continues curving right ──
-  { op: 'fillRect', color: '#b91c1c', x: 14, y: 22,  w: 7,  h: 4 },
-  { op: 'fillRect', color: '#991b1b', x: 15, y: 25,  w: 5,  h: 3 },
-  { op: 'fillRect', color: '#7f1d1d', x: 16, y: 27,  w: 4,  h: 2 },
+  { op: 'fillRect', color: '#b91c1c', x: 14, y: 22, w: 7, h: 4 },
+  { op: 'fillRect', color: '#991b1b', x: 15, y: 25, w: 5, h: 3 },
+  { op: 'fillRect', color: '#7f1d1d', x: 16, y: 27, w: 4, h: 2 },
 
   // ── Curved tip ──
-  { op: 'fillRect', color: '#7f1d1d', x: 17, y: 29,  w: 3,  h: 2 },
-  { op: 'fillRect', color: '#6b1212', x: 18, y: 30,  w: 2,  h: 1 },
+  { op: 'fillRect', color: '#7f1d1d', x: 17, y: 29, w: 3, h: 2 },
+  { op: 'fillRect', color: '#6b1212', x: 18, y: 30, w: 2, h: 1 },
 
   // ── Sheen highlight (upper-left, gives 3-D pepper look) ──
   { op: 'circle', color: 'rgba(255,180,160,0.55)', cx: 13, cy: 12, r: 4 },
@@ -380,6 +380,70 @@ export const CAMPFIRE: DrawCommand[] = [
   { op: 'circle', color: '#ff4400', cx: 14, cy: 8, r: 1 },
 ];
 
+// ---- Luise — M365 Princess ----
+export const LUISE: DrawCommand[] = [
+  // Crown (golden)
+  { op: 'fillRect', color: '#ffd700', x: 11, y: 1, w: 10, h: 2 },
+  { op: 'fillRect', color: '#ffd700', x: 11, y: 1, w: 2, h: 4 },
+  { op: 'fillRect', color: '#ffd700', x: 15, y: 1, w: 2, h: 4 },
+  { op: 'fillRect', color: '#ffd700', x: 19, y: 1, w: 2, h: 4 },
+  { op: 'circle', color: '#ff69b4', cx: 12, cy: 1, r: 1 },
+  { op: 'circle', color: '#ff69b4', cx: 16, cy: 1, r: 1 },
+  { op: 'circle', color: '#ff69b4', cx: 20, cy: 1, r: 1 },
+  // Hair (flowing)
+  { op: 'fillRect', color: '#8b4513', x: 10, y: 4, w: 12, h: 6 },
+  { op: 'fillRect', color: '#a0522d', x: 10, y: 10, w: 3, h: 8 },
+  { op: 'fillRect', color: '#a0522d', x: 19, y: 10, w: 3, h: 8 },
+  // Head
+  { op: 'circle', color: '#f5c29a', cx: 16, cy: 10, r: 6 },
+  // Eyes
+  { op: 'circle', color: '#222', cx: 14, cy: 9, r: 1.5 },
+  { op: 'circle', color: '#222', cx: 18, cy: 9, r: 1.5 },
+  // Smile
+  { op: 'arc', color: '#ff69b4', cx: 16, cy: 12, r: 2.5, start: 0.1, end: Math.PI - 0.1 },
+  // Body (pink dress #ff69b4)
+  { op: 'fillRect', color: '#ff69b4', x: 10, y: 17, w: 12, h: 9 },
+  // Dress highlight
+  { op: 'fillRect', color: '#ffb6d9', x: 11, y: 18, w: 10, h: 2 },
+  // Arms (pink)
+  { op: 'fillRect', color: '#ff69b4', x: 6, y: 18, w: 4, h: 5 },
+  { op: 'fillRect', color: '#ff69b4', x: 22, y: 18, w: 4, h: 5 },
+  // Hands
+  { op: 'circle', color: '#f5c29a', cx: 8, cy: 24, r: 2.5 },
+  { op: 'circle', color: '#f5c29a', cx: 24, cy: 24, r: 2.5 },
+  // Heart badge on chest
+  { op: 'text', color: '#fff', text: '♥', x: 13, y: 24, size: 7 },
+  // Dress bottom (flowing)
+  { op: 'fillRect', color: '#ff1493', x: 9, y: 26, w: 14, h: 4 },
+  { op: 'fillRect', color: '#ff69b4', x: 10, y: 27, w: 12, h: 3 },
+// ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
+export const PNP_SPFX_SAMPLES: DrawCommand[] = [
+
+  // ── Outer teal border/frame ──
+  { op: 'fillRect', color: '#2D8B8A', x: 2, y: 0, w: 28, h: 22 },
+
+  // ── Top section: teal background for "PnP" ──
+  { op: 'fillRect', color: '#2D8B8A', x: 3, y: 1, w: 26, h: 9 },
+
+  // ── "PnP" text in white on teal ──
+  { op: 'text', color: '#ffffff', text: 'PnP', x: 9, y: 8, size: 8 },
+
+  // ── Bottom section: white background for "SAMPLES" ──
+  { op: 'fillRect', color: '#ffffff', x: 3, y: 10, w: 26, h: 11 },
+
+  // ── "SAMPLES" text in teal on white ──
+  { op: 'text', color: '#2D8B8A', text: 'SAMPLES', x: 4, y: 18, size: 5 },
+
+  // ── Legs (teal matching the badge) ──
+  { op: 'fillRect', color: '#2D8B8A', x: 8, y: 23, w: 5, h: 5 },
+  { op: 'fillRect', color: '#2D8B8A', x: 19, y: 23, w: 5, h: 5 },
+  
+  // ── Boots (darker teal shade) ──
+  { op: 'fillRect', color: '#1e6766', x: 7, y: 27, w: 7, h: 3 },
+  { op: 'fillRect', color: '#1e6766', x: 18, y: 27, w: 7, h: 3 },
+
+];
+
 export type SpriteKey =
   | 'player'
   | 'player_walk1'
@@ -388,6 +452,7 @@ export type SpriteKey =
   | 'user_npc_visitor'
   | 'pnp_rabbit'
   | 'vesa_npc'
+  | 'luise'
   | 'warrior_horse'
   | 'm365_chilli'
   | 'spfx_toolkit'
@@ -395,6 +460,8 @@ export type SpriteKey =
   | 'power_automate'
   | 'julie'
   | 'campfire';
+  | 'campfire'
+  | 'pnp_spfx_samples';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   player: PLAYER_SPRITE,
@@ -404,6 +471,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   user_npc_visitor: USER_NPC_VISITOR,
   pnp_rabbit: PNP_RABBIT,
   vesa_npc: VESA_NPC,
+  luise: LUISE,
   warrior_horse: WARRIOR_HORSE,
   m365_chilli: CLI_M365,
   spfx_toolkit: SPFX_TOOLKIT,
@@ -411,6 +479,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   power_automate: POWER_AUTOMATE,
   julie: JULIE,
   campfire: CAMPFIRE,
+  pnp_spfx_samples: PNP_SPFX_SAMPLES,
 };
 
 export function renderSprite(
@@ -442,9 +511,19 @@ export function renderSprite(
       ctx.fillStyle = cmd.color;
       ctx.fill();
     } else if (cmd.op === 'text') {
-      ctx.fillStyle = cmd.color;
-      ctx.font = `bold ${cmd.size}px monospace`;
-      ctx.fillText(cmd.text, cmd.x, cmd.y);
+      if (flip) {
+        // Un-flip text so it remains readable when sprite is flipped
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.fillStyle = cmd.color;
+        ctx.font = `bold ${cmd.size}px monospace`;
+        ctx.fillText(cmd.text, -cmd.x - (cmd.text.length * cmd.size * 0.6), cmd.y);
+        ctx.restore();
+      } else {
+        ctx.fillStyle = cmd.color;
+        ctx.font = `bold ${cmd.size}px monospace`;
+        ctx.fillText(cmd.text, cmd.x, cmd.y);
+      }
     } else if (cmd.op === 'arc') {
       ctx.beginPath();
       ctx.arc(cmd.cx, cmd.cy, cmd.r, cmd.start, cmd.end);

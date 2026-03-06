@@ -68,7 +68,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'aka.ms/m365pnp',
     bios: [
       // What the PnP community is
-      '🐴 "I am Shadowmane, guardian of the community!" \n\n' + 
+      '🐴 "I am Shadowmane, guardian of the community!" \n\n' +
       'The Microsoft 365 & Power Platform Community (PnP) is a worldwide,\n' +
       'open-source effort coordinated by volunteers\n' +
       'which are MVPs & Microsoft employees & community members.\n\n' +
@@ -125,7 +125,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🎨 Community samples → pnp.github.io/List-Formatting',
 
       // Column formatting basics
-      '🐴 "A quick column formatting tip from Ironhoof!" \n\n' + 
+      '🐴 "A quick column formatting tip from Ironhoof!" \n\n' +
       ' The simplest column format adds a color based on a value:\n\n' +
       '  {\n' +
       '    "$schema": ".../column-formatting.schema.json",\n' +
@@ -140,7 +140,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🎨 Sample library → pnp.github.io/List-Formatting',
 
       // Useful sample: data bars
-      '🐴 "Ever seen a progress bar inside a SharePoint list cell?" \n\n' + 
+      '🐴 "Ever seen a progress bar inside a SharePoint list cell?" \n\n' +
       ' The Data Bar column format renders a visual fill based on a number:\n\n' +
       '  · Great for % complete, scores, budgets\n' +
       '  · Completely JSON-driven — no custom code\n' +
@@ -161,7 +161,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'pnp.github.io/List-Formatting',
     bios: [
       // Conditional icon formatting
-      '🐴 "Cloudmist loves a colourful status column!" \n\n' + 
+      '🐴 "Cloudmist loves a colourful status column!" \n\n' +
       ' Replace dull text values with coloured icons using column formatting:\n\n' +
       '  "iconName": "=if([$Priority]==\'High\',\'ErrorBadge\',\n' +
       '              if([$Priority]==\'Medium\',\'Warning\',\'CheckMark\'))"\n\n' +
@@ -172,7 +172,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🎨 Status/icon samples → pnp.github.io/List-Formatting',
 
       // Person column formatting
-      '🐴 "Did you know you can format Person columns too?"\n\n' + 
+      '🐴 "Did you know you can format Person columns too?"\n\n' +
       ' Person column formatting lets you show profile photos, presence,\n' +
       'hyperlinked names and even department — all from JSON.\n\n' +
       'Key properties available on a Person field:\n' +
@@ -184,7 +184,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '👤 Person field samples → pnp.github.io/List-Formatting',
 
       // Hover card / action buttons
-      '🐴 "Add action buttons right inside your list rows!"\n\n' + 
+      '🐴 "Add action buttons right inside your list rows!"\n\n' +
       ' Column formatting supports customRowAction to add clickable buttons\n' +
       'that trigger Power Automate flows, open URLs, or send emails — \n' +
       'without leaving the list view.\n\n' +
@@ -205,7 +205,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'pnp.github.io/List-Formatting',
     bios: [
       // View formatting intro
-      '🐴 "Ferndale patrols the view formatting frontier!"\n\n' + 
+      '🐴 "Ferndale patrols the view formatting frontier!"\n\n' +
       ' View Formatting styles entire rows — not just individual cells.\n\n' +
       'Use it to:\n' +
       '  🟥 Highlight overdue rows red\n' +
@@ -217,7 +217,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '📐 View formatting samples → pnp.github.io/List-Formatting',
 
       // Group header formatting
-      '🐴 "Group headers can look amazing too!"\n\n' + 
+      '🐴 "Group headers can look amazing too!"\n\n' +
       ' When you group a SharePoint view, you can format the group header\n' +
       'row separately with groupProps in your view format JSON.\n\n' +
       'Ideas:\n' +
@@ -229,7 +229,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🗂️ Group header samples → pnp.github.io/List-Formatting',
 
       // Row formatting conditional highlight
-      '🐴 "Highlight what matters — colour your whole row!"\n\n' + 
+      '🐴 "Highlight what matters — colour your whole row!"\n\n' +
       ' Conditional row formatting makes critical items impossible to miss:\n\n' +
       '  {\n' +
       '    "$schema": ".../view-formatting.schema.json",\n' +
@@ -250,7 +250,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     bio: 'aka.ms/m365pnp',
     bios: [
       // PnP PowerShell
-      '🐴 "Copperbell rings for PnP PowerShell!" \n\n' + 
+      '🐴 "Copperbell rings for PnP PowerShell!" \n\n' +
       ' PnP PowerShell is a cross-platform PowerShell module with 500+\n' +
       'cmdlets covering SharePoint, Teams, Planner, Power Platform and more.\n\n' +
       'Quick examples:\n' +
@@ -262,7 +262,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🌐 Community → aka.ms/m365pnp',
 
       // CLI for Microsoft 365
-      '🐴 "CLI for Microsoft 365 — manage M365 from any shell!" \n\n' + 
+      '🐴 "CLI for Microsoft 365 — manage M365 from any shell!" \n\n' +
       ' The CLI for Microsoft 365 is a cross-platform command-line tool\n' +
       'that lets you manage Microsoft 365 from bash, zsh, PowerShell\n' +
       'or even Azure DevOps pipelines.\n\n' +
@@ -275,7 +275,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🌐 Community → aka.ms/m365pnp',
 
       // Sample Solution Gallery
-      '🐴 "The PnP Sample Solution Gallery — your cheat code!"\n\n' + 
+      '🐴 "The PnP Sample Solution Gallery — your cheat code!"\n\n' +
       ' Before writing any code, check the PnP Sample Solution Gallery.\n' +
       'It contains thousands of ready-to-use samples:\n\n' +
       '  🔷 SPFx web parts & extensions\n' +
@@ -451,7 +451,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '     SharePointFrameworkProjectUpgrade \u2014 upgrade your SPFx solution\n\n' +
       '\ud83e\udd16 LM tools guide \u2192 pnp.github.io/vscode-viva/features/github-copilot-capabilities/#agent-mode---language-model-tools',
     ],
-  },  {
+  },
+  {
     id: 'pnp_powershell',
     name: 'PnP PowerShell',
     kind: 'easteregg',
@@ -573,3 +574,129 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '🤝 Get involved → aka.ms/m365pnp',
     ],
   },];
+    id: 'luise',
+    name: 'Luise',
+    kind: 'easteregg',
+    spriteKey: 'luise',
+    title: '👑 Luise — M365 Princess',
+    bio: 'aka.ms/community/blog',
+    bios: [
+      // Introduction
+      '👑 "Hello! I am Luise, the M365 Princess!"\n\n' +
+      'Microsoft MVP in M365 Development and Business Applications, ' +
+      'and a member of the M365 PnP team, based in Germany.\n\n' +
+      'Open-So(u)rceress | Punk at 🤍 | Princess 👑\n\n' +
+      'I\'m into open-source, Lego, and running.\n\n' +
+      'My mission is to help the community learn, build, ' +
+      'and share amazing solutions.\n\n' +
+      '🌐 Learn more → https://www.m365princess.com/',
+
+      // Community Blog
+      '👑 "Did you know about the M365 Community Blog?"\n\n' +
+      'The Microsoft 365 & Power Platform Community blog is THE place ' +
+      'to discover tips, tricks, and best practices from MVPs, ' +
+      'Microsoft employees, and passionate community members.\n\n' +
+      '📝 What you will find:\n' +
+      '  ✅ Deep-dive technical articles\n' +
+      '  ✅ Real-world solution patterns\n' +
+      '  ✅ Power Platform tips and tricks\n' +
+      '  ✅ SharePoint & Teams guidance\n' +
+      '  ✅ Azure integration stories\n\n' +
+      'New posts published regularly by community experts.\n' +
+      'All content is free and open to everyone!\n\n' +
+      '📖 Read the blog → aka.ms/community/blog',
+
+      // Community Calls Demo Request
+      '👑 "Want to show YOUR work to the community?"\n\n' +
+      'The PnP Community Calls welcome demos from everyone!\n' +
+      'If you have built something cool with Microsoft 365, ' +
+      'Power Platform, or Azure — share it with thousands ' +
+      'of community members in a live call.\n\n' +
+      '🎤 Why demo on a call?\n' +
+      '  ✅ Reach a global audience\n' +
+      '  ✅ Get recognized with a contributor badge\n' +
+      '  ✅ Connect with other builders\n' +
+      '  ✅ Inspire others with your work\n' +
+      '  ✅ Recording stays on YouTube forever\n\n' +
+      'No need to be an MVP or expert — we welcome ALL demos!\n\n' +
+      '🎯 Submit your demo → aka.ms/community/request/demo',
+
+      // Thoughtful Automation
+      '👑 "Just because you CAN automate it..."\n\n' +
+      'Before you spend a week building a flow to avoid ' +
+      'five minutes of manual work, take a step back.\n\n' +
+      '⚠️ Ask yourself:\n' +
+      '  ✅ Does this process actually repeat often enough?\n' +
+      '  ✅ Is the data quality reliable and consistent?\n' +
+      '  ✅ Do we have a proper system of record?\n' +
+      '  ✅ What happens when the automation fails?\n' +
+      '  ✅ Is the maintenance cost worth the time saved?\n\n' +
+      'Context matters. Data quality matters. ' +
+      'And no, "just ping Sandra" is NOT a system of record.\n\n' +
+      'Sometimes the smartest automation is knowing ' +
+      'when NOT to automate. 🤔',
+    ],
+  },
+  },  {
+    id: 'pnp_spfx_samples',
+    name: 'PnP SPFx Samples',
+    kind: 'easteregg',
+    spriteKey: 'pnp_spfx_samples',
+    title: '📚 PnP SPFx Samples — Real-world SharePoint Framework examples',
+    bio: 'pnp.github.io/sp-dev-fx-webparts',
+    bios: [
+
+      // Tip 1 — What it is
+      '📚 "Welcome to the PnP SPFx Samples collection!"\n\n' +
+      'The PnP SPFx Samples repository is a community-driven library of ' +
+      'real-world SharePoint Framework solutions created by developers ' +
+      'from around the world.\n\n' +
+      'It contains hundreds of examples demonstrating:\n' +
+      '  ✅ Modern web parts\n' +
+      '  ✅ SharePoint extensions\n' +
+      '  ✅ Adaptive Card Extensions (ACEs)\n' +
+      '  ✅ Microsoft Graph integrations\n' +
+      '  ✅ Teams + SharePoint solutions\n\n' +
+      'These samples are production-quality references showing recommended ' +
+      'SPFx patterns and best practices.\n\n' +
+      '🌐 Browse the full gallery → aka.ms/m365/samples',
+
+
+      // Tip 2 — How to use samples
+      '📚 "Learn SPFx faster by exploring real solutions!"\n\n' +
+      'Each sample in the PnP repository includes everything you need ' +
+      'to understand and run the project:\n' +
+      '  📄 Detailed README documentation\n' +
+      '  ⚙️ Setup and configuration steps\n' +
+      '  🧩 Architecture explanations\n' +
+      '  🧪 Tested build and deployment instructions\n\n' +
+      'Most samples can be started quickly:\n' +
+      '  1️⃣ Clone the repository\n' +
+      '  2️⃣ Run `npm install`\n' +
+      '  3️⃣ Run `gulp serve`\n\n' +
+      'This lets you explore working SPFx solutions directly ' +
+      'in the local SharePoint Workbench.\n\n' +
+      '💻 GitHub repos:\n' +
+      '   · Web parts → github.com/pnp/sp-dev-fx-webparts\n' +
+      '   · Extensions → github.com/pnp/sp-dev-fx-extensions\n' +
+      '   · ACEs → github.com/pnp/sp-dev-fx-aces',
+
+
+      // Tip 3 — Community & contribution
+      '📚 "PnP samples are built by the community, for the community!"\n\n' +
+      'Microsoft 365 developers across the world contribute new samples ' +
+      'and improvements to the PnP repository.\n\n' +
+      'You can:\n' +
+      '  ⭐ Discover new development techniques\n' +
+      '  🔍 Study real integrations with Microsoft Graph\n' +
+      '  🧠 Learn modern React + SPFx patterns\n' +
+      '  🤝 Contribute your own sample back to the community\n\n' +
+      'The repository currently contains hundreds of solutions ' +
+      'covering many SharePoint development scenarios.\n\n' +
+      '🤝 Contribute to:\n' +
+      '   · Web parts → github.com/pnp/sp-dev-fx-webparts\n' +
+      '   · Extensions → github.com/pnp/sp-dev-fx-extensions\n' +
+      '   · ACEs → github.com/pnp/sp-dev-fx-aces',
+    ],
+  }
+];
