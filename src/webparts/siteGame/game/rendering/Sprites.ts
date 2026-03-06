@@ -416,8 +416,10 @@ export const LUISE: DrawCommand[] = [
   // Dress bottom (flowing)
   { op: 'fillRect', color: '#ff1493', x: 9, y: 26, w: 14, h: 4 },
   { op: 'fillRect', color: '#ff69b4', x: 10, y: 27, w: 12, h: 3 },
-// ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
-export const PNP_SPFX_SAMPLES: DrawCommand[] = [
+];
+  
+  // ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
+  export const PNP_SPFX_SAMPLES: DrawCommand[] = [
 
   // ── Outer teal border/frame ──
   { op: 'fillRect', color: '#2D8B8A', x: 2, y: 0, w: 28, h: 22 },
@@ -459,7 +461,6 @@ export type SpriteKey =
   | 'pnp_powershell'
   | 'power_automate'
   | 'julie'
-  | 'campfire';
   | 'campfire'
   | 'pnp_spfx_samples';
 

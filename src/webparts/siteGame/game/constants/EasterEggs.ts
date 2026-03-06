@@ -544,8 +544,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '📖 Documentation → https://pnp.github.io/pnpjs/',
 
       // Code Deploy Go Podcast
-      '🎙️ "Have you listened to Code Deploy Go?"\n\n' +
-      'Code Deploy Go is a podcast hosted by Microsoft MVPs ' +
+      '🎙️ "Have you listened to Code Deploy Go Live?"\n\n' +
+      'Code, Deploy, Go Live is a podcast hosted by Microsoft MVPs ' +
       'Andrew Connell & Julie Turner, covering the latest news\n' +
       'in Microsoft 365, Microsoft Azure, and web development.\n\n' +
       '🎧 What you\'ll hear:\n' +
@@ -573,7 +573,8 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       'to a full solution. The community welcomes all!\n\n' +
       '🤝 Get involved → aka.ms/m365pnp',
     ],
-  },];
+  },
+  {
     id: 'luise',
     name: 'Luise',
     kind: 'easteregg',
@@ -637,7 +638,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       'when NOT to automate. 🤔',
     ],
   },
-  },  {
+  {
     id: 'pnp_spfx_samples',
     name: 'PnP SPFx Samples',
     kind: 'easteregg',
