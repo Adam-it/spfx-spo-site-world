@@ -9,6 +9,7 @@ import { TileRenderer } from './rendering/TileRenderer';
 import { BuildingRenderer } from './rendering/BuildingRenderer';
 import { CharacterRenderer } from './rendering/CharacterRenderer';
 import { UIRenderer } from './rendering/UIRenderer';
+import { GameTheme, getThemePalette, IThemePalette } from './constants/GameThemes';
 
 function clamp(v: number, min: number, max: number): number {
   return Math.min(Math.max(v, min), max);
@@ -41,6 +42,7 @@ export class GameEngine {
   private buildingRenderer = new BuildingRenderer();
   private characterRenderer = new CharacterRenderer();
   private uiRenderer = new UIRenderer();
+  private activeTheme: GameTheme = 'village';
   private currentInfoTarget: IInfoTarget | null = null;
   private proximityTarget: IBuilding | INPC | undefined = undefined;
   private discoveredEggs = new Set<string>();
@@ -90,6 +92,10 @@ export class GameEngine {
   public destroy(): void {
     cancelAnimationFrame(this.animFrameId);
     this.input.dispose();
+  }
+
+  public setTheme(theme: GameTheme): void {
+    this.activeTheme = theme;
   }
 
   /** Called when the InfoPanel is dismissed externally (X button / light dismiss) so
@@ -334,14 +340,16 @@ export class GameEngine {
 
     ctx.clearRect(0, 0, camera.viewportW, camera.viewportH);
 
-    // Background sky colour
-    ctx.fillStyle = '#87ceeb';
+    // Background colour from active theme
+    const palette = getThemePalette(this.activeTheme);
+    ctx.fillStyle = palette.background;
     ctx.fillRect(0, 0, camera.viewportW, camera.viewportH);
 
-    this.tileRenderer.render(ctx, camera, tileMap);
+    this.tileRenderer.render(palette, ctx, camera, tileMap);
     this.buildingRenderer.render(ctx, camera, buildings, gameTimeMs);
     this.characterRenderer.render(ctx, camera, player, npcs, gameTimeMs);
     this.uiRenderer.render(
+      palette,
       ctx,
       camera,
       player,

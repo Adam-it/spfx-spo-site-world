@@ -6,12 +6,14 @@ import {
   PropertyPaneTextField,
   PropertyPaneToggle,
   PropertyPaneSlider,
+  PropertyPaneDropdown,
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import SiteGame from './components/SiteGame';
 import { ISiteGameProps } from './components/ISiteGameProps';
+import { GameTheme } from './game/constants/GameThemes';
 
 export interface ISiteGameWebPartProps {
   description: string;
@@ -19,6 +21,7 @@ export interface ISiteGameWebPartProps {
   maxBots: number;
   enableEasterEggs: boolean;
   enableM365EasterEggs: boolean;
+  gameTheme: GameTheme;
 }
 
 export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebPartProps> {
@@ -39,6 +42,7 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
         maxBots: this.properties.maxBots || 20,
         enableEasterEggs: this.properties.enableEasterEggs !== false,
         enableM365EasterEggs: this.properties.enableM365EasterEggs !== false,
+        gameTheme: this.properties.gameTheme || 'village',
       }
     );
 
@@ -71,6 +75,21 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
         {
           header: { description: 'Site World — Gamify your SharePoint site' },
           groups: [
+            {
+              groupName: 'World Theme',
+              groupFields: [
+                PropertyPaneDropdown('gameTheme', {
+                  label: 'Game Theme',
+                  options: [
+                    { key: 'village', text: 'Village' },
+                    { key: 'space', text: 'Space' },
+                    { key: 'retro2013', text: 'SP 2013 Retro' },
+                    { key: 'bigcity', text: 'Big City Life' },
+                  ],
+                  selectedKey: this.properties.gameTheme || 'village',
+                }),
+              ],
+            },
             {
               groupName: 'Town Settings',
               groupFields: [

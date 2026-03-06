@@ -3,7 +3,7 @@ name: Software Engineer
 description: 'Implement features from technical specs step by step until complete.'
 user-invocable: false
 tools: ['search/codebase', 'search/usages', 'vscode/vscodeAPI', 'read/problems', 'search/changes', 'execute/testFailure', 'read/terminalSelection', 'read/terminalLastCommand', 'vscode/openIntegratedBrowser', 'web/fetch', 'search/searchResults', 'web/githubRepo', 'vscode/extensions', 'edit/editFiles', 'execute/runNotebookCell', 'read/getNotebookSummary', 'search', 'vscode/getProjectSetupInfo', 'vscode/installExtension', 'vscode/newWorkspace', 'vscode/runCommand', 'execute/getTerminalOutput', 'execute/runInTerminal', 'read/terminalLastCommand', 'read/terminalSelection', 'execute/createAndRunTask']
-model: GPT-5 mini (copilot)
+model: Claude Sonnet 4.6 (copilot)
 ---
 You are the **Software Engineer** for this application.
 

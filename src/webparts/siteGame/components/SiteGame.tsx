@@ -78,6 +78,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
         (eggId, name) => this.showEggToast(eggId, name)
       );
       this.engine.start();
+      this.engine.setTheme(this.props.gameTheme || 'village');
 
       // ResizeObserver for responsive canvas
       this.resizeObserver = new ResizeObserver((entries) => {
@@ -118,6 +119,12 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
 
     // Pause when tab hidden
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
+  }
+
+  public componentDidUpdate(prevProps: ISiteGameProps): void {
+    if (prevProps.gameTheme !== this.props.gameTheme) {
+      this.engine?.setTheme(this.props.gameTheme || 'village');
+    }
   }
 
   public componentWillUnmount(): void {
@@ -182,6 +189,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
         (_eggId, name) => this.showEggToast(_eggId, name)
       );
       this.engine.start();
+      this.engine.setTheme(this.props.gameTheme || 'village');
 
       this.setState({ loading: false });
     } catch (err) {

@@ -2,10 +2,14 @@ import { IPlayer } from '../types/IPlayer';
 import { INPC } from '../types/INPC';
 import { IBuilding } from '../types/IBuilding';
 import { ICamera } from '../types/IGameState';
+import { IMapTile } from '../types/IMapTile';
+import { TileType } from '../constants/TileTypes';
 import { GameConfig } from '../constants/GameConfig';
+import { IThemePalette } from '../constants/GameThemes';
 
 export class UIRenderer {
   public render(
+    palette: IThemePalette,
     ctx: CanvasRenderingContext2D,
     camera: ICamera,
     player: IPlayer,
@@ -24,11 +28,11 @@ export class UIRenderer {
     showHints: boolean,
     mapRows: number,
     mapCols: number,
-    tileMap: { walkable: boolean }[][]
+    tileMap: IMapTile[][]
   ): void {
-    this.renderMinimap(ctx, camera, player, npcs, buildings, discoveredEggs, discoveredM365Eggs, mapRows, mapCols, tileMap);
+    this.renderMinimap(palette, ctx, camera, player, npcs, buildings, discoveredEggs, discoveredM365Eggs, mapRows, mapCols, tileMap);
     this.renderScoreHUD(
-      ctx, gameTimeMs,
+      palette, ctx, gameTimeMs,
       discoveredEggs.size, totalEggs,
       discoveredBuildings.size + discoveredUsers.size, totalBuildings + totalUsers,
       discoveredM365Eggs.size, totalM365Eggs
@@ -42,6 +46,7 @@ export class UIRenderer {
   }
 
   private renderMinimap(
+    palette: IThemePalette,
     ctx: CanvasRenderingContext2D,
     camera: ICamera,
     player: IPlayer,
@@ -51,7 +56,7 @@ export class UIRenderer {
     discoveredM365Eggs: Set<string>,
     mapRows: number,
     mapCols: number,
-    tileMap: { walkable: boolean }[][]
+    tileMap: IMapTile[][]
   ): void {
     const ts = GameConfig.TILE_SIZE;
     const scale = GameConfig.MINIMAP_SCALE;
@@ -68,7 +73,23 @@ export class UIRenderer {
     for (let r = 0; r < tileMap.length; r++) {
       for (let c = 0; c < (tileMap[r]?.length ?? 0); c++) {
         const tile = tileMap[r][c];
-        ctx.fillStyle = tile.walkable ? 'rgba(120,180,80,0.4)' : 'rgba(80,60,40,0.6)';
+        let mmColor: string;
+        switch (tile.tileType) {
+          case TileType.GRASS:
+          case TileType.GRASS_DARK:
+            mmColor = palette.minimapGrass; break;
+          case TileType.PATH:
+          case TileType.PATH_EDGE:
+            mmColor = palette.minimapPath; break;
+          case TileType.WATER:
+          case TileType.WATER_DARK:
+            mmColor = palette.minimapWater; break;
+          case TileType.TREE:
+            mmColor = palette.minimapTree; break;
+          default:
+            mmColor = palette.minimapBuilding;
+        }
+        ctx.fillStyle = mmColor;
         ctx.fillRect(
           mmX + Math.round(c * ts * scale),
           mmY + Math.round(r * ts * scale),
@@ -167,6 +188,7 @@ export class UIRenderer {
   }
 
   private renderScoreHUD(
+    palette: IThemePalette,
     ctx: CanvasRenderingContext2D,
     gameTimeMs: number,
     pnpCount: number,
@@ -186,7 +208,7 @@ export class UIRenderer {
     const radius = 7;
 
     // Panel background
-    ctx.fillStyle = 'rgba(0,0,0,0.62)';
+    ctx.fillStyle = palette.hudPanel;
     ctx.beginPath();
     ctx.roundRect(panelX, panelY, panelW, panelH, radius);
     ctx.fill();
@@ -205,10 +227,10 @@ export class UIRenderer {
     ctx.globalAlpha = pnpGlow;
     ctx.font = 'bold 10px sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillStyle = pnpComplete ? '#ffe066' : '#ffd700';
+    ctx.fillStyle = palette.hudAccent;
     ctx.fillText('\u2B50 PnP', barX, pnpLabelY);
     ctx.textAlign = 'right';
-    ctx.fillStyle = pnpComplete ? '#ffe066' : '#e8c840';
+    ctx.fillStyle = palette.hudAccent;
     ctx.fillText(`${pnpCount}\u2009/\u2009${pnpTotal}`, panelX + panelW - 8, pnpLabelY);
     ctx.globalAlpha = 1;
 
@@ -222,7 +244,7 @@ export class UIRenderer {
     const pnpFillW = Math.round(barW * pnpFrac);
     if (pnpFillW > 0) {
       ctx.globalAlpha = pnpGlow;
-      ctx.fillStyle = pnpComplete ? '#ffe066' : '#ffd700';
+      ctx.fillStyle = palette.hudAccent;
       ctx.beginPath();
       ctx.roundRect(barX, pnpBarY, pnpFillW, barH, 2);
       ctx.fill();
@@ -238,16 +260,16 @@ export class UIRenderer {
     ctx.globalAlpha = siteGlow;
     ctx.font = 'bold 10px sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillStyle = siteComplete ? '#7fffd4' : '#60d8b8';
+    ctx.fillStyle = palette.hudAccent;
     ctx.fillText('\u{1F5FA} Site', barX, siteLabelY);
     ctx.textAlign = 'right';
-    ctx.fillStyle = siteComplete ? '#7fffd4' : '#40c0a0';
+    ctx.fillStyle = palette.hudAccent;
     ctx.fillText(`${siteCount}\u2009/\u2009${siteTotal}`, panelX + panelW - 8, siteLabelY);
     ctx.globalAlpha = 1;
 
     // Site progress bar track
     const siteBarY = siteLabelY + 4;
-    ctx.fillStyle = 'rgba(60,210,180,0.22)';
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
     ctx.beginPath();
     ctx.roundRect(barX, siteBarY, barW, barH, 2);
     ctx.fill();
@@ -255,7 +277,7 @@ export class UIRenderer {
     const siteFillW = Math.round(barW * siteFrac);
     if (siteFillW > 0) {
       ctx.globalAlpha = siteGlow;
-      ctx.fillStyle = siteComplete ? '#7fffd4' : '#60d8b8';
+      ctx.fillStyle = palette.hudAccent;
       ctx.beginPath();
       ctx.roundRect(barX, siteBarY, siteFillW, barH, 2);
       ctx.fill();
