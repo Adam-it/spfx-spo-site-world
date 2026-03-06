@@ -514,7 +514,7 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     kind: 'easteregg',
     spriteKey: 'julie',
     title: '🌟 Julie — Microsoft MVP & PnP Core Team',
-    bio: 'julieturner.net/me',
+    bio: 'https://julieturner.net/me',
     bios: [
       // Introduction
       '🎙️ "Hello! I am Julie!"\n\n' +
