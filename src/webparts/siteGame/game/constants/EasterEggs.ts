@@ -507,4 +507,66 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       '    -CertificatePath path\\to\\cert.pfx\n\n' +
       '\u2699\ufe0f  Full auth guide \u2192 pnp.github.io/powershell/articles/authentication',
     ],
-  },];
+  },  {
+    id: 'pnp_spfx_samples',
+    name: 'PnP SPFx Samples',
+    kind: 'easteregg',
+    spriteKey: 'pnp_spfx_samples',
+    title: '📚 PnP SPFx Samples — Real-world SharePoint Framework examples',
+    bio: 'pnp.github.io/sp-dev-fx-webparts',
+    bios: [
+
+      // Tip 1 — What it is
+      '📚 "Welcome to the PnP SPFx Samples collection!"\n\n' +
+      'The PnP SPFx Samples repository is a community-driven library of ' +
+      'real-world SharePoint Framework solutions created by developers ' +
+      'from around the world.\n\n' +
+      'It contains hundreds of examples demonstrating:\n' +
+      '  ✅ Modern web parts\n' +
+      '  ✅ SharePoint extensions\n' +
+      '  ✅ Adaptive Card Extensions (ACEs)\n' +
+      '  ✅ Microsoft Graph integrations\n' +
+      '  ✅ Teams + SharePoint solutions\n\n' +
+      'These samples are production-quality references showing recommended ' +
+      'SPFx patterns and best practices.\n\n' +
+      '🌐 Browse the full gallery → aka.ms/m365/samples',
+
+
+      // Tip 2 — How to use samples
+      '📚 "Learn SPFx faster by exploring real solutions!"\n\n' +
+      'Each sample in the PnP repository includes everything you need ' +
+      'to understand and run the project:\n' +
+      '  📄 Detailed README documentation\n' +
+      '  ⚙️ Setup and configuration steps\n' +
+      '  🧩 Architecture explanations\n' +
+      '  🧪 Tested build and deployment instructions\n\n' +
+      'Most samples can be started quickly:\n' +
+      '  1️⃣ Clone the repository\n' +
+      '  2️⃣ Run `npm install`\n' +
+      '  3️⃣ Run `gulp serve`\n\n' +
+      'This lets you explore working SPFx solutions directly ' +
+      'in the local SharePoint Workbench.\n\n' +
+      '💻 GitHub repos:\n' +
+      '   · Web parts → github.com/pnp/sp-dev-fx-webparts\n' +
+      '   · Extensions → github.com/pnp/sp-dev-fx-extensions\n' +
+      '   · ACEs → github.com/pnp/sp-dev-fx-aces',
+
+
+      // Tip 3 — Community & contribution
+      '📚 "PnP samples are built by the community, for the community!"\n\n' +
+      'Microsoft 365 developers across the world contribute new samples ' +
+      'and improvements to the PnP repository.\n\n' +
+      'You can:\n' +
+      '  ⭐ Discover new development techniques\n' +
+      '  🔍 Study real integrations with Microsoft Graph\n' +
+      '  🧠 Learn modern React + SPFx patterns\n' +
+      '  🤝 Contribute your own sample back to the community\n\n' +
+      'The repository currently contains hundreds of solutions ' +
+      'covering many SharePoint development scenarios.\n\n' +
+      '🤝 Contribute to:\n' +
+      '   · Web parts → github.com/pnp/sp-dev-fx-webparts\n' +
+      '   · Extensions → github.com/pnp/sp-dev-fx-extensions\n' +
+      '   · ACEs → github.com/pnp/sp-dev-fx-aces',
+    ],
+  }
+];
