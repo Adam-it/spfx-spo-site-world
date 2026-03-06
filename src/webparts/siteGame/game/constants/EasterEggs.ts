@@ -510,6 +510,70 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     ],
   },
   {
+    id: 'julie',
+    name: 'Julie',
+    kind: 'easteregg',
+    spriteKey: 'julie',
+    title: '🌟 Julie — Microsoft MVP & PnP Core Team',
+    bio: 'https://julieturner.net/me',
+    bios: [
+      // Introduction
+      '🎙️ "Hello! I am Julie!"\n\n' +
+      'Microsoft MVP & Microsoft 365 Architect with over 25 years ' +
+      'of experience building solutions and helping the community.\n\n' +
+      'I\'m a member of the M365 PnP team and passionate about ' +
+      'open-source, sharing knowledge, and helping developers ' +
+      'build better solutions.\n\n' +
+      'You can find me speaking at conferences, on podcasts, ' +
+      'and contributing to the PnP community.\n\n' +
+      '🌐 Learn more → https://julieturner.net/me',
+
+      // PnPjs
+      '🎙️ "Let me tell you about PnPjs!"\n\n' +
+      'PnPjs is one of the most powerful open-source libraries ' +
+      'for working with SharePoint and Microsoft Graph.\n\n' +
+      '✨ Why PnPjs is amazing:\n' +
+      '  ✅ Fluent, chainable API that\'s easy to read\n' +
+      '  ✅ Works seamlessly in SPFx with zero config\n' +
+      '  ✅ Built-in batching and caching for performance\n' +
+      '  ✅ Full TypeScript support with IntelliSense\n' +
+      '  ✅ Active community and regular updates\n' +
+      '  ✅ Supports SharePoint REST API & Microsoft Graph\n\n' +
+      'Whether you\'re building SPFx web parts, extensions, ' +
+      'or Node.js apps — PnPjs makes your life easier.\n\n' +
+      '📖 Documentation → https://pnp.github.io/pnpjs/',
+
+      // Code Deploy Go Podcast
+      '🎙️ "Have you listened to Code Deploy Go?"\n\n' +
+      'Code Deploy Go is a podcast hosted by Microsoft MVPs ' +
+      'Andrew Connell & Julie Turner, covering the latest news\n' +
+      'in Microsoft 365, Microsoft Azure, and web development.\n\n' +
+      '🎧 What you\'ll hear:\n' +
+      '  ✅ Latest news and updates from Microsoft\n' +
+      '  ✅ Deep dives on Microsoft 365 and Azure topics\n' +
+      '  ✅ Interviews and discussions with Andrew\n' +
+      '  ✅ Insights from experienced MVPs\n' +
+      '  ✅ Web development best practices\n\n' +
+      'Regular episodes featuring in-depth conversations ' +
+      'between Andrew and Julie on the latest technologies.\n\n' +
+      '🎙️ Listen now → https://codedeploygo.live/',
+
+      // Community Contribution
+      '🎙️ "The community is stronger when we all contribute!"\n\n' +
+      'The PnP community thrives because people like YOU ' +
+      'share their knowledge, code, and experiences.\n\n' +
+      '🌟 Ways to contribute:\n' +
+      '  ✅ Submit a sample to the PnP repositories\n' +
+      '  ✅ Answer questions in discussions\n' +
+      '  ✅ Report bugs or suggest improvements\n' +
+      '  ✅ Share your solutions on the blog\n' +
+      '  ✅ Demo your work on community calls\n' +
+      '  ✅ Help others learn and grow\n\n' +
+      'Every contribution matters — from a simple bug fix ' +
+      'to a full solution. The community welcomes all!\n\n' +
+      '🤝 Get involved → aka.ms/m365pnp',
+    ],
+  },];
     id: 'luise',
     name: 'Luise',
     kind: 'easteregg',
