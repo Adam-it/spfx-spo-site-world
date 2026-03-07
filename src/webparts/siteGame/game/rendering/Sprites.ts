@@ -447,7 +447,17 @@ export const LUISE: DrawCommand[] = [
   { op: 'fillRect', color: '#ff69b4', x: 10, y: 27, w: 12, h: 3 },
 ];
   
-  // ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
+  // ---- Power Pages icon (blue page stack with "PP") ----
+export const POWER_PAGES: DrawCommand[] = [
+  // background page
+  { op: 'fillRect', color: '#0067b8', x: 4, y: 4, w: 20, h: 20 },
+  // inner white page
+  { op: 'fillRect', color: '#ffffff', x: 8, y: 8, w: 12, h: 12 },
+  // PP letters
+  { op: 'text', color: '#0067b8', text: 'PP', x: 9, y: 18, size: 6 },
+];
+
+// ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
   export const PNP_SPFX_SAMPLES: DrawCommand[] = [
 
   // ── Outer teal border/frame ──
@@ -489,6 +499,7 @@ export type SpriteKey =
   | 'spfx_toolkit'
   | 'pnp_powershell'
   | 'power_automate'
+  | 'power_pages'
   | 'julie'
   | 'campfire'
   | 'pnp_spfx_samples'
@@ -508,6 +519,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   spfx_toolkit: SPFX_TOOLKIT,
   pnp_powershell: PNP_POWERSHELL,
   power_automate: POWER_AUTOMATE,
+  power_pages: POWER_PAGES,
   julie: JULIE,
   campfire: CAMPFIRE,
   pnp_spfx_samples: PNP_SPFX_SAMPLES,
