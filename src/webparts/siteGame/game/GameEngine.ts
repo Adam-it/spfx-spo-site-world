@@ -47,6 +47,8 @@ export class GameEngine {
   private soundEngine = new SoundEngine();
   private currentInfoTarget: IInfoTarget | null = null;
   private proximityTarget: IBuilding | INPC | undefined = undefined;
+  private mouseMoveTarget: { x: number; y: number } | null = null;
+  private clickedBuildingTarget: IBuilding | null = null;
   private discoveredEggs = new Set<string>();
   private discoveredBuildings = new Set<string>();
   private discoveredUsers = new Set<string>();
@@ -66,7 +68,7 @@ export class GameEngine {
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error('Canvas 2D context unavailable');
     this.ctx = ctx;
-    this.input = new InputController(window);
+    this.input = new InputController(window, canvas);
     this.collision = new CollisionDetector(state.tileMap, GameConfig.TILE_SIZE);
 
     // Pre-seed per-NPC rngs
@@ -130,6 +132,40 @@ export class GameEngine {
   private update(delta: number): void {
     const input = this.input.getSnapshot();
 
+    // ── Handle mouse click ─────────────────────────────────────────────────────
+    if (input.mouseClick) {
+      const cam = this.state.camera;
+      const worldX = input.mouseClick.x + cam.x;
+      const worldY = input.mouseClick.y + cam.y;
+
+      // Check if click is on a building
+      let clickedBuilding: IBuilding | undefined = undefined;
+      for (const b of this.state.buildings) {
+        if (
+          worldX >= b.x &&
+          worldX <= b.x + b.width &&
+          worldY >= b.y &&
+          worldY <= b.y + b.height
+        ) {
+          clickedBuilding = b;
+          break;
+        }
+      }
+
+      if (clickedBuilding) {
+        // Set target to building center
+        this.mouseMoveTarget = {
+          x: clickedBuilding.x + clickedBuilding.width / 2,
+          y: clickedBuilding.y + clickedBuilding.height / 2,
+        };
+        this.clickedBuildingTarget = clickedBuilding;
+      } else {
+        // Set target to clicked position
+        this.mouseMoveTarget = { x: worldX, y: worldY };
+        this.clickedBuildingTarget = null;
+      }
+    }
+
     // ── Player movement ───────────────────────────────────────────────────────
     const p = this.state.player;
     const s = p.speed;
@@ -137,16 +173,34 @@ export class GameEngine {
 
     let dvx = 0;
     let dvy = 0;
-    if (input.up) dvy = -1;
-    else if (input.down) dvy = 1;
-    if (input.left) dvx = -1;
-    else if (input.right) dvx = 1;
 
-    // Normalise diagonal
-    if (dvx !== 0 && dvy !== 0) {
-      const inv = 1 / Math.SQRT2;
-      dvx *= inv;
-      dvy *= inv;
+    // If there's a mouse move target, move towards it instead of keyboard
+    if (this.mouseMoveTarget) {
+      const dx = this.mouseMoveTarget.x - p.x;
+      const dy = this.mouseMoveTarget.y - p.y;
+      const distToTarget = Math.sqrt(dx * dx + dy * dy);
+
+      // If reached target (within a small threshold), clear it
+      if (distToTarget < 10) {
+        this.mouseMoveTarget = null;
+      } else {
+        // Move towards target
+        dvx = dx / distToTarget;
+        dvy = dy / distToTarget;
+      }
+    } else {
+      // Use keyboard input if no mouse target
+      if (input.up) dvy = -1;
+      else if (input.down) dvy = 1;
+      if (input.left) dvx = -1;
+      else if (input.right) dvx = 1;
+
+      // Normalise diagonal
+      if (dvx !== 0 && dvy !== 0) {
+        const inv = 1 / Math.SQRT2;
+        dvx *= inv;
+        dvy *= inv;
+      }
     }
 
     p.vx = dvx * s;
@@ -281,6 +335,7 @@ export class GameEngine {
         this.currentInfoTarget = null;
         this.onInfoTarget(null);
       }
+      this.clickedBuildingTarget = null; // Clear clicked target on escape
       return;
     }
 
@@ -308,6 +363,16 @@ export class GameEngine {
     }
 
     this.proximityTarget = nearest;
+
+    // Auto-interact when player reaches clicked building
+    if (
+      this.clickedBuildingTarget &&
+      nearest === this.clickedBuildingTarget &&
+      nearestDist < GameConfig.INTERACT_RADIUS
+    ) {
+      interact = true; // Auto-trigger interaction
+      this.clickedBuildingTarget = null; // Clear after auto-interact
+    }
 
     if (interact && nearest !== undefined) {
       let newTarget: IInfoTarget;
