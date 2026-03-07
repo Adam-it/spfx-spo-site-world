@@ -86,6 +86,7 @@ const styles = mergeStyleSets({
   eggLogo: {
     display: 'block',
     maxWidth: 180,
+    maxHeight: 50,
     height: 'auto',
     margin: '16px auto 8px',
   },
