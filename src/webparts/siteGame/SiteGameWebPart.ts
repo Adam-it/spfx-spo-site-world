@@ -22,6 +22,7 @@ export interface ISiteGameWebPartProps {
   enableEasterEggs: boolean;
   enableM365EasterEggs: boolean;
   gameTheme: GameTheme;
+  enableMusic: boolean;
 }
 
 export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebPartProps> {
@@ -43,6 +44,7 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
         enableEasterEggs: this.properties.enableEasterEggs !== false,
         enableM365EasterEggs: this.properties.enableM365EasterEggs !== false,
         gameTheme: this.properties.gameTheme || 'village',
+        enableMusic: this.properties.enableMusic === true,
       }
     );
 
@@ -118,6 +120,11 @@ export default class SiteGameWebPart extends BaseClientSideWebPart<ISiteGameWebP
                   label: 'Enable Microsoft 365 Easter Eggs',
                   onText: 'Yes',
                   offText: 'No',
+                }),
+                PropertyPaneToggle('enableMusic', {
+                  label: 'Enable Game Music',
+                  onText: 'On',
+                  offText: 'Off',
                 }),
               ],
             },

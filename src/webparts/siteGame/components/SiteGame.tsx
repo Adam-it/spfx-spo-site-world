@@ -9,6 +9,7 @@ import { GameEngine } from '../game/GameEngine';
 import { IInfoTarget } from '../game/types/IInfoTarget';
 import { IGameState } from '../game/types/IGameState';
 import { GameConfig } from '../game/constants/GameConfig';
+import { MusicEngine } from '../game/audio/MusicEngine';
 
 interface ISiteGameState {
   loading: boolean;
@@ -25,6 +26,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
   private canvasRef = React.createRef<HTMLCanvasElement>();
   private containerRef = React.createRef<HTMLDivElement>();
   private engine: GameEngine | null = null;
+  private musicEngine: MusicEngine | null = null;
   private spService: SharePointService;
   private resizeObserver: ResizeObserver | null = null;
   private gameState: IGameState | null = null;
@@ -79,6 +81,13 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       );
       this.engine.start();
       this.engine.setTheme(this.props.gameTheme || 'village');
+      this.engine.setSoundEnabled(this.props.enableMusic);
+
+      if (this.props.enableMusic) {
+        this.musicEngine = new MusicEngine();
+        this.musicEngine.setTheme(this.props.gameTheme || 'village');
+        this.musicEngine.start();
+      }
 
       // ResizeObserver for responsive canvas
       this.resizeObserver = new ResizeObserver((entries) => {
@@ -96,12 +105,14 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
                 this.setState({ tooNarrow: true });
               }
               this.engine?.stop();
+              this.musicEngine?.stop();
             } else if (newW >= 400) {
               if (this.state.tooNarrow) {
                 this.setState({ tooNarrow: false });
               }
               this.engine?.resizeViewport(newW, GAME_HEIGHT);
               this.engine?.start();
+              if (this.props.enableMusic) this.musicEngine?.start();
             }
           }
         });
@@ -124,12 +135,24 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
   public componentDidUpdate(prevProps: ISiteGameProps): void {
     if (prevProps.gameTheme !== this.props.gameTheme) {
       this.engine?.setTheme(this.props.gameTheme || 'village');
+      this.musicEngine?.setTheme(this.props.gameTheme || 'village');
+    }
+    if (prevProps.enableMusic !== this.props.enableMusic) {
+      this.engine?.setSoundEnabled(this.props.enableMusic);
+      if (this.props.enableMusic) {
+        if (!this.musicEngine) this.musicEngine = new MusicEngine();
+        this.musicEngine.setTheme(this.props.gameTheme || 'village');
+        this.musicEngine.start();
+      } else {
+        this.musicEngine?.stop();
+      }
     }
   }
 
   public componentWillUnmount(): void {
     cancelAnimationFrame(this._resizeRAF);
     this.engine?.destroy();
+    this.musicEngine?.dispose();
     this.resizeObserver?.disconnect();
     document.removeEventListener('visibilitychange', this.handleVisibilityChange);
   }
@@ -138,8 +161,10 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
     // GameEngine's delta cap handles resume; stop/start is clean enough for SPFx
     if (document.hidden) {
       this.engine?.stop();
+      this.musicEngine?.stop();
     } else if (!this.state.loading && !this.state.error && this.engine) {
       this.engine.start();
+      if (this.props.enableMusic) this.musicEngine?.start();
     }
   };
 
@@ -190,6 +215,13 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       );
       this.engine.start();
       this.engine.setTheme(this.props.gameTheme || 'village');
+      this.engine.setSoundEnabled(this.props.enableMusic);
+
+      if (this.props.enableMusic) {
+        if (!this.musicEngine) this.musicEngine = new MusicEngine();
+        this.musicEngine.setTheme(this.props.gameTheme || 'village');
+        this.musicEngine.start();
+      }
 
       this.setState({ loading: false });
     } catch (err) {

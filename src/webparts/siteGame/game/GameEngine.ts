@@ -9,7 +9,8 @@ import { TileRenderer } from './rendering/TileRenderer';
 import { BuildingRenderer } from './rendering/BuildingRenderer';
 import { CharacterRenderer } from './rendering/CharacterRenderer';
 import { UIRenderer } from './rendering/UIRenderer';
-import { GameTheme, getThemePalette, IThemePalette } from './constants/GameThemes';
+import { GameTheme, getThemePalette } from './constants/GameThemes';
+import { SoundEngine } from './audio/SoundEngine';
 
 function clamp(v: number, min: number, max: number): number {
   return Math.min(Math.max(v, min), max);
@@ -43,6 +44,7 @@ export class GameEngine {
   private characterRenderer = new CharacterRenderer();
   private uiRenderer = new UIRenderer();
   private activeTheme: GameTheme = 'village';
+  private soundEngine = new SoundEngine();
   private currentInfoTarget: IInfoTarget | null = null;
   private proximityTarget: IBuilding | INPC | undefined = undefined;
   private discoveredEggs = new Set<string>();
@@ -92,10 +94,15 @@ export class GameEngine {
   public destroy(): void {
     cancelAnimationFrame(this.animFrameId);
     this.input.dispose();
+    this.soundEngine.dispose();
   }
 
   public setTheme(theme: GameTheme): void {
     this.activeTheme = theme;
+  }
+
+  public setSoundEnabled(enabled: boolean): void {
+    this.soundEngine.setEnabled(enabled);
   }
 
   /** Called when the InfoPanel is dismissed externally (X button / light dismiss) so
@@ -170,6 +177,11 @@ export class GameEngine {
       p.y = clamp(newY, ts, (this.state.mapRows - 1) * ts);
     } else {
       p.vy = 0;
+    }
+
+    // Footstep sound
+    if (Math.abs(p.vx) > 0.01 || Math.abs(p.vy) > 0.01) {
+      this.soundEngine.tickFootstep(this.gameTimeMs);
     }
 
     // ── NPC movement ─────────────────────────────────────────────────────────
@@ -310,10 +322,12 @@ export class GameEngine {
         if (npc.kind === 'easteregg' && !this.discoveredEggs.has(npc.id)) {
           this.discoveredEggs.add(npc.id);
           this.onEggDiscovered(npc.id, npc.name);
+          this.soundEngine.playEggDiscovery();
         }
         if (npc.kind === 'm365egg' && !this.discoveredM365Eggs.has(npc.id)) {
           this.discoveredM365Eggs.add(npc.id);
           this.onEggDiscovered(npc.id, npc.name);
+          this.soundEngine.playEggDiscovery();
         }
         // Record user NPC conversation for Site score
         if (npc.kind === 'user') {

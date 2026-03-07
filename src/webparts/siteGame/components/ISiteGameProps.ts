@@ -13,4 +13,5 @@ export interface ISiteGameProps {
   enableEasterEggs: boolean;
   enableM365EasterEggs: boolean;
   gameTheme: GameTheme;
+  enableMusic: boolean;
 }
