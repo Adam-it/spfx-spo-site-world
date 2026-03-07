@@ -36,6 +36,30 @@ function makeTile(tileType: TileType, row: number, col: number): IMapTile {
   return { tileType, walkable: TILE_WALKABLE[tileType], row, col };
 }
 
+/** Returns the nearest walkable tile to (row, col), spiralling outward up to radius 10. */
+function findNearestWalkable(
+  tileMap: IMapTile[][],
+  row: number,
+  col: number,
+  maxRows: number,
+  maxCols: number
+): { row: number; col: number } {
+  if (tileMap[row]?.[col]?.walkable) return { row, col };
+  for (let radius = 1; radius <= 10; radius++) {
+    for (let dr = -radius; dr <= radius; dr++) {
+      for (let dc = -radius; dc <= radius; dc++) {
+        if (Math.abs(dr) !== radius && Math.abs(dc) !== radius) continue;
+        const r = row + dr;
+        const c = col + dc;
+        if (r >= 0 && r < maxRows && c >= 0 && c < maxCols && tileMap[r]?.[c]?.walkable) {
+          return { row: r, col: c };
+        }
+      }
+    }
+  }
+  return { row, col };
+}
+
 export interface IBuildWorldOptions {
   maxBots: number;
   enableEasterEggs: boolean;
@@ -263,10 +287,13 @@ export class MapGenerator {
         { row: midRow + 8, col: midCol - 4 },    // pnp_powershell
         { row: midRow - 2, col: midCol - 6 },    // julie
         { row: midRow - 2, col: midCol + 5 },    // luise
+        { row: midRow - 6, col: midCol + 4 },    // pnp_spfx_samples
+        { row: midRow + 9, col: midCol + 6 },    // pnp_core
       ];
 
       EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
-        const spawn = eggSpawns[idx] || { row: midRow, col: midCol + idx };
+        const rawSpawn = eggSpawns[idx] || { row: midRow, col: midCol + idx };
+        const spawn = findNearestWalkable(tileMap, rawSpawn.row, rawSpawn.col, rows, cols);
         npcs.push({
           id: def.id,
           name: def.name,
@@ -299,7 +326,8 @@ export class MapGenerator {
       ];
 
       M365_EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
-        const spawn = m365Spawns[idx] || { row: midRow + 10, col: midCol + idx * 2 };
+        const rawSpawn = m365Spawns[idx] || { row: midRow + 10, col: midCol + idx * 2 };
+        const spawn = findNearestWalkable(tileMap, rawSpawn.row, rawSpawn.col, rows, cols);
         npcs.push({
           id: def.id,
           name: def.name,

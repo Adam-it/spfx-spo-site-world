@@ -302,6 +302,35 @@ export const PNP_POWERSHELL: DrawCommand[] = [
   { op: 'fillRect', color: '#0050a0', x: 18, y: 27, w: 7,  h: 3 },
 ];
 
+// ---- PnP Core SDK — pixel-art .NET/C# purple hexagon character ----
+export const PNP_CORE: DrawCommand[] = [
+  // ── Hexagon body (official .NET / C# purple) ──
+  // Top cap (narrow)
+  { op: 'fillRect', color: '#512BD4', x: 10, y: 0,  w: 12, h: 2 },
+  // Upper shoulders
+  { op: 'fillRect', color: '#512BD4', x: 6,  y: 2,  w: 20, h: 2 },
+  // Wide middle body
+  { op: 'fillRect', color: '#512BD4', x: 3,  y: 4,  w: 26, h: 12 },
+  // Lower shoulders
+  { op: 'fillRect', color: '#512BD4', x: 6,  y: 16, w: 20, h: 2 },
+  // Bottom cap (narrow)
+  { op: 'fillRect', color: '#512BD4', x: 10, y: 18, w: 12, h: 2 },
+
+  // ── Top highlight stripe (3-D look) ──
+  { op: 'fillRect', color: '#7B52E0', x: 4,  y: 4,  w: 24, h: 2 },
+
+  // ── 'C#' text centred in white ──
+  { op: 'text', color: '#FFFFFF', text: 'C#', x: 9, y: 15, size: 10 },
+
+  // ── Legs (deep purple) ──
+  { op: 'fillRect', color: '#3D24A0', x: 8,  y: 21, w: 5,  h: 6 },
+  { op: 'fillRect', color: '#3D24A0', x: 19, y: 21, w: 5,  h: 6 },
+
+  // ── Boots ──
+  { op: 'fillRect', color: '#2D1880', x: 7,  y: 26, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#2D1880', x: 18, y: 26, w: 7,  h: 3 },
+];
+
 // ---- CLI for Microsoft 365 — walking "CLI" pixel-art letters ----
 export const CLI_M365: DrawCommand[] = [
   // ── Stem (dark green) ──
@@ -462,7 +491,8 @@ export type SpriteKey =
   | 'power_automate'
   | 'julie'
   | 'campfire'
-  | 'pnp_spfx_samples';
+  | 'pnp_spfx_samples'
+  | 'pnp_core';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   player: PLAYER_SPRITE,
@@ -481,6 +511,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   julie: JULIE,
   campfire: CAMPFIRE,
   pnp_spfx_samples: PNP_SPFX_SAMPLES,
+  pnp_core: PNP_CORE,
 };
 
 export function renderSprite(

@@ -639,6 +639,55 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
     ],
   },
   {
+    id: 'pnp_core',
+    name: 'PnP Core SDK',
+    kind: 'easteregg',
+    spriteKey: 'pnp_core',
+    title: 'PnP Core SDK — Fluent C# / .NET library for Microsoft 365',
+    bio: 'pnp.github.io/pnpcore',
+    bios: [
+      // Tip 1 — What it is & getting started
+      '🔷 "Hello! I am the PnP Core SDK!"\n\n' +
+      'PnP Core SDK is a modern, open-source .NET library for working with\n' +
+      'Microsoft 365 — SharePoint, Teams, Viva Engage, and Graph.\n' +
+      'Built for server-side .NET / .NET Standard 2.0 scenarios\n' +
+      '  · Azure Functions\n' +
+      '  · ASP.NET Core web apps\n' +
+      '  · Console / background services\n' +
+      '  · Blazor Server apps\n' +
+      'Zero-config authentication via dependency injection:\n' +
+      '  services.AddPnPCore(options => {\n' +
+      '    options.Sites.Add("mySite", new PnPCoreSiteOptions {\n' +
+      '      SiteUrl = "https://tenant.sharepoint.com/sites/dev"\n' +
+      '    });\n' +
+      '  });\n' +
+      'Install:\n' +
+      '  dotnet add package PnP.Core\n' +
+      '  dotnet add package PnP.Core.Auth\n' +
+      '📖 Getting started → pnp.github.io/pnpcore/using-the-sdk/readme\n',
+
+      // Tip 2 — SharePoint operations & batching
+      '🔷 "SharePoint queries — fluent, readable, batch-ready!"\n\n' +
+      'PnP Core SDK models SharePoint as a navigable object graph.\n' +
+      'Load only the properties you need, in any combination:\n' +
+      '  using var context = await pnpContextFactory\n' +
+      '    .CreateAsync("mySite");\n' +
+      '  var list = await context.Web.Lists\n' +
+      '    .GetByTitleAsync("Projects",\n' +
+      '      l => l.Title, l => l.ItemCount);\n' +
+      '  var items = await list.Items\n' +
+      '    .Where(i => i.Title != null)\n' +
+      '    .Top(50)\n' +
+      '    .GetAsync();\n' +
+      'Batch multiple requests into a single round-trip:\n' +
+      '  var batch = context.NewBatch();\n' +
+      '  var w1 = context.Web.GetBatchAsync(batch, w => w.Title);\n' +
+      '  var l1 = context.Web.Lists.GetBatchAsync(batch);\n' +
+      '  await context.ExecuteAsync(batch);\n' +
+      '⚡ Batching guide → pnp.github.io/pnpcore/using-the-sdk/basics-batching',
+    ],
+  },
+  {
     id: 'pnp_spfx_samples',
     name: 'PnP SPFx Samples',
     kind: 'easteregg',

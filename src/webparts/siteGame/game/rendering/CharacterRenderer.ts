@@ -82,6 +82,9 @@ export class CharacterRenderer {
     } else if (npc.spriteKey === 'power_automate') {
       // lightning bolt zip — fast up-snap, slow settle
       drawY += Math.round(Math.abs(Math.sin(gameTimeMs / 380)) * -5);
+    } else if (npc.spriteKey === 'pnp_core') {
+      // .NET hexagon — gentle oscillating float
+      drawY += Math.round(Math.sin(gameTimeMs / 700) * -3);
     } else if (npc.spriteKey === 'campfire') {
       // campfire doesn't need movement, just draw at center
       renderSprite(ctx, npc.spriteKey, sx, drawY, false);
