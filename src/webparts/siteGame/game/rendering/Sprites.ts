@@ -447,7 +447,43 @@ export const LUISE: DrawCommand[] = [
   { op: 'fillRect', color: '#ff69b4', x: 10, y: 27, w: 12, h: 3 },
 ];
   
-  // ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
+  // ---- Power Pages — two overlapping tilted cards matching the official logo ----
+// Logo: lighter lavender card (upper-left) + darker blue-purple card (lower-right),
+// both rotated ~12° CCW, simulated via staggered row offsets.
+export const POWER_PAGES: DrawCommand[] = [
+  // ── Card 1: lighter lavender-purple (#A294ED), upper-left ──
+  // Each 2-row band shifts the left edge 1 px leftward as y increases (≈12° tilt)
+  { op: 'fillRect', color: '#A294ED', x: 5,  y: 0,  w: 12, h: 2 }, // top — narrow (rounded corner)
+  { op: 'fillRect', color: '#A294ED', x: 4,  y: 2,  w: 14, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 3,  y: 4,  w: 15, h: 2 }, // widest
+  { op: 'fillRect', color: '#A294ED', x: 2,  y: 6,  w: 15, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 1,  y: 8,  w: 15, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 1,  y: 10, w: 14, h: 2 }, // narrowing
+  { op: 'fillRect', color: '#A294ED', x: 1,  y: 12, w: 12, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 2,  y: 14, w: 9,  h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 3,  y: 16, w: 6,  h: 2 }, // bottom — narrow
+
+  // ── Card 2: darker blue-purple (#3B31B5), lower-right ──
+  // Same tilt; positioned lower-right, overlapping card 1 in the middle band
+  { op: 'fillRect', color: '#3B31B5', x: 15, y: 5,  w: 11, h: 2 }, // top — narrow
+  { op: 'fillRect', color: '#3B31B5', x: 13, y: 7,  w: 13, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 12, y: 9,  w: 15, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 11, y: 11, w: 16, h: 2 }, // widest
+  { op: 'fillRect', color: '#3B31B5', x: 10, y: 13, w: 16, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 9,  y: 15, w: 15, h: 2 }, // narrowing
+  { op: 'fillRect', color: '#3B31B5', x: 9,  y: 17, w: 13, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 10, y: 19, w: 10, h: 2 }, // bottom — narrow
+
+  // ── Legs (deep royal blue) ──
+  { op: 'fillRect', color: '#2B24A0', x: 8,  y: 22, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#2B24A0', x: 19, y: 22, w: 5,  h: 5 },
+
+  // ── Boots ──
+  { op: 'fillRect', color: '#1F1B78', x: 7,  y: 27, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#1F1B78', x: 18, y: 27, w: 7,  h: 3 },
+];
+
+// ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
   export const PNP_SPFX_SAMPLES: DrawCommand[] = [
 
   // ── Outer teal border/frame ──
@@ -495,6 +531,7 @@ export type SpriteKey =
   | 'spfx_toolkit'
   | 'pnp_powershell'
   | 'power_automate'
+  | 'power_pages'
   | 'julie'
   | 'campfire'
   | 'pnp_spfx_samples'
@@ -515,6 +552,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   spfx_toolkit: SPFX_TOOLKIT,
   pnp_powershell: PNP_POWERSHELL,
   power_automate: POWER_AUTOMATE,
+  power_pages: POWER_PAGES,
   julie: JULIE,
   campfire: CAMPFIRE,
   pnp_spfx_samples: PNP_SPFX_SAMPLES,

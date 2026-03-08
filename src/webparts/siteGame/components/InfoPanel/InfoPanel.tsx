@@ -31,6 +31,8 @@ const logoSPFxSamples: string      = require('../../../../../assets/logos/pnp-sa
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const logoPowerBI: string         = require('../../../../../assets/logos/power-bi.png');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const logoPowerPages: string    = require('../../../../../assets/logos/power-pages.png');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const logoPnpCore: string          = require('../../../../../assets/logos/pnp-core-library.png');
 
 interface IFolderEntry { url: string; name: string; }
@@ -376,6 +378,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       pnp_powershell: '🖥️',
       power_automate: '⚡',
       power_bi: '📊',
+      power_pages: '🧱',
       julie: '🌟',
       luise: '👑',
       pnp_core: '🔷',
@@ -387,6 +390,7 @@ export class InfoPanel extends React.Component<IInfoPanelProps, IPanelState> {
       spfx_toolkit:     logoSpfxToolkit,
       pnp_powershell:   logoPowershell,
       power_automate:   logoPowerAutomate,
+      power_pages:       logoPowerPages,
       pnp_spfx_samples: logoSPFxSamples,
       power_bi:         logoPowerBI,
       pnp_core:         logoPnpCore,

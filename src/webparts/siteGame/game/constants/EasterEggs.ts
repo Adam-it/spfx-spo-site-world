@@ -776,6 +776,27 @@ export const EASTER_EGG_DEFINITIONS: EasterEggDefinition[] = [
       'There are two common patterns: user owns data (OAuth) and app owns data (service principal). ' +
       'Use `powerbicli` or REST for automation.\n\n' +
       'Embed securely in SPFx with the `@microsoft/powerbi-client-react` package. '
+    id: 'power_pages',
+    name: 'Power Pages',
+    kind: 'easteregg',
+    spriteKey: 'power_pages',
+    title: 'Power Pages — Build low/no-code business websites',
+    bio: 'https://powerpages.microsoft.com',
+    bios: [
+      '🧱 "Hello there! I am Power Pages — your no-code web builder."\n\n' +
+      'Create secure, responsive business websites using just a browser. ' +
+      'Choose from templates, drag‑and‑drop components, and connect to Dataverse.\n\n' +
+      '🌐 Start building: https://powerpages.microsoft.com',
+
+      '🛠 "Need a form or list?"\n\n' +
+      'Add Dataverse forms, lists, and custom code with ease. ' +
+      'Configure authentication, roles, and web APIs directly in the designer.\n\n' +
+      '📘 Learn more: https://learn.microsoft.com/power-pages',
+
+      '🔒 "Security and compliance are built in!"\n\n' +
+      'Leverage Dataverse security, HTTPS, and Microsoft identity. ' +
+      'Apply business rules, validation, and custom logic with Power FX.\n\n' +
+      '📄 See docs: https://aka.ms/PowerPagesDocs',
     ],
   }
 ];
