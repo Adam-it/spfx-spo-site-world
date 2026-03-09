@@ -274,41 +274,41 @@ export const WARRIOR_HORSE: DrawCommand[] = [
 // ---- SPFx Toolkit — pixel-art toolbox with wrench + hammer ----
 export const SPFX_TOOLKIT: DrawCommand[] = [
   // ── Wrench (left, sticking up) — C-jaw + handle ──
-  { op: 'fillRect', color: '#c0c0c0', x: 2,  y: 0,  w: 6,  h: 2 }, // top jaw
-  { op: 'fillRect', color: '#c0c0c0', x: 2,  y: 3,  w: 6,  h: 2 }, // bottom jaw
-  { op: 'fillRect', color: '#c0c0c0', x: 7,  y: 0,  w: 2,  h: 5 }, // jaw back
-  { op: 'fillRect', color: '#a0a0a0', x: 7,  y: 5,  w: 2,  h: 5 }, // handle
+  { op: 'fillRect', color: '#c0c0c0', x: 2, y: 0, w: 6, h: 2 }, // top jaw
+  { op: 'fillRect', color: '#c0c0c0', x: 2, y: 3, w: 6, h: 2 }, // bottom jaw
+  { op: 'fillRect', color: '#c0c0c0', x: 7, y: 0, w: 2, h: 5 }, // jaw back
+  { op: 'fillRect', color: '#a0a0a0', x: 7, y: 5, w: 2, h: 5 }, // handle
 
   // ── Hammer (right, sticking up) — flat head + wooden handle ──
-  { op: 'fillRect', color: '#606060', x: 20, y: 1,  w: 10, h: 4 }, // head dark
-  { op: 'fillRect', color: '#909090', x: 20, y: 1,  w: 10, h: 1 }, // head highlight
-  { op: 'fillRect', color: '#a0522d', x: 23, y: 5,  w: 3,  h: 5 }, // wooden handle
+  { op: 'fillRect', color: '#606060', x: 20, y: 1, w: 10, h: 4 }, // head dark
+  { op: 'fillRect', color: '#909090', x: 20, y: 1, w: 10, h: 1 }, // head highlight
+  { op: 'fillRect', color: '#a0522d', x: 23, y: 5, w: 3, h: 5 }, // wooden handle
 
   // ── Carry handle (bar across top of box) ──
-  { op: 'fillRect', color: '#333333', x: 11, y: 7,  w: 2,  h: 4 }, // left post
-  { op: 'fillRect', color: '#333333', x: 19, y: 7,  w: 2,  h: 4 }, // right post
-  { op: 'fillRect', color: '#999999', x: 12, y: 7,  w: 8,  h: 2 }, // bar
+  { op: 'fillRect', color: '#333333', x: 11, y: 7, w: 2, h: 4 }, // left post
+  { op: 'fillRect', color: '#333333', x: 19, y: 7, w: 2, h: 4 }, // right post
+  { op: 'fillRect', color: '#999999', x: 12, y: 7, w: 8, h: 2 }, // bar
 
   // ── Toolbox outer shell ──
-  { op: 'fillRect', color: '#1a1a1a', x: 2,  y: 11, w: 28, h: 13 },
+  { op: 'fillRect', color: '#1a1a1a', x: 2, y: 11, w: 28, h: 13 },
 
   // ── Lid (top portion, brighter red) ──
-  { op: 'fillRect', color: '#ef4444', x: 3,  y: 12, w: 26, h: 5 },
+  { op: 'fillRect', color: '#ef4444', x: 3, y: 12, w: 26, h: 5 },
 
   // ── Body (lower portion, darker red + slight sheen line) ──
-  { op: 'fillRect', color: '#b91c1c', x: 3,  y: 17, w: 26, h: 6 },
-  { op: 'fillRect', color: '#dc2626', x: 3,  y: 17, w: 26, h: 1 }, // sheen at seam
+  { op: 'fillRect', color: '#b91c1c', x: 3, y: 17, w: 26, h: 6 },
+  { op: 'fillRect', color: '#dc2626', x: 3, y: 17, w: 26, h: 1 }, // sheen at seam
 
   // ── Gold latch (centered on lid-body seam) ──
-  { op: 'fillRect', color: '#fbbf24', x: 13, y: 15, w: 6,  h: 4 },
-  { op: 'fillRect', color: '#f59e0b', x: 14, y: 16, w: 4,  h: 2 }, // latch detail
+  { op: 'fillRect', color: '#fbbf24', x: 13, y: 15, w: 6, h: 4 },
+  { op: 'fillRect', color: '#f59e0b', x: 14, y: 16, w: 4, h: 2 }, // latch detail
 
   // ── Legs ──
-  { op: 'fillRect', color: '#555555', x: 8,  y: 24, w: 5,  h: 5 },
-  { op: 'fillRect', color: '#555555', x: 19, y: 24, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#555555', x: 8, y: 24, w: 5, h: 5 },
+  { op: 'fillRect', color: '#555555', x: 19, y: 24, w: 5, h: 5 },
   // Boots
-  { op: 'fillRect', color: '#7c3314', x: 7,  y: 28, w: 7,  h: 3 },
-  { op: 'fillRect', color: '#7c3314', x: 18, y: 28, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#7c3314', x: 7, y: 28, w: 7, h: 3 },
+  { op: 'fillRect', color: '#7c3314', x: 18, y: 28, w: 7, h: 3 },
 ];
 
 // ---- Power Automate — 3-tone blue chevron logo with legs ----
@@ -317,125 +317,125 @@ export const SPFX_TOOLKIT: DrawCommand[] = [
 export const POWER_AUTOMATE: DrawCommand[] = [
   // Upper arm rows (widen toward apex)
   // w=4
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 0,  w: 1,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 3,  y: 0,  w: 2,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 5,  y: 0,  w: 1,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 0, w: 1, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 3, y: 0, w: 2, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 5, y: 0, w: 1, h: 2 },
   // w=8
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 2,  w: 3,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 5,  y: 2,  w: 3,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 8,  y: 2,  w: 2,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 2, w: 3, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 5, y: 2, w: 3, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 8, y: 2, w: 2, h: 2 },
   // w=12
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 4,  w: 4,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 6,  y: 4,  w: 4,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 10, y: 4,  w: 4,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 4, w: 4, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 6, y: 4, w: 4, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 10, y: 4, w: 4, h: 2 },
   // w=16
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 6,  w: 6,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 8,  y: 6,  w: 5,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 13, y: 6,  w: 5,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 6, w: 6, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 8, y: 6, w: 5, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 13, y: 6, w: 5, h: 2 },
   // w=20
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 8,  w: 7,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 9,  y: 8,  w: 7,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 16, y: 8,  w: 6,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 8, w: 7, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 9, y: 8, w: 7, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 16, y: 8, w: 6, h: 2 },
   // apex w=26
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 10, w: 9,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 11, y: 10, w: 9,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 20, y: 10, w: 8,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 10, w: 9, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 11, y: 10, w: 9, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 20, y: 10, w: 8, h: 2 },
   // Lower arm rows (narrow back down — mirror of upper)
   // w=20
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 12, w: 7,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 9,  y: 12, w: 7,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 16, y: 12, w: 6,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 12, w: 7, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 9, y: 12, w: 7, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 16, y: 12, w: 6, h: 2 },
   // w=16
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 14, w: 6,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 8,  y: 14, w: 5,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 13, y: 14, w: 5,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 14, w: 6, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 8, y: 14, w: 5, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 13, y: 14, w: 5, h: 2 },
   // w=12
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 16, w: 4,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 6,  y: 16, w: 4,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 10, y: 16, w: 4,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 16, w: 4, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 6, y: 16, w: 4, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 10, y: 16, w: 4, h: 2 },
   // w=8
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 18, w: 3,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 5,  y: 18, w: 3,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 8,  y: 18, w: 2,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 18, w: 3, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 5, y: 18, w: 3, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 8, y: 18, w: 2, h: 2 },
   // w=4
-  { op: 'fillRect', color: '#0F2D7F', x: 2,  y: 20, w: 1,  h: 2 },
-  { op: 'fillRect', color: '#2272EB', x: 3,  y: 20, w: 2,  h: 2 },
-  { op: 'fillRect', color: '#74B3FF', x: 5,  y: 20, w: 1,  h: 2 },
+  { op: 'fillRect', color: '#0F2D7F', x: 2, y: 20, w: 1, h: 2 },
+  { op: 'fillRect', color: '#2272EB', x: 3, y: 20, w: 2, h: 2 },
+  { op: 'fillRect', color: '#74B3FF', x: 5, y: 20, w: 1, h: 2 },
   // ── Legs ──
-  { op: 'fillRect', color: '#0F2D7F', x: 6,  y: 22, w: 5,  h: 5 },
-  { op: 'fillRect', color: '#0F2D7F', x: 14, y: 22, w: 5,  h: 5 },
-  { op: 'fillRect', color: '#2272EB', x: 5,  y: 26, w: 7,  h: 3 },
-  { op: 'fillRect', color: '#2272EB', x: 13, y: 26, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#0F2D7F', x: 6, y: 22, w: 5, h: 5 },
+  { op: 'fillRect', color: '#0F2D7F', x: 14, y: 22, w: 5, h: 5 },
+  { op: 'fillRect', color: '#2272EB', x: 5, y: 26, w: 7, h: 3 },
+  { op: 'fillRect', color: '#2272EB', x: 13, y: 26, w: 7, h: 3 },
 ];
 
 // ---- PnP PowerShell — pixel-art PowerShell terminal window ----
 export const PNP_POWERSHELL: DrawCommand[] = [
   // ── Window outer shell ──
-  { op: 'fillRect', color: '#1a1a2e', x: 1,  y: 0,  w: 30, h: 22 },
+  { op: 'fillRect', color: '#1a1a2e', x: 1, y: 0, w: 30, h: 22 },
 
   // ── Title bar (dark charcoal strip) ──
-  { op: 'fillRect', color: '#2d2d44', x: 2,  y: 1,  w: 28, h: 4 },
+  { op: 'fillRect', color: '#2d2d44', x: 2, y: 1, w: 28, h: 4 },
   // macOS-style traffic light dots
-  { op: 'fillRect', color: '#ff5f57', x: 4,  y: 2,  w: 3,  h: 2 }, // red close
-  { op: 'fillRect', color: '#febc2e', x: 9,  y: 2,  w: 3,  h: 2 }, // yellow min
-  { op: 'fillRect', color: '#28c840', x: 14, y: 2,  w: 3,  h: 2 }, // green max
+  { op: 'fillRect', color: '#ff5f57', x: 4, y: 2, w: 3, h: 2 }, // red close
+  { op: 'fillRect', color: '#febc2e', x: 9, y: 2, w: 3, h: 2 }, // yellow min
+  { op: 'fillRect', color: '#28c840', x: 14, y: 2, w: 3, h: 2 }, // green max
 
   // ── Blue accent line below title ──
-  { op: 'fillRect', color: '#4472c4', x: 2,  y: 5,  w: 28, h: 1 },
+  { op: 'fillRect', color: '#4472c4', x: 2, y: 5, w: 28, h: 1 },
 
   // ── Terminal body (iconic PS dark blue) ──
-  { op: 'fillRect', color: '#012456', x: 2,  y: 6,  w: 28, h: 15 },
+  { op: 'fillRect', color: '#012456', x: 2, y: 6, w: 28, h: 15 },
 
   // ── Prompt line — yellow "PS>" block + white command block ──
   // PS> represented as a yellow filled strip
-  { op: 'fillRect', color: '#ffff00', x: 3,  y: 8,  w: 8,  h: 2 },
+  { op: 'fillRect', color: '#ffff00', x: 3, y: 8, w: 8, h: 2 },
   // command text block (white)
-  { op: 'fillRect', color: '#e0e0e0', x: 12, y: 8,  w: 16, h: 2 },
+  { op: 'fillRect', color: '#e0e0e0', x: 12, y: 8, w: 16, h: 2 },
 
   // ── Output line 1 (light steel blue, full width) ──
-  { op: 'fillRect', color: '#6ba3d6', x: 3,  y: 12, w: 24, h: 2 },
+  { op: 'fillRect', color: '#6ba3d6', x: 3, y: 12, w: 24, h: 2 },
 
   // ── Output line 2 (shorter, dim) ──
-  { op: 'fillRect', color: '#4a7fb5', x: 3,  y: 15, w: 18, h: 2 },
+  { op: 'fillRect', color: '#4a7fb5', x: 3, y: 15, w: 18, h: 2 },
 
   // ── Cursor block (bright white rect at bottom of body) ──
-  { op: 'fillRect', color: '#ffffff', x: 3,  y: 19, w: 3,  h: 2 },
+  { op: 'fillRect', color: '#ffffff', x: 3, y: 19, w: 3, h: 2 },
 
   // ── Legs (deep PS blue) ──
-  { op: 'fillRect', color: '#012456', x: 8,  y: 23, w: 5,  h: 5 },
-  { op: 'fillRect', color: '#012456', x: 19, y: 23, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#012456', x: 8, y: 23, w: 5, h: 5 },
+  { op: 'fillRect', color: '#012456', x: 19, y: 23, w: 5, h: 5 },
   // Boots (bright blue accent)
-  { op: 'fillRect', color: '#0050a0', x: 7,  y: 27, w: 7,  h: 3 },
-  { op: 'fillRect', color: '#0050a0', x: 18, y: 27, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#0050a0', x: 7, y: 27, w: 7, h: 3 },
+  { op: 'fillRect', color: '#0050a0', x: 18, y: 27, w: 7, h: 3 },
 ];
 
 // ---- PnP Core SDK — pixel-art .NET/C# purple hexagon character ----
 export const PNP_CORE: DrawCommand[] = [
   // ── Hexagon body (official .NET / C# purple) ──
   // Top cap (narrow)
-  { op: 'fillRect', color: '#512BD4', x: 10, y: 0,  w: 12, h: 2 },
+  { op: 'fillRect', color: '#512BD4', x: 10, y: 0, w: 12, h: 2 },
   // Upper shoulders
-  { op: 'fillRect', color: '#512BD4', x: 6,  y: 2,  w: 20, h: 2 },
+  { op: 'fillRect', color: '#512BD4', x: 6, y: 2, w: 20, h: 2 },
   // Wide middle body
-  { op: 'fillRect', color: '#512BD4', x: 3,  y: 4,  w: 26, h: 12 },
+  { op: 'fillRect', color: '#512BD4', x: 3, y: 4, w: 26, h: 12 },
   // Lower shoulders
-  { op: 'fillRect', color: '#512BD4', x: 6,  y: 16, w: 20, h: 2 },
+  { op: 'fillRect', color: '#512BD4', x: 6, y: 16, w: 20, h: 2 },
   // Bottom cap (narrow)
   { op: 'fillRect', color: '#512BD4', x: 10, y: 18, w: 12, h: 2 },
 
   // ── Top highlight stripe (3-D look) ──
-  { op: 'fillRect', color: '#7B52E0', x: 4,  y: 4,  w: 24, h: 2 },
+  { op: 'fillRect', color: '#7B52E0', x: 4, y: 4, w: 24, h: 2 },
 
   // ── 'C#' text centred in white ──
   { op: 'text', color: '#FFFFFF', text: 'C#', x: 9, y: 15, size: 10 },
 
   // ── Legs (deep purple) ──
-  { op: 'fillRect', color: '#3D24A0', x: 8,  y: 21, w: 5,  h: 6 },
-  { op: 'fillRect', color: '#3D24A0', x: 19, y: 21, w: 5,  h: 6 },
+  { op: 'fillRect', color: '#3D24A0', x: 8, y: 21, w: 5, h: 6 },
+  { op: 'fillRect', color: '#3D24A0', x: 19, y: 21, w: 5, h: 6 },
 
   // ── Boots ──
-  { op: 'fillRect', color: '#2D1880', x: 7,  y: 26, w: 7,  h: 3 },
-  { op: 'fillRect', color: '#2D1880', x: 18, y: 26, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#2D1880', x: 7, y: 26, w: 7, h: 3 },
+  { op: 'fillRect', color: '#2D1880', x: 18, y: 26, w: 7, h: 3 },
 ];
 
 // ---- CLI for Microsoft 365 — walking "CLI" pixel-art letters ----
@@ -553,45 +553,47 @@ export const LUISE: DrawCommand[] = [
   { op: 'fillRect', color: '#ff1493', x: 9, y: 26, w: 14, h: 4 },
   { op: 'fillRect', color: '#ff69b4', x: 10, y: 27, w: 12, h: 3 },
 ];
-  
-  // ---- Power Pages — two overlapping tilted cards matching the official logo ----
+
+// ---- Power Pages — two overlapping tilted cards matching the official logo ----
 // Logo: lighter lavender card (upper-left) + darker blue-purple card (lower-right),
 // both rotated ~12° CCW, simulated via staggered row offsets.
 export const POWER_PAGES: DrawCommand[] = [
   // ── Card 1: lighter lavender-purple (#A294ED), upper-left ──
   // Each 2-row band shifts the left edge 1 px leftward as y increases (≈12° tilt)
-  { op: 'fillRect', color: '#A294ED', x: 5,  y: 0,  w: 12, h: 2 }, // top — narrow (rounded corner)
-  { op: 'fillRect', color: '#A294ED', x: 4,  y: 2,  w: 14, h: 2 },
-  { op: 'fillRect', color: '#A294ED', x: 3,  y: 4,  w: 15, h: 2 }, // widest
-  { op: 'fillRect', color: '#A294ED', x: 2,  y: 6,  w: 15, h: 2 },
-  { op: 'fillRect', color: '#A294ED', x: 1,  y: 8,  w: 15, h: 2 },
-  { op: 'fillRect', color: '#A294ED', x: 1,  y: 10, w: 14, h: 2 }, // narrowing
-  { op: 'fillRect', color: '#A294ED', x: 1,  y: 12, w: 12, h: 2 },
-  { op: 'fillRect', color: '#A294ED', x: 2,  y: 14, w: 9,  h: 2 },
-  { op: 'fillRect', color: '#A294ED', x: 3,  y: 16, w: 6,  h: 2 }, // bottom — narrow
+  { op: 'fillRect', color: '#A294ED', x: 5, y: 0, w: 12, h: 2 }, // top — narrow (rounded corner)
+  { op: 'fillRect', color: '#A294ED', x: 4, y: 2, w: 14, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 3, y: 4, w: 15, h: 2 }, // widest
+  { op: 'fillRect', color: '#A294ED', x: 2, y: 6, w: 15, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 1, y: 8, w: 15, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 1, y: 10, w: 14, h: 2 }, // narrowing
+  { op: 'fillRect', color: '#A294ED', x: 1, y: 12, w: 12, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 2, y: 14, w: 9, h: 2 },
+  { op: 'fillRect', color: '#A294ED', x: 3, y: 16, w: 6, h: 2 }, // bottom — narrow
 
   // ── Card 2: darker blue-purple (#3B31B5), lower-right ──
   // Same tilt; positioned lower-right, overlapping card 1 in the middle band
-  { op: 'fillRect', color: '#3B31B5', x: 15, y: 5,  w: 11, h: 2 }, // top — narrow
-  { op: 'fillRect', color: '#3B31B5', x: 13, y: 7,  w: 13, h: 2 },
-  { op: 'fillRect', color: '#3B31B5', x: 12, y: 9,  w: 15, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 15, y: 5, w: 11, h: 2 }, // top — narrow
+  { op: 'fillRect', color: '#3B31B5', x: 13, y: 7, w: 13, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 12, y: 9, w: 15, h: 2 },
   { op: 'fillRect', color: '#3B31B5', x: 11, y: 11, w: 16, h: 2 }, // widest
   { op: 'fillRect', color: '#3B31B5', x: 10, y: 13, w: 16, h: 2 },
-  { op: 'fillRect', color: '#3B31B5', x: 9,  y: 15, w: 15, h: 2 }, // narrowing
-  { op: 'fillRect', color: '#3B31B5', x: 9,  y: 17, w: 13, h: 2 },
+  { op: 'fillRect', color: '#3B31B5', x: 9, y: 15, w: 15, h: 2 }, // narrowing
+  { op: 'fillRect', color: '#3B31B5', x: 9, y: 17, w: 13, h: 2 },
   { op: 'fillRect', color: '#3B31B5', x: 10, y: 19, w: 10, h: 2 }, // bottom — narrow
 
   // ── Legs (deep royal blue) ──
-  { op: 'fillRect', color: '#2B24A0', x: 8,  y: 22, w: 5,  h: 5 },
-  { op: 'fillRect', color: '#2B24A0', x: 19, y: 22, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#2B24A0', x: 8, y: 22, w: 5, h: 5 },
+  { op: 'fillRect', color: '#2B24A0', x: 19, y: 22, w: 5, h: 5 },
 
   // ── Boots ──
-  { op: 'fillRect', color: '#1F1B78', x: 7,  y: 27, w: 7,  h: 3 },
-  { op: 'fillRect', color: '#1F1B78', x: 18, y: 27, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#1F1B78', x: 7, y: 27, w: 7, h: 3 },
+  { op: 'fillRect', color: '#1F1B78', x: 18, y: 27, w: 7, h: 3 },
 ];
 
 // ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
-  export const PNP_SPFX_SAMPLES: DrawCommand[] = [
+
+// ---- PnP SPFx Samples — Match official PnP Samples logo badge ----
+export const PNP_SPFX_SAMPLES: DrawCommand[] = [
 
   // ── Outer teal border/frame ──
   { op: 'fillRect', color: '#2D8B8A', x: 2, y: 0, w: 28, h: 22 },
@@ -611,7 +613,7 @@ export const POWER_PAGES: DrawCommand[] = [
   // ── Legs (teal matching the badge) ──
   { op: 'fillRect', color: '#2D8B8A', x: 8, y: 23, w: 5, h: 5 },
   { op: 'fillRect', color: '#2D8B8A', x: 19, y: 23, w: 5, h: 5 },
-  
+
   // ── Boots (darker teal shade) ──
   { op: 'fillRect', color: '#1e6766', x: 7, y: 27, w: 7, h: 3 },
   { op: 'fillRect', color: '#1e6766', x: 18, y: 27, w: 7, h: 3 },
@@ -623,28 +625,68 @@ export const POWER_PAGES: DrawCommand[] = [
 // Each bar uses two colour bands to suggest the top-light, bottom-dark gradient.
 export const POWER_BI: DrawCommand[] = [
   // ── Right bar (tallest, cols 20-27, rows 0-20) ──
-  { op: 'fillRect', color: '#F5C200', x: 21, y: 0,  w: 6,  h: 1 }, // rounded top cap
-  { op: 'fillRect', color: '#F5C200', x: 20, y: 1,  w: 8,  h: 5 }, // upper — light amber
-  { op: 'fillRect', color: '#C47A00', x: 20, y: 6,  w: 8,  h: 7 }, // mid — deep amber
-  { op: 'fillRect', color: '#7B3A00', x: 20, y: 13, w: 8,  h: 8 }, // lower — dark brown
+  { op: 'fillRect', color: '#F5C200', x: 21, y: 0, w: 6, h: 1 }, // rounded top cap
+  { op: 'fillRect', color: '#F5C200', x: 20, y: 1, w: 8, h: 5 }, // upper — light amber
+  { op: 'fillRect', color: '#C47A00', x: 20, y: 6, w: 8, h: 7 }, // mid — deep amber
+  { op: 'fillRect', color: '#7B3A00', x: 20, y: 13, w: 8, h: 8 }, // lower — dark brown
 
   // ── Middle bar (medium, cols 11-18, rows 6-20) ──
-  { op: 'fillRect', color: '#FFF9C4', x: 12, y: 6,  w: 6,  h: 1 }, // rounded top cap
-  { op: 'fillRect', color: '#F2C811', x: 11, y: 7,  w: 8,  h: 7 }, // upper — golden
-  { op: 'fillRect', color: '#CC9B00', x: 11, y: 14, w: 8,  h: 7 }, // lower — deep gold
+  { op: 'fillRect', color: '#FFF9C4', x: 12, y: 6, w: 6, h: 1 }, // rounded top cap
+  { op: 'fillRect', color: '#F2C811', x: 11, y: 7, w: 8, h: 7 }, // upper — golden
+  { op: 'fillRect', color: '#CC9B00', x: 11, y: 14, w: 8, h: 7 }, // lower — deep gold
 
   // ── Left bar (shortest, cols 1-8, rows 13-20) ──
-  { op: 'fillRect', color: '#FFFDE7', x: 2,  y: 13, w: 6,  h: 1 }, // rounded top cap
-  { op: 'fillRect', color: '#FFF176', x: 1,  y: 14, w: 8,  h: 4 }, // upper — pale yellow
-  { op: 'fillRect', color: '#F2C811', x: 1,  y: 18, w: 8,  h: 3 }, // lower — golden
+  { op: 'fillRect', color: '#FFFDE7', x: 2, y: 13, w: 6, h: 1 }, // rounded top cap
+  { op: 'fillRect', color: '#FFF176', x: 1, y: 14, w: 8, h: 4 }, // upper — pale yellow
+  { op: 'fillRect', color: '#F2C811', x: 1, y: 18, w: 8, h: 3 }, // lower — golden
 
   // ── Legs (dark amber) ──
-  { op: 'fillRect', color: '#7B3A00', x: 8,  y: 22, w: 5,  h: 5 },
-  { op: 'fillRect', color: '#7B3A00', x: 18, y: 22, w: 5,  h: 5 },
+  { op: 'fillRect', color: '#7B3A00', x: 8, y: 22, w: 5, h: 5 },
+  { op: 'fillRect', color: '#7B3A00', x: 18, y: 22, w: 5, h: 5 },
 
   // ── Boots ──
-  { op: 'fillRect', color: '#5A2A00', x: 7,  y: 27, w: 7,  h: 3 },
-  { op: 'fillRect', color: '#5A2A00', x: 17, y: 27, w: 7,  h: 3 },
+  { op: 'fillRect', color: '#5A2A00', x: 7, y: 27, w: 7, h: 3 },
+  { op: 'fillRect', color: '#5A2A00', x: 17, y: 27, w: 7, h: 3 },
+];
+
+// ---- Microsoft Lists — List master with clipboard & checkmarks ----
+export const MS_LISTS: DrawCommand[] = [
+  // ── Clipboard board (warm beige) ──
+  { op: 'fillRect', color: '#d4a574', x: 6, y: 4, w: 20, h: 18 },
+  // Clipboard border/frame
+  { op: 'fillRect', color: '#8b6f47', x: 5, y: 3, w: 22, h: 1 },
+  { op: 'fillRect', color: '#8b6f47', x: 5, y: 22, w: 22, h: 1 },
+  { op: 'fillRect', color: '#8b6f47', x: 5, y: 4, w: 1, h: 18 },
+  { op: 'fillRect', color: '#8b6f47', x: 26, y: 4, w: 1, h: 18 },
+
+  // ── Clipboard clip (silver) ──
+  { op: 'fillRect', color: '#999999', x: 13, y: 0, w: 6, h: 5 },
+  { op: 'fillRect', color: '#666666', x: 14, y: 1, w: 4, h: 3 },
+
+  // ── List header strip (Microsoft Lists teal) ──
+  { op: 'fillRect', color: '#008080', x: 7, y: 5, w: 18, h: 3 },
+  // List text on teal header
+  { op: 'text', color: '#ffffff', text: 'LISTS', x: 9, y: 7, size: 3 },
+
+  // ── List line 1 (green check + line) ──
+  { op: 'text', color: '#0b6a0b', text: '✓', x: 8, y: 12, size: 5 },
+  { op: 'fillRect', color: '#555', x: 13, y: 10, w: 10, h: 1 },
+
+  // ── List line 2 (green check + line) ──
+  { op: 'text', color: '#0b6a0b', text: '✓', x: 8, y: 17, size: 5 },
+  { op: 'fillRect', color: '#555', x: 13, y: 15, w: 10, h: 1 },
+
+  // ── List line 3 (empty box + line for pending item) ──
+  { op: 'fillRect', color: '#888', x: 8, y: 19, w: 3, h: 3 },
+  { op: 'fillRect', color: '#d4a574', x: 9, y: 20, w: 1, h: 1 },
+  { op: 'fillRect', color: '#555', x: 13, y: 20, w: 10, h: 1 },
+
+  // ── Legs (teal, matching Lists brand) ──
+  { op: 'fillRect', color: '#008080', x: 8, y: 24, w: 5, h: 4 },
+  { op: 'fillRect', color: '#008080', x: 19, y: 24, w: 5, h: 4 },
+  // Boots (darker teal)
+  { op: 'fillRect', color: '#005555', x: 7, y: 27, w: 7, h: 3 },
+  { op: 'fillRect', color: '#005555', x: 18, y: 27, w: 7, h: 3 },
 ];
 
 export type SpriteKey =
@@ -672,7 +714,8 @@ export type SpriteKey =
   | 'campfire'
   | 'pnp_spfx_samples'
   | 'power_bi'
-  | 'pnp_core';
+  | 'pnp_core'
+  | 'ms_lists';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   player: PLAYER_SPRITE,
@@ -700,6 +743,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   pnp_spfx_samples: PNP_SPFX_SAMPLES,
   power_bi: POWER_BI,
   pnp_core: PNP_CORE,
+  ms_lists: MS_LISTS,
 };
 
 export function renderSprite(

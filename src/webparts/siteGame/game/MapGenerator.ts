@@ -288,9 +288,8 @@ export class MapGenerator {
         { row: midRow + 8, col: midCol - 4 },    // pnp_powershell
         { row: midRow - 2, col: midCol - 6 },    // julie
         { row: midRow - 2, col: midCol + 5 },    // luise
-        { row: midRow - 6, col: midCol + 4 },    // pnp_spfx_samples
         { row: midRow + 9, col: midCol + 6 },    // pnp_core
-        { row: midRow + 0, col: midCol + 10 },   // power_pages
+        { row: midRow - 6, col: midCol + 4 },    // pnp_spfx_samples
       ];
 
       EASTER_EGG_DEFINITIONS.forEach((def, idx) => {
@@ -325,6 +324,9 @@ export class MapGenerator {
     if (options.enableM365EasterEggs) {
       const m365Spawns: Array<{ row: number; col: number }> = [
         { row: midRow - 2, col: midCol + 10 },   // power_automate (0)
+        { row: midRow - 9, col: midCol + 7 },    // power_bi (1)
+        { row: midRow + 0, col: midCol + 10 },   // power_pages (2)
+        { row: midRow - 1, col: midCol - 8 },    // ms_lists (3)
       ];
 
       M365_EASTER_EGG_DEFINITIONS.forEach((def, idx) => {

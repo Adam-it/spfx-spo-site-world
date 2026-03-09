@@ -66,4 +66,101 @@ export const M365_EASTER_EGG_DEFINITIONS: M365EasterEggDefinition[] = [
       '\ud83d\udcd6 Approvals guide \u2192 learn.microsoft.com/power-automate/approvals-teams',
     ],
   },
+  {
+    id: 'power_bi',
+    name: 'Power BI',
+    kind: 'm365egg',
+    spriteKey: 'power_bi',
+    title: 'Power BI Developer Hub 📊',
+    bio: 'powerbi.microsoft.com/developer',
+    bios: [
+      // Tip 1 – API and SDK overview
+      '📊 "Power BI empowers developers!"\n\n' +
+      'Use the Power BI REST APIs to embed reports, manage datasets, and automate ' +
+      'workspace operations.\n\n' +
+      'SDKs are available for JavaScript, .NET, and Python. ' +
+      'Start with the JavaScript Client: `powerbi-client` on npm.',
+
+      // Tip 2 – Custom visuals & dev tools
+      '📊 "Visualize with custom visuals!"\n\n' +
+      'Build powerful custom visuals using the Power BI visuals SDK (TypeScript/React). ' +
+      'Use `pbiviz` CLI to package and deploy your visual.\n\n' +
+      'Debug in Power BI Desktop by enabling developer mode. ' +
+      'See docs at aka.ms/pbi-custom-visuals.',
+
+      // Tip 3 – Embedding & authentication
+      '📊 "Embed reports anywhere."\n\n' +
+      'There are two common patterns: user owns data (OAuth) and app owns data (service principal). ' +
+      'Use `powerbicli` or REST for automation.\n\n' +
+      'Embed securely in SPFx with the `@microsoft/powerbi-client-react` package. '
+    ],
+  },
+  {
+    id: 'power_pages',
+    name: 'Power Pages',
+    kind: 'm365egg',
+    spriteKey: 'power_pages',
+    title: 'Power Pages — Build low/no-code business websites',
+    bio: 'https://powerpages.microsoft.com',
+    bios: [
+      '🧱 "Hello there! I am Power Pages — your no-code web builder."\n\n' +
+      'Create secure, responsive business websites using just a browser. ' +
+      'Choose from templates, drag‑and‑drop components, and connect to Dataverse.\n\n' +
+      '🌐 Start building: https://powerpages.microsoft.com',
+
+      '🛠 "Need a form or list?"\n\n' +
+      'Add Dataverse forms, lists, and custom code with ease. ' +
+      'Configure authentication, roles, and web APIs directly in the designer.\n\n' +
+      '📘 Learn more: https://learn.microsoft.com/power-pages',
+
+      '🔒 "Security and compliance are built in!"\n\n' +
+      'Leverage Dataverse security, HTTPS, and Microsoft identity. ' +
+      'Apply business rules, validation, and custom logic with Power FX.\n\n' +
+      '📄 See docs: https://aka.ms/PowerPagesDocs',
+    ],
+  },
+  {
+    id: 'ms_lists',
+    name: 'Microsoft Lists',
+    kind: 'm365egg',
+    spriteKey: 'ms_lists',
+    title: '\u2713 Microsoft Lists \u2014 One app to track it all',
+    bio: 'https://www.microsoft.com/en-us/microsoft-365/microsoft-lists',
+    bios: [
+      // Tip 1 – One app to track it all
+      '✓ "One app to track it all!"\n\n' +
+      'Create, share, and track lists with anyone. Start quickly with ' +
+      'ready-made templates for issues, assets, events, and more.\n\n' +
+      '  ✅ Track and manage lists wherever you\'re working\n' +
+      '  ✅ See recent and favorite lists\n' +
+      '  ✅ Easily share lists with others\n\n' +
+      'Microsoft Lists works seamlessly across Microsoft 365 — ' +
+      'SharePoint, Teams, or on the web.\n\n' +
+      '🌐 https://www.microsoft.com/en-us/microsoft-365/microsoft-lists',
+
+      // Tip 2 – Customize and collaborate in Teams
+      '✓ "Customize and collaborate in Teams!"\n\n' +
+      'Work together in real time with conversation and lists side by side. ' +
+      'Add Lists as tabs to any Teams channel.\n\n' +
+      '  📅 Calendar — Track deadlines and schedules\n' +
+      '  📋 Grid — Classic spreadsheet-style view\n' +
+      '  🎨 Gallery — Visual card layout with images\n\n' +
+      'Highlight important details with conditional formatting and rules. ' +
+      'Color-code rows, send notifications, and apply automated formatting.\n\n' +
+      'All without writing code — point, click, and customize!\n\n' +
+      '👥 https://support.microsoft.com/en-us/microsoft-lists',
+
+      // Tip 3 – Automate with Power Platform
+      '✓ "Automate with Power Platform!"\n\n' +
+      'Build custom apps using lists as the data source.\n\n' +
+      '🔹 Power Apps — Extend forms with custom mobile & web apps\n' +
+      '⚡ Power Automate — Trigger workflows when items change\n\n' +
+      'Common automation scenarios:\n' +
+      '  ✅ Send notifications when tasks are assigned\n' +
+      '  ✅ Request approvals for high-priority items\n' +
+      '  ✅ Copy data to Excel, Dataverse, or other systems\n' +
+      '  ✅ Schedule recurring reminders and reports\n\n' +
+      '⚡ https://support.microsoft.com/en-us/office/automate-a-list-7a3ba7f0-55ea-4a38-80e1-b0a0279109b5',
+    ],
+  },
 ];
