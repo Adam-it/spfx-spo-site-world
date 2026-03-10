@@ -14,6 +14,8 @@ import { UIRenderer } from './rendering/UIRenderer';
 import { CharacterSelectRenderer } from './rendering/CharacterSelectRenderer';
 import { GameTheme, getThemePalette } from './constants/GameThemes';
 import { SoundEngine } from './audio/SoundEngine';
+import { IUfo } from './types/IUfo';
+import { renderSprite } from './rendering/Sprites';
 
 function clamp(v: number, min: number, max: number): number {
   return Math.min(Math.max(v, min), max);
@@ -63,6 +65,10 @@ export class GameEngine {
   private totalUsers = 0;
   private totalM365Eggs = 0;
   private npcRngs: Map<string, () => number> = new Map();
+  private enableUfoAbductions = false;
+  private ufo: IUfo | null = null;
+  private ufoTimerMs = 0;
+  private ufoRng = seededRandom(777);
 
   constructor(
     private canvas: HTMLCanvasElement,
@@ -111,6 +117,30 @@ export class GameEngine {
 
   public setSoundEnabled(enabled: boolean): void {
     this.soundEngine.setEnabled(enabled);
+  }
+
+  public setUfoAbductions(enabled: boolean): void {
+    this.enableUfoAbductions = enabled;
+    if (!enabled) {
+      if (this.ufo?.targetNpc && this.ufo.phase !== 'approaching') {
+        const npc = this.ufo.targetNpc;
+        if (this.ufo.dropX && this.ufo.dropY) {
+          npc.x = this.ufo.dropX;
+          npc.y = this.ufo.dropY;
+        } else {
+          npc.y = this.ufo.npcOriginalY;
+        }
+        npc.vx = 0;
+        npc.vy = 0;
+        npc.pauseTimer = 500;
+      }
+      this.ufo = null;
+      this.ufoTimerMs = 0;
+    } else {
+      this.ufoTimerMs = randomBetween(this.ufoRng,
+        GameConfig.UFO_FIRST_DELAY_MIN_MS,
+        GameConfig.UFO_FIRST_DELAY_MAX_MS);
+    }
   }
 
   /** Called when the InfoPanel is dismissed externally (X button / light dismiss) so
@@ -288,6 +318,7 @@ export class GameEngine {
     // ── NPC movement ─────────────────────────────────────────────────────────
     for (const npc of this.state.npcs) {
       if (npc.spriteKey === 'campfire') continue; // static
+      if (this.ufo?.targetNpc === npc && this.ufo.phase !== 'approaching') continue;
 
       const rng = this.npcRngs.get(npc.id)!;
       const distToPlayer = this.collision.distance(npc.x, npc.y, p.x, p.y);
@@ -363,6 +394,9 @@ export class GameEngine {
       }
     }
 
+    // ── UFO logic ─────────────────────────────────────────────────────────────
+    this.updateUfo(delta);
+
     // ── Camera lerp ───────────────────────────────────────────────────────────
     const cam = this.state.camera;
     const targetCamX = p.x - cam.viewportW / 2;
@@ -402,6 +436,7 @@ export class GameEngine {
     }
 
     for (const npc of this.state.npcs) {
+      if (this.ufo?.targetNpc === npc && this.ufo.phase !== 'approaching') continue;
       const d = this.collision.distance(p.x, p.y, npc.x, npc.y);
       if (d < GameConfig.PROXIMITY_RADIUS && d < nearestDist) {
         nearestDist = d;
@@ -475,7 +510,9 @@ export class GameEngine {
     if (!this.showingCharacterSelect) {
       this.tileRenderer.render(palette, ctx, camera, tileMap);
       this.buildingRenderer.render(ctx, camera, buildings, gameTimeMs);
-      this.characterRenderer.render(ctx, camera, player, npcs, gameTimeMs);
+      const ufoNpcId = this.ufo?.targetNpc && this.ufo.phase !== 'approaching' ? this.ufo.targetNpc.id : undefined;
+      this.characterRenderer.render(ctx, camera, player, npcs, gameTimeMs, ufoNpcId);
+      this.renderUfo();
       this.uiRenderer.render(
         palette,
         ctx,
@@ -503,6 +540,203 @@ export class GameEngine {
     // Character selection overlay (rendered on top)
     if (this.showingCharacterSelect) {
       this.characterSelectRenderer.render(ctx, camera.viewportW, camera.viewportH);
+    }
+  }
+
+  // ── UFO methods ───────────────────────────────────────────────────────────
+
+  private spawnUfo(): void {
+    const direction: 1 | -1 = this.ufoRng() > 0.5 ? 1 : -1;
+    const ts = GameConfig.TILE_SIZE;
+    const altitudeY = GameConfig.UFO_ALTITUDE_ROW * ts + ts / 2;
+    const startX = direction === 1 ? -48 : this.state.mapCols * ts + 48;
+
+    const eligible = this.state.npcs.filter(n => n.spriteKey !== 'campfire');
+
+    if (eligible.length === 0) {
+      this.ufo = {
+        x: startX, y: altitudeY, direction, phase: 'approaching',
+        targetNpc: null, pickupX: (this.state.mapCols * ts) / 2,
+        dropX: 0, dropY: 0, lerpTimer: 0, npcOriginalY: 0,
+      };
+      return;
+    }
+
+    const npc = eligible[Math.floor(this.ufoRng() * eligible.length)];
+    const pickupX = npc.x;
+    const pickupTileCol = Math.floor(npc.x / ts);
+    const pickupTileRow = Math.floor(npc.y / ts);
+
+    const candidates: Array<{ col: number; row: number }> = [];
+    for (let row = 0; row < this.state.mapRows; row++) {
+      for (let col = 0; col < this.state.mapCols; col++) {
+        if (!this.state.tileMap[row][col].walkable) continue;
+        const dist = Math.sqrt((col - pickupTileCol) ** 2 + (row - pickupTileRow) ** 2);
+        if (dist < GameConfig.UFO_DROP_MIN_TILE_DISTANCE) continue;
+        const dropWorldX = col * ts + ts / 2;
+        if (direction === 1 && dropWorldX <= pickupX) continue;
+        if (direction === -1 && dropWorldX >= pickupX) continue;
+        candidates.push({ col, row });
+      }
+    }
+
+    if (candidates.length === 0) {
+      this.ufo = {
+        x: startX, y: altitudeY, direction, phase: 'approaching',
+        targetNpc: null, pickupX: (this.state.mapCols * ts) / 2,
+        dropX: 0, dropY: 0, lerpTimer: 0, npcOriginalY: 0,
+      };
+      return;
+    }
+
+    const drop = candidates[Math.floor(this.ufoRng() * candidates.length)];
+    this.ufo = {
+      x: startX, y: altitudeY, direction, phase: 'approaching',
+      targetNpc: npc, pickupX,
+      dropX: drop.col * ts + ts / 2, dropY: drop.row * ts + ts / 2,
+      lerpTimer: 0, npcOriginalY: npc.y,
+    };
+  }
+
+  private updateUfo(delta: number): void {
+    if (!this.enableUfoAbductions) return;
+
+    if (!this.ufo) {
+      this.ufoTimerMs -= delta;
+      if (this.ufoTimerMs <= 0) {
+        this.spawnUfo();
+      }
+      return;
+    }
+
+    const ufo = this.ufo;
+    const ts = GameConfig.TILE_SIZE;
+    const speed = GameConfig.UFO_SPEED * ufo.direction * (delta / 1000);
+
+    switch (ufo.phase) {
+      case 'approaching': {
+        ufo.x += speed;
+        const passed = ufo.direction === 1 ? ufo.x >= ufo.pickupX : ufo.x <= ufo.pickupX;
+        if (passed) {
+          if (ufo.targetNpc) {
+            ufo.phase = 'picking-up';
+            ufo.lerpTimer = 0;
+            ufo.pickupX = ufo.targetNpc.x;
+            ufo.npcOriginalY = ufo.targetNpc.y;
+          } else {
+            ufo.phase = 'departing';
+          }
+        }
+        break;
+      }
+
+      case 'picking-up': {
+        ufo.x += speed;
+        ufo.lerpTimer += delta;
+        const t = clamp(ufo.lerpTimer / GameConfig.UFO_LERP_DURATION_MS, 0, 1);
+        const npc = ufo.targetNpc!;
+        npc.y = lerp(ufo.npcOriginalY, ufo.y, t);
+        npc.x = ufo.x;
+        npc.vx = 0;
+        npc.vy = 0;
+        if (t >= 1) {
+          ufo.phase = 'carrying';
+          npc.facing = ufo.direction === 1 ? 'right' : 'left';
+        }
+        break;
+      }
+
+      case 'carrying': {
+        ufo.x += speed;
+        const npc = ufo.targetNpc!;
+        npc.x = ufo.x;
+        npc.y = ufo.y;
+        const passedDrop = ufo.direction === 1 ? ufo.x >= ufo.dropX : ufo.x <= ufo.dropX;
+        if (passedDrop) {
+          ufo.phase = 'dropping';
+          ufo.lerpTimer = 0;
+        }
+        break;
+      }
+
+      case 'dropping': {
+        ufo.x += speed;
+        ufo.lerpTimer += delta;
+        const t = clamp(ufo.lerpTimer / GameConfig.UFO_LERP_DURATION_MS, 0, 1);
+        const npc = ufo.targetNpc!;
+        npc.x = ufo.dropX;
+        npc.y = lerp(ufo.y, ufo.dropY, t);
+        if (t >= 1) {
+          npc.x = ufo.dropX;
+          npc.y = ufo.dropY;
+          npc.vx = 0;
+          npc.vy = 0;
+          npc.pauseTimer = 500;
+          ufo.phase = 'departing';
+        }
+        break;
+      }
+
+      case 'departing': {
+        ufo.x += speed;
+        const mapW = this.state.mapCols * ts;
+        if (ufo.x < -100 || ufo.x > mapW + 100) {
+          ufo.phase = 'done';
+        }
+        break;
+      }
+
+      case 'done': {
+        this.ufo = null;
+        this.ufoTimerMs = randomBetween(this.ufoRng,
+          GameConfig.UFO_REPEAT_DELAY_MIN_MS,
+          GameConfig.UFO_REPEAT_DELAY_MAX_MS);
+        break;
+      }
+    }
+  }
+
+  private renderUfo(): void {
+    if (!this.ufo) return;
+
+    const ufo = this.ufo;
+    const cam = this.state.camera;
+    const ts = GameConfig.TILE_SIZE;
+    const ctx = this.ctx;
+
+    const ufoSx = Math.round(ufo.x - cam.x - 24);
+    const ufoSy = Math.round(ufo.y - cam.y - 12);
+
+    if (ufoSx > cam.viewportW + 100 || ufoSx < -100) return;
+
+    if (ufo.targetNpc && (ufo.phase === 'picking-up' || ufo.phase === 'carrying' || ufo.phase === 'dropping')) {
+      const npc = ufo.targetNpc;
+      const npcSx = Math.round(npc.x - cam.x - ts / 2);
+      // During carrying, beam extends to ground level (npcOriginalY), not current NPC y
+      const beamBottomY = ufo.phase === 'carrying' ? ufo.npcOriginalY : npc.y;
+      const beamSy = Math.round(beamBottomY - cam.y);
+
+      ctx.save();
+      ctx.globalAlpha = 0.22;
+      ctx.fillStyle = '#88ccff';
+      ctx.beginPath();
+      ctx.moveTo(ufoSx + 16, ufoSy + 21);
+      ctx.lineTo(ufoSx + 32, ufoSy + 21);
+      ctx.lineTo(npcSx + ts, beamSy);
+      ctx.lineTo(npcSx, beamSy);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    renderSprite(ctx, 'ufo', ufoSx, ufoSy, false);
+
+    if (ufo.targetNpc && ufo.phase !== 'approaching' && ufo.phase !== 'done') {
+      const npc = ufo.targetNpc;
+      const npcSx = Math.round(npc.x - cam.x - ts / 2);
+      const npcSy = Math.round(npc.y - cam.y - ts);
+      const flip = npc.facing === 'left';
+      renderSprite(ctx, npc.spriteKey, npcSx, npcSy, flip);
     }
   }
 }

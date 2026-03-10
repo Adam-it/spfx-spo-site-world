@@ -733,6 +733,30 @@ export const POWER_APPS: DrawCommand[] = [
   { op: 'fillRect', color: '#C44CC4', x: 12, y: 26, w: 7,  h: 3 },
 ];
 
+// ---- UFO (flying saucer) ----
+export const UFO_SPRITE: DrawCommand[] = [
+  // Dome (glass bubble on top)
+  { op: 'circle', color: 'rgba(180,220,255,0.7)', cx: 24, cy: 6, r: 7 },
+  { op: 'circle', color: 'rgba(220,240,255,0.5)', cx: 22, cy: 4, r: 3 },
+
+  // Body (metallic oval)
+  { op: 'fillRect', color: '#b0b0b0', x: 4,  y: 10, w: 40, h: 6 },
+  { op: 'fillRect', color: '#d0d0d0', x: 8,  y: 9,  w: 32, h: 2 },
+  { op: 'fillRect', color: '#888888', x: 8,  y: 16, w: 32, h: 2 },
+  { op: 'fillRect', color: '#909090', x: 2,  y: 11, w: 4,  h: 4 },
+  { op: 'fillRect', color: '#909090', x: 42, y: 11, w: 4,  h: 4 },
+
+  // Rim lights
+  { op: 'circle', color: '#ff4444', cx: 10, cy: 13, r: 1.5 },
+  { op: 'circle', color: '#44ff44', cx: 18, cy: 13, r: 1.5 },
+  { op: 'circle', color: '#4488ff', cx: 26, cy: 13, r: 1.5 },
+  { op: 'circle', color: '#ffff44', cx: 34, cy: 13, r: 1.5 },
+  { op: 'circle', color: '#ff44ff', cx: 42, cy: 13, r: 1.5 },
+
+  // Bottom disc
+  { op: 'fillRect', color: '#707070', x: 14, y: 18, w: 20, h: 3 },
+];
+
 export type SpriteKey =
   | 'player'
   | 'player_walk1'
@@ -760,7 +784,8 @@ export type SpriteKey =
   | 'power_bi'
   | 'pnp_core'
   | 'power_apps'
-  | 'ms_lists';
+  | 'ms_lists'
+  | 'ufo';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   player: PLAYER_SPRITE,
@@ -790,6 +815,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   pnp_core: PNP_CORE,
   power_apps: POWER_APPS,
   ms_lists: MS_LISTS,
+  ufo: UFO_SPRITE,
 };
 
 export function renderSprite(

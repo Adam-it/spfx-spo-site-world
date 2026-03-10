@@ -95,6 +95,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       this.engine.start();
       this.engine.setTheme(this.props.gameTheme || 'village');
       this.engine.setSoundEnabled(this.props.enableMusic);
+      this.engine.setUfoAbductions(this.props.enableUfoAbductions);
 
       if (this.props.enableMusic) {
         this.musicEngine = new MusicEngine();
@@ -156,6 +157,9 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       } else {
         this.musicEngine?.stop();
       }
+    }
+    if (prevProps.enableUfoAbductions !== this.props.enableUfoAbductions) {
+      this.engine?.setUfoAbductions(this.props.enableUfoAbductions);
     }
     if (
       prevProps.enableEasterEggs !== this.props.enableEasterEggs ||
@@ -238,6 +242,7 @@ export default class SiteGame extends React.Component<ISiteGameProps, ISiteGameS
       this.engine.start();
       this.engine.setTheme(this.props.gameTheme || 'village');
       this.engine.setSoundEnabled(this.props.enableMusic);
+      this.engine.setUfoAbductions(this.props.enableUfoAbductions);
 
       if (this.props.enableMusic) {
         if (!this.musicEngine) this.musicEngine = new MusicEngine();

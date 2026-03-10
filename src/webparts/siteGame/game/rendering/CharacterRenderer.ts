@@ -10,10 +10,12 @@ export class CharacterRenderer {
     camera: ICamera,
     player: IPlayer,
     npcs: INPC[],
-    gameTimeMs: number
+    gameTimeMs: number,
+    excludeNpcId?: string
   ): void {
     // Draw NPCs first (behind player if overlapping)
     for (const npc of npcs) {
+      if (excludeNpcId && npc.id === excludeNpcId) continue;
       this.renderNPC(ctx, camera, npc, gameTimeMs);
     }
     this.renderPlayer(ctx, camera, player, gameTimeMs);

@@ -14,4 +14,5 @@ export interface ISiteGameProps {
   enableM365EasterEggs: boolean;
   gameTheme: GameTheme;
   enableMusic: boolean;
+  enableUfoAbductions: boolean;
 }
