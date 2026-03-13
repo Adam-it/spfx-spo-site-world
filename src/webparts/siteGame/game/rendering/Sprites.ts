@@ -795,6 +795,46 @@ export const MS_TEAMS: DrawCommand[] = [
   { op: 'fillRect', color: '#464EB8', x: 15, y: 28, w: 7, h: 3 },
 ];
 
+// ---- Microsoft Copilot — colorful ribbon/infinity logo ----
+export const MS_COPILOT: DrawCommand[] = [
+  // ── Left ribbon (blue → green → yellow gradient, top-left to bottom-left) ──
+  // Top curve (blue)
+  { op: 'fillRect', color: '#1B9CFC', x: 4, y: 2, w: 8, h: 2 },
+  { op: 'fillRect', color: '#0D8BF0', x: 2, y: 4, w: 6, h: 2 },
+  { op: 'fillRect', color: '#10A5C8', x: 1, y: 6, w: 5, h: 2 },
+  // Middle (teal → green)
+  { op: 'fillRect', color: '#20B890', x: 1, y: 8, w: 5, h: 2 },
+  { op: 'fillRect', color: '#3DC070', x: 1, y: 10, w: 6, h: 2 },
+  { op: 'fillRect', color: '#70C850', x: 2, y: 12, w: 6, h: 2 },
+  // Bottom curve (yellow → orange)
+  { op: 'fillRect', color: '#C8C020', x: 3, y: 14, w: 6, h: 2 },
+  { op: 'fillRect', color: '#E8A020', x: 5, y: 16, w: 6, h: 2 },
+  { op: 'fillRect', color: '#F08020', x: 8, y: 18, w: 6, h: 2 },
+
+  // ── Center bridge (white gap between ribbons) ──
+  { op: 'fillRect', color: '#ffffff', x: 11, y: 8, w: 6, h: 6 },
+
+  // ── Right ribbon (blue → purple → pink, top-right to bottom-right) ──
+  // Top curve (blue)
+  { op: 'fillRect', color: '#2060E0', x: 16, y: 2, w: 8, h: 2 },
+  { op: 'fillRect', color: '#4050D8', x: 20, y: 4, w: 6, h: 2 },
+  // Middle (purple)
+  { op: 'fillRect', color: '#7040C8', x: 22, y: 6, w: 5, h: 2 },
+  { op: 'fillRect', color: '#9040B8', x: 22, y: 8, w: 5, h: 2 },
+  { op: 'fillRect', color: '#B040A0', x: 21, y: 10, w: 6, h: 2 },
+  // Bottom curve (pink → salmon)
+  { op: 'fillRect', color: '#D04888', x: 19, y: 12, w: 6, h: 2 },
+  { op: 'fillRect', color: '#E86070', x: 17, y: 14, w: 6, h: 2 },
+  { op: 'fillRect', color: '#F08060', x: 14, y: 16, w: 6, h: 2 },
+  { op: 'fillRect', color: '#F09058', x: 11, y: 18, w: 5, h: 2 },
+
+  // ── Legs ──
+  { op: 'fillRect', color: '#7040C8', x: 7, y: 22, w: 5, h: 5 },
+  { op: 'fillRect', color: '#D04888', x: 16, y: 22, w: 5, h: 5 },
+  { op: 'fillRect', color: '#4050D8', x: 6, y: 26, w: 7, h: 3 },
+  { op: 'fillRect', color: '#E86070', x: 15, y: 26, w: 7, h: 3 },
+];
+
 // ---- UFO (flying saucer) ----
 export const UFO_SPRITE: DrawCommand[] = [
   // Dome (glass bubble on top)
@@ -849,6 +889,7 @@ export type SpriteKey =
   | 'ms_lists'
   | 'hugo'
   | 'ms_teams'
+  | 'ms_copilot'
   | 'ufo';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -881,6 +922,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   ms_lists: MS_LISTS,
   hugo: HUGO,
   ms_teams: MS_TEAMS,
+  ms_copilot: MS_COPILOT,
   ufo: UFO_SPRITE,
 };
 

@@ -282,4 +282,57 @@ export const M365_EASTER_EGG_DEFINITIONS: M365EasterEggDefinition[] = [
       '📖 Teams + SPFx → https://learn.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview',
     ],
   },
+  {
+    id: 'ms_copilot',
+    name: 'Microsoft Copilot',
+    kind: 'm365egg',
+    spriteKey: 'ms_copilot',
+    title: '✨ Microsoft Copilot — Your everyday AI companion',
+    bio: 'https://copilot.microsoft.com',
+    bios: [
+      // Tip 1 — What it is
+      '✨ "Hello! I am Microsoft Copilot!"\n\n' +
+      'Microsoft Copilot is your AI-powered assistant built into ' +
+      'the Microsoft 365 apps you use every day — Word, Excel, ' +
+      'PowerPoint, Outlook, Teams, and more.\n\n' +
+      '🚀 What Copilot can do:\n' +
+      '  ✅ Draft documents, emails, and presentations\n' +
+      '  ✅ Summarize long emails and meeting transcripts\n' +
+      '  ✅ Analyze data in Excel with natural language\n' +
+      '  ✅ Generate meeting recaps in Teams\n' +
+      '  ✅ Answer questions using your organization\'s data\n' +
+      '  ✅ Create images, code, and content from prompts\n\n' +
+      'Copilot combines large language models with your Microsoft 365 ' +
+      'data via Microsoft Graph — grounded, secure, and compliant.\n\n' +
+      '🌐 https://copilot.microsoft.com',
+
+      // Tip 2 — Extending Copilot
+      '✨ "Extend Copilot with plugins and connectors!"\n\n' +
+      'Developers can build Copilot extensions that bring your ' +
+      'app\'s data and actions directly into the Copilot experience.\n\n' +
+      '🛠 Extension types:\n' +
+      '  ✅ Message extensions — search & share from Copilot\n' +
+      '  ✅ Copilot connectors — bring external data in\n' +
+      '  ✅ Declarative agents — custom Copilot personas\n' +
+      '  ✅ API plugins — call REST APIs from Copilot\n' +
+      '  ✅ Teams AI library — build conversational AI apps\n\n' +
+      'Use Teams Toolkit in VS Code to scaffold, test, and deploy ' +
+      'Copilot extensions with a great local debug experience.\n\n' +
+      '📖 Dev docs → https://learn.microsoft.com/microsoft-365-copilot/extensibility',
+
+      // Tip 3 — Copilot in SharePoint & SPFx
+      '✨ "Copilot meets SharePoint!"\n\n' +
+      'Copilot understands your SharePoint content — sites, pages, ' +
+      'documents, and lists are all part of Microsoft Graph.\n\n' +
+      '🔗 SharePoint + Copilot:\n' +
+      '  ✅ Ask Copilot questions about content stored in SPO\n' +
+      '  ✅ Copilot for SharePoint — AI-generated page drafts\n' +
+      '  ✅ Restricted SharePoint Search for scoped answers\n' +
+      '  ✅ Declarative agents grounded in SPO site content\n' +
+      '  ✅ SPFx Adaptive Card Extensions in Viva Connections\n\n' +
+      'Good content management in SharePoint = better Copilot answers. ' +
+      'Keep your sites organized, metadata rich, and permissions clean.\n\n' +
+      '📖 Copilot + SPO → https://learn.microsoft.com/sharepoint/sharepoint-copilot-best-practices',
+    ],
+  },
 ];
