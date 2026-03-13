@@ -92,6 +92,9 @@ export class CharacterRenderer {
     } else if (npc.spriteKey === 'pnp_core') {
       // .NET hexagon — gentle oscillating float
       drawY += Math.round(Math.sin(gameTimeMs / 700) * -3);
+    } else if (npc.spriteKey === 'ms_teams') {
+      // Teams chat bubble pop — lively bounce
+      drawY += Math.round(Math.abs(Math.sin(gameTimeMs / 350)) * -4);
     } else if (npc.spriteKey === 'campfire') {
       // campfire doesn't need movement, just draw at center
       renderSprite(ctx, npc.spriteKey, sx, drawY, false);

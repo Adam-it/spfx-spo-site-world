@@ -228,4 +228,58 @@ export const M365_EASTER_EGG_DEFINITIONS: M365EasterEggDefinition[] = [
       '⚡ https://support.microsoft.com/en-us/office/automate-a-list-7a3ba7f0-55ea-4a38-80e1-b0a0279109b5',
     ],
   },
+  {
+    id: 'ms_teams',
+    name: 'Microsoft Teams',
+    kind: 'm365egg',
+    spriteKey: 'ms_teams',
+    title: '💬 Microsoft Teams — The hub for teamwork',
+    bio: 'https://www.microsoft.com/en-us/microsoft-teams',
+    bios: [
+      // Tip 1 — What it is
+      '💬 "Hello! I am Microsoft Teams!"\n\n' +
+      'Microsoft Teams is the hub for teamwork in Microsoft 365 — ' +
+      'bringing together chat, meetings, calling, and collaboration ' +
+      'into one place.\n\n' +
+      '🚀 What Teams offers:\n' +
+      '  ✅ Chat — 1:1 and group conversations\n' +
+      '  ✅ Channels — organized team discussions\n' +
+      '  ✅ Meetings — video, audio, screen sharing\n' +
+      '  ✅ Apps & tabs — extend Teams with custom apps\n' +
+      '  ✅ Files — co-author documents in real time\n' +
+      '  ✅ Copilot — AI-powered meeting recaps & chat assist\n\n' +
+      'Teams is available on desktop, web, and mobile — ' +
+      'stay connected wherever you are.\n\n' +
+      '🌐 https://www.microsoft.com/en-us/microsoft-teams',
+
+      // Tip 2 — Developing for Teams
+      '💬 "Build apps that live where people work!"\n\n' +
+      'Microsoft Teams is a powerful platform for developers. ' +
+      'Build custom apps that integrate directly into the Teams experience.\n\n' +
+      '🛠 What you can build:\n' +
+      '  ✅ Tabs — embed web apps in channels or chats\n' +
+      '  ✅ Bots — conversational AI assistants\n' +
+      '  ✅ Message extensions — search & share from compose box\n' +
+      '  ✅ Webhooks & connectors — push notifications\n' +
+      '  ✅ Meeting extensions — enhance meeting experiences\n' +
+      '  ✅ Copilot plugins — extend Microsoft Copilot\n\n' +
+      'Use Teams Toolkit for VS Code to scaffold, debug and deploy.\n\n' +
+      '📖 Dev docs → https://learn.microsoft.com/microsoftteams/platform',
+
+      // Tip 3 — Teams + SharePoint
+      '💬 "Teams and SharePoint — better together!"\n\n' +
+      'Every Teams team is backed by a SharePoint site. ' +
+      'Files shared in channels live in SharePoint document libraries.\n\n' +
+      '🔗 Integration points:\n' +
+      '  ✅ Channel files tab → SharePoint document library\n' +
+      '  ✅ SharePoint pages as Teams tabs\n' +
+      '  ✅ SPFx web parts in Teams tabs & personal apps\n' +
+      '  ✅ Viva Connections dashboard (ACEs) in Teams\n' +
+      '  ✅ Microsoft Lists as Teams tabs\n' +
+      '  ✅ Power Automate flows triggered from Teams\n\n' +
+      'SPFx solutions can target Teams with zero extra code — ' +
+      'just set "supportedHosts" to include "TeamsTab".\n\n' +
+      '📖 Teams + SPFx → https://learn.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview',
+    ],
+  },
 ];

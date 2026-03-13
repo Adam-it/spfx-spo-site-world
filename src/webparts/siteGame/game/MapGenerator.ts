@@ -329,6 +329,7 @@ export class MapGenerator {
         { row: midRow - 9, col: midCol + 7 },    // power_bi (1)
         { row: midRow + 0, col: midCol + 10 },   // power_pages (2)
         { row: midRow - 1, col: midCol - 8 },    // ms_lists (3)
+        { row: midRow + 5, col: midCol + 11 },   // ms_teams (4)
       ];
 
       M365_EASTER_EGG_DEFINITIONS.forEach((def, idx) => {

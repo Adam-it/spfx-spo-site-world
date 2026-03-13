@@ -766,6 +766,35 @@ export const POWER_APPS: DrawCommand[] = [
   { op: 'fillRect', color: '#C44CC4', x: 12, y: 26, w: 7,  h: 3 },
 ];
 
+// ---- Microsoft Teams — two-person silhouette with T badge ----
+export const MS_TEAMS: DrawCommand[] = [
+  // ── Back person silhouette (smaller, right) ──
+  // Head
+  { op: 'circle', color: '#7B83EB', cx: 22, cy: 5, r: 4 },
+  // Body
+  { op: 'fillRect', color: '#7B83EB', x: 17, y: 9, w: 10, h: 10 },
+  { op: 'circle', color: '#7B83EB', cx: 22, cy: 19, r: 5 },
+
+  // ── Front person silhouette (larger, left-center) ──
+  // Head
+  { op: 'circle', color: '#5B5FC7', cx: 14, cy: 6, r: 5 },
+  // Body
+  { op: 'circle', color: '#5B5FC7', cx: 14, cy: 22, r: 7 },
+  { op: 'fillRect', color: '#5B5FC7', x: 7, y: 12, w: 14, h: 10 },
+
+  // ── T badge (purple rounded square, left) ──
+  { op: 'fillRect', color: '#464EB8', x: 1, y: 8, w: 13, h: 12 },
+  // T letter
+  { op: 'fillRect', color: '#ffffff', x: 4, y: 10, w: 7, h: 2 },
+  { op: 'fillRect', color: '#ffffff', x: 6, y: 10, w: 3, h: 8 },
+
+  // ── Legs ──
+  { op: 'fillRect', color: '#5B5FC7', x: 7, y: 24, w: 5, h: 5 },
+  { op: 'fillRect', color: '#5B5FC7', x: 16, y: 24, w: 5, h: 5 },
+  { op: 'fillRect', color: '#464EB8', x: 6, y: 28, w: 7, h: 3 },
+  { op: 'fillRect', color: '#464EB8', x: 15, y: 28, w: 7, h: 3 },
+];
+
 // ---- UFO (flying saucer) ----
 export const UFO_SPRITE: DrawCommand[] = [
   // Dome (glass bubble on top)
@@ -819,6 +848,7 @@ export type SpriteKey =
   | 'power_apps'
   | 'ms_lists'
   | 'hugo'
+  | 'ms_teams'
   | 'ufo';
 
 export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
@@ -850,6 +880,7 @@ export const SPRITES: Record<SpriteKey, DrawCommand[]> = {
   power_apps: POWER_APPS,
   ms_lists: MS_LISTS,
   hugo: HUGO,
+  ms_teams: MS_TEAMS,
   ufo: UFO_SPRITE,
 };
 
